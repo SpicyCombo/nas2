@@ -48,7 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MCGalaxy_infid">
-      <HintPath>..\..\..\Users\jiami\Downloads\MCGalaxy_infid.dll</HintPath>
+      <HintPath>.\MCGalaxy_infid.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>.\Newtonsoft.Json.dll</HintPath>

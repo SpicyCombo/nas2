@@ -1,0 +1,2 @@
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Debug\nas.csprojAssemblyReference.cache
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Debug\nas.csproj.CoreCompileInputs.cache

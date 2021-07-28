@@ -1,0 +1,7 @@
+C:\Users\jiami\OneDrive\Documents\nas2\bin\Release\plugins\nas.dll
+C:\Users\jiami\OneDrive\Documents\nas2\bin\Release\plugins\nas.pdb
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.csprojAssemblyReference.cache
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.csproj.CoreCompileInputs.cache
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.csproj.CopyComplete
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.dll
+C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.pdb
