@@ -9,3 +9,4 @@ In order to use this plugin, you can simply download a release from the
  pretty self-explanatory.
 ## Contributions
 Contributions are appreciated. I will update everything I add by commit.
+![OpenGraph](https://opengraph.githubassets.com/f8b7208aee1d9f0e9692ad6a7c23cbc4bb9182259349878bf6083e83509a0a7b/SpicyCombo/nas2?width=804&height=402)
