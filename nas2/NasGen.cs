@@ -408,6 +408,7 @@ namespace NotAwesomeSurvival {
             void GenTree(ushort x, ushort y, ushort z) {
                 topSoil = Block.Dirt;
                 NasTree.GenOakTree(nl, r, x, y, z);
+                NasTree.GenSpruceTree(nl, r, x, y, z);
             }
 
             
