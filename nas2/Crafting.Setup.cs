@@ -155,7 +155,7 @@ namespace NotAwesomeSurvival {
                 {  78, 0, 78 }
             };
 
-            Recipe Rope = new Recipe(71, 2);
+            Recipe Rope = new Recipe(51, 2);
             Rope.pattern = new BlockID[,] {
                 {  145 }
             };
