@@ -88,6 +88,7 @@
     <Compile Include="Nas.cs" />
     <Compile Include="NasPlayer.cs" />
     <Compile Include="NasTree.cs" />
+    <Compile Include="NasTreeGens.cs" />
     <Compile Include="Priority Queue\FastPriorityQueue.cs" />
     <Compile Include="Priority Queue\FastPriorityQueueNode.cs" />
     <Compile Include="Priority Queue\GenericPriorityQueue.cs" />

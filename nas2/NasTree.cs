@@ -15,12 +15,23 @@ namespace NotAwesomeSurvival {
         }
         public static void GenOakTree(NasLevel nl, Random r, int x, int y, int z, bool broadcastChange = false) {
             Level lvl = nl.lvl;
-            Tree tree;
-            tree = new OakTree();
-            tree.SetData(r, r.Next(0, 8));
-            PlaceBlocks(lvl, tree, x, y, z, broadcastChange);
+            Tree oak;
+            oak = new OakTree();
+
+            oak.SetData(r, r.Next(0, 8));
+            PlaceBlocks(lvl, oak, x, y, z, broadcastChange);
         }
-        
+
+        public static void GenSpruceTree(NasLevel nl, Random r, int x, int y, int z, bool broadcastChange = false)
+        {
+            Level lvl = nl.lvl;
+            Tree spruce;
+            spruce = new SpruceTree();
+
+            spruce.SetData(r, r.Next(0, 8));
+            PlaceBlocks(lvl, spruce, x, y, z, broadcastChange);
+        }
+
         private static void PlaceBlocks(Level lvl, Tree tree, int x, int y, int z, bool broadcastChange) {
             tree.Generate((ushort)x, (ushort)(y), (ushort)z, (X, Y, Z, raw) => {
                               BlockID here = lvl.GetBlock(X, Y, Z);
