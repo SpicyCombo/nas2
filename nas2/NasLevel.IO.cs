@@ -7,7 +7,7 @@ using MCGalaxy.Events.LevelEvents;
 namespace NotAwesomeSurvival {
 
     public partial class NasLevel {
-        public const string Path = Nas.Path + "leveldata/";
+        public const string Path = Nas2.Path + "leveldata/";
         const string Extension = ".json";
 
         public static void Setup() {

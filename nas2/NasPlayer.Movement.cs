@@ -21,7 +21,7 @@ namespace NotAwesomeSurvival {
         }
 
         static void OnPlayerSpawning(Player p, ref Position pos, ref byte yaw, ref byte pitch, bool respawning) {
-            NasPlayer np = (NasPlayer)p.Extras[Nas.PlayerKey];
+            NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
             np.nl = NasLevel.Get(p.level.name);
             np.SpawnPlayer(p.level, ref pos, ref yaw, ref pitch);
         }

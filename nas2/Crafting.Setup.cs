@@ -338,6 +338,14 @@ namespace NotAwesomeSurvival {
             concreteSlab.pattern = new BlockID[,] {
                 {  45, 45, 45 }
             };
+
+            Recipe sandstone = new Recipe(52, 4);
+            sandstone.shapeless = true;
+            sandstone.pattern = new BlockID[,] {
+                { 12, 12 },
+                { 12, 12 }
+            };
+
             Recipe concreteWall = new Recipe(282, 6);
             concreteWall.pattern = new BlockID[,] {
                 { 45 },

@@ -18,15 +18,15 @@ namespace NotAwesomeSurvival {
         const string selectorImageName = "selectorColors.png";
         public static bool Setup() {
             if (File.Exists("plugins/" + selectorImageName)) {
-                File.Move("plugins/" + selectorImageName, Nas.Path + selectorImageName);
+                File.Move("plugins/" + selectorImageName, Nas2.Path + selectorImageName);
             }
-            if (!File.Exists(Nas.Path + selectorImageName)) {
+            if (!File.Exists(Nas2.Path + selectorImageName)) {
                 Player.Console.Message("Could not locate {0} (needed for tool health/selection colors)", selectorImageName);
                 return false;
             }
             
             Bitmap colorImage;
-            colorImage = new Bitmap(Nas.Path + "selectorColors.png");
+            colorImage = new Bitmap(Nas2.Path + "selectorColors.png");
             
             defaultColors = new ColorDesc[colorImage.Width];
             fullHealthColors = new ColorDesc[colorImage.Width];

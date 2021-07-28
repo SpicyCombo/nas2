@@ -32,8 +32,8 @@ namespace NotAwesomeSurvival {
             }
         }
         public static NasPlayer GetNasPlayer(Player p) {
-            if (!p.Extras.Contains(Nas.PlayerKey)) { return null; }
-            return (NasPlayer)p.Extras[Nas.PlayerKey];
+            if (!p.Extras.Contains(Nas2.PlayerKey)) { return null; }
+            return (NasPlayer)p.Extras[Nas2.PlayerKey];
         }
 
         public Inventory inventory;

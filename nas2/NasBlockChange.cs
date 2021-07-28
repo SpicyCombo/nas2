@@ -19,16 +19,16 @@ namespace NotAwesomeSurvival {
         
         public static bool Setup() {
             if (File.Exists("plugins/" + terrainImageName)) {
-                File.Move("plugins/" + terrainImageName, Nas.Path + terrainImageName);
+                File.Move("plugins/" + terrainImageName, Nas2.Path + terrainImageName);
             }
-            if (!File.Exists(Nas.Path + terrainImageName)) {
+            if (!File.Exists(Nas2.Path + terrainImageName)) {
                 Player.Console.Message("Could not locate {0} (needed for block particle colors)", terrainImageName);
                 return false;
             }
             
             if (breakScheduler == null) breakScheduler = new Scheduler("BlockBreakScheduler");
             Bitmap terrain;
-            terrain = new Bitmap(Nas.Path + terrainImageName);
+            terrain = new Bitmap(Nas2.Path + terrainImageName);
             terrain = new Bitmap(terrain, terrain.Width / 16, terrain.Height / 16);
             //terrain.Save("plugins/nas/smolTerrain.png", System.Drawing.Imaging.ImageFormat.Png);
 
@@ -138,7 +138,7 @@ namespace NotAwesomeSurvival {
             if (p.level.Config.Deletable && p.level.Config.Buildable) { return; }
             if (!placing) { p.Message("%cYou shouldn't be allowed to do this."); cancel = true; return; }
 
-            NasPlayer np = (NasPlayer)p.Extras[Nas.PlayerKey];
+            NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
             BlockID clientBlockID = p.ConvertBlock(serverBlockID);
             NasBlock nasBlock = NasBlock.Get(clientBlockID);
 
@@ -166,7 +166,7 @@ namespace NotAwesomeSurvival {
         
         public static void OnBlockChanged(Player p, ushort x, ushort y, ushort z, ChangeResult result) {
             if (p.level.Config.Deletable && p.level.Config.Buildable) { return; }
-            NasPlayer np = (NasPlayer)p.Extras[Nas.PlayerKey];
+            NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
             NasLevel nl = NasLevel.all[np.p.level.name];
             NasBlock nasBlock = NasBlock.blocksIndexedByServerBlockID[p.level.GetBlock(x, y, z)];
             if (nasBlock.existAction != null) {
@@ -232,7 +232,7 @@ namespace NotAwesomeSurvival {
         TargetBlockFace face) {
             if (!p.agreed) { p.Message("You need to read and agree to the %b/rules%S to play"); return; }
             
-            NasPlayer np = (NasPlayer)p.Extras[Nas.PlayerKey];
+            NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
 
             if (action == MouseAction.Released) {
                 np.ResetBreaking();

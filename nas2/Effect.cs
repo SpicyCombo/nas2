@@ -7,7 +7,7 @@ using MCGalaxy.Network;
 namespace NotAwesomeSurvival {
 
     public class NassEffect { //lol
-        public const string Path = Nas.Path + "effects/";
+        public const string Path = Nas2.Path + "effects/";
         public static Effect breakMeter;
         public static Effect breakEarth;
         public static Effect breakLeaves;

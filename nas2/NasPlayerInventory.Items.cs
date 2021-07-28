@@ -44,7 +44,7 @@ namespace NotAwesomeSurvival {
         [JsonIgnore] private int slotToMoveTo = -1;
         public void ToggleBagOpen() {
             deleting = false;
-            NasPlayer np = (NasPlayer)p.Extras[Nas.PlayerKey];
+            NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
             bagOpen = !bagOpen;
             if (bagOpen) {
                 p.Send(Packet.Motd(p, "-hax horspeed=0.000001"));
@@ -87,7 +87,7 @@ namespace NotAwesomeSurvival {
             slotToMoveTo = -1;
         }
         public void MoveItemBarSelection(int direction) {
-            NasPlayer np = (NasPlayer)p.Extras[Nas.PlayerKey];
+            NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
             if (!np.hasBeenSpawned) {
                 p.Message("%chasBeenSpawned is %cfalse%S, this shouldn't happen if you didn't just die.");
                 p.Message("%bPlease report to Goodly what you were doing before this happened");
