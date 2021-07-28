@@ -20,10 +20,10 @@ using MCGalaxy.Network;
 
 namespace NotAwesomeSurvival {
 
-    public sealed class Nas : Plugin {
-        public override string name { get { return "nas"; } }
+    public sealed class Nas2 : Plugin {
+        public override string name { get { return "NAS2"; } }
         public override string MCGalaxy_Version { get { return "1.9.2.5"; } }
-        public override string creator { get { return "goodly"; } }
+        public override string creator { get { return "goodly & Spicy"; } }
         const string textureURL = "https://dl.dropbox.com/s/xum0t6ld9g489ax/nas.zip";
         const string KeyPrefix = "nas_";
         public const string PlayerKey = KeyPrefix + "NasPlayer";
@@ -35,8 +35,8 @@ namespace NotAwesomeSurvival {
         public static bool firstEverPluginLoad = true;
         public override void Load(bool startup) {
             if (Block.Props.Length != 1024) { //check for TEN_BIT_BLOCKS. Value is 512 on a default instance of MCGalaxy.
-                Player.Console.Message("NAS: FAILED to load plugin. In order to run NAS, you must be using a version of MCGalaxy which allows 767 blocks.");
-                Player.Console.Message("NAS: You can find instructions for 767 blocks here: https://github.com/UnknownShadow200/MCGalaxy/tree/master/Uploads (infid)");
+                Player.Console.Message(name + " > FAILED to load plugin. In order to run NAS, you must be using a version of MCGalaxy which allows 767 blocks.");
+                Player.Console.Message(name + " > You can find instructions for 767 blocks here: https://github.com/UnknownShadow200/MCGalaxy/tree/master/Uploads (infid)");
                 return;
             }
             
@@ -49,13 +49,13 @@ namespace NotAwesomeSurvival {
                 }
             }
             if (!File.Exists("Newtonsoft.Json.dll")) {
-                Player.Console.Message("NAS: FAILED to load plugin. Could not find Newtonsoft.Json.dll"); return;
+                Player.Console.Message(name + " > FAILED to load plugin. Could not find Newtonsoft.Json.dll"); return;
             }
             
             
-            if (!Directory.Exists(Nas.Path)) { Directory.CreateDirectory(Nas.Path); }
+            if (!Directory.Exists(Nas2.Path)) { Directory.CreateDirectory(Nas2.Path); }
             if (!Directory.Exists(NasLevel.Path)) { Directory.CreateDirectory(NasLevel.Path); }
-            if (!Directory.Exists(Nas.SavePath)) { Directory.CreateDirectory(Nas.SavePath); }
+            if (!Directory.Exists(Nas2.SavePath)) { Directory.CreateDirectory(Nas2.SavePath); }
             if (!Directory.Exists(NassEffect.Path)) { Directory.CreateDirectory(NassEffect.Path); }
             if (!Directory.Exists("blockprops")) { Directory.CreateDirectory("blockprops"); }
             
@@ -106,7 +106,7 @@ namespace NotAwesomeSurvival {
             NasLevel.Setup();
             
             
-            if (Nas.firstEverPluginLoad) {
+            if (Nas2.firstEverPluginLoad) {
                 //Player.Console.Message("GENERATING NEW MAP FIRST TIME EVER also main is {0}", lvl.name);
                 int chunkOffsetX = 0, chunkOffsetZ = 0;
                 string seed = "DEFAULT";
