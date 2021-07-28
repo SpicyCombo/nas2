@@ -467,6 +467,14 @@ namespace NotAwesomeSurvival {
             glass.pattern = new BlockID[,] {
                 { 12 }
             };
+
+            Recipe lamp = new Recipe(63, 1);
+            lamp.pattern = new BlockID[,] {
+                {  57, 57, 57 },
+                {  20, 49, 20 },
+                {  56, 56, 56 }
+            };
+
             Recipe glassPane = new Recipe(136, 6);
             glassPane.pattern = new BlockID[,] {
                 {  20, 20, 20 },
