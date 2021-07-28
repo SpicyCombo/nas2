@@ -468,7 +468,7 @@ namespace NotAwesomeSurvival {
                 { 12 }
             };
 
-            Recipe lamp = new Recipe(63, 1);
+            Recipe lamp = new Recipe(62, 1);
             lamp.pattern = new BlockID[,] {
                 {  57, 57, 57 },
                 {  20, 49, 20 },
