@@ -461,7 +461,7 @@ namespace NotAwesomeSurvival {
             };
         }
 
-        public static BlockID[] leafSet = new BlockID[] { Block.Leaves, Block.FromRaw((BlockID)146) }; /* should come back to this */
+        public static BlockID[] leafSet = new BlockID[] { Block.Leaves }; /* should come back to this */
         static NasBlockAction OakSaplingAction() {
             return (nl,x,y,z) => {
                 if (!GenericPlantSurvived(nl, x, y, z)) { return; }
