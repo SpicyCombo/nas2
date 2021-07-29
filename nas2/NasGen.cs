@@ -86,7 +86,7 @@ namespace NotAwesomeSurvival {
             instance.Do();
 
             lvl.Config.Deletable = false;
-            lvl.Config.MOTD = "-hax +thirdperson";
+            lvl.Config.MOTD = "-hax +thirdperson horspeed=1.20";
             lvl.Config.GrassGrow = false;
             TimeSpan timeTaken = DateTime.UtcNow.Subtract(dateStart);
             p.Message("Done in {0}", timeTaken.Shorten(true, true));
@@ -408,7 +408,6 @@ namespace NotAwesomeSurvival {
             void GenTree(ushort x, ushort y, ushort z) {
                 topSoil = Block.Dirt;
                 NasTree.GenOakTree(nl, r, x, y, z);
-                NasTree.GenSpruceTree(nl, r, x, y, z);
             }
 
             
@@ -429,6 +428,7 @@ namespace NotAwesomeSurvival {
                             TryGenOre(x, y, z, ironDepth, ironChance, 628);
                             TryGenOre(x, y, z, goldDepth, goldChance, 629);
                             TryGenOre(x, y, z, diamondDepth, diamondChance, 630);
+                            // TryGenOre(x, y, z, netheriteDepth, netheriteChance, 123);
                         }
             }
             bool TryGenOre(int x, int y, int z, int oreDepth, float oreChance, BlockID oreID) {

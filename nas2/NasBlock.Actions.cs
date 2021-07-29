@@ -453,13 +453,15 @@ namespace NotAwesomeSurvival {
                 IsSupported(nl, x, y, z);
             };
         }
-        static NasBlockAction GenericPlantAction() {
-            return (nl,x,y,z) => {
+        static NasBlockAction GenericPlantAction()
+        {
+            return (nl, x, y, z) =>
+            {
                 GenericPlantSurvived(nl, x, y, z);
             };
         }
-        
-        public static BlockID[] leafSet = new BlockID[] { Block.Leaves };
+
+        public static BlockID[] leafSet = new BlockID[] { Block.Leaves, Block.FromRaw((BlockID)146) }; /* should come back to this */
         static NasBlockAction OakSaplingAction() {
             return (nl,x,y,z) => {
                 if (!GenericPlantSurvived(nl, x, y, z)) { return; }
