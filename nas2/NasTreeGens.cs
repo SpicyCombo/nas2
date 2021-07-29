@@ -1,4 +1,4 @@
-﻿using System;
+﻿/* using System;
 using MCGalaxy;
 using BlockID = System.UInt16;
 using MCGalaxy.Blocks;
@@ -23,10 +23,10 @@ namespace NotAwesomeSurvival
         public override void Generate(ushort x, ushort y, ushort z, TreeOutput output)
         {
             for (ushort dy = 0; dy < height + size - 1; dy++)
-                output(x, (ushort)(y + dy), z, /*LOG ID HERE*/ (byte)Block.FromRaw(250));
+                output(x, (ushort)(y + dy), z,  (byte)Block.FromRaw(250));
 
             const BlockID leavesID = 146 | Block.Extended;
-            const BlockID logID = 146 | Block.Extended;
+            const BlockID logID = 250 | Block.Extended;
 
             for (int dy = -size; dy <= size; ++dy)
                 for (int dz = -size; dz <= size; ++dz)
@@ -38,9 +38,9 @@ namespace NotAwesomeSurvival
                             ushort xx = (ushort)(x + dx), yy = (ushort)(y + dy + height), zz = (ushort)(z + dz);
 
                             if (xx != x || zz != z || dy >= size - 1)
-                                output(xx, yy, zz, /*LEAVES ID HERE*/ (byte)Block.FromRaw(146));
+                                output(xx, yy, zz,  (BlockID)146);
                         }
                     }
         }
     }
-}
+} */
