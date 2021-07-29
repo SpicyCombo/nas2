@@ -1,0 +1,3 @@
+&eWelcome to $server.
+&hLOST? CLICK THIS: %Shttps://dl.dropbox.com/s/t3p8e9z4jh27z9g/CraftingMap.png
+%eMake sure to read the %c/rules
