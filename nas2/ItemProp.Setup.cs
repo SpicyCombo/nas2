@@ -58,6 +58,18 @@ namespace NotAwesomeSurvival {
             diamondAxe.baseHP = diamondBaseHP;
             diamondSword.baseHP = diamondBaseHP;
 
+            const int emeraldBaseHP = baseHPconst * 128;
+            ItemProp emeraldPick = new ItemProp("Emerald Pickaxe|a|ß", NasBlock.Material.Stone, 1.20f, 4);
+            ItemProp emeraldShovel = new ItemProp("Emerald Shovel|a|Γ", NasBlock.Material.Earth, 1.2f, 4);
+            ItemProp emeraldAxe = new ItemProp("Emerald Axe|a|π", NasBlock.Material.Wood, 1.20f, 3);
+            emeraldAxe.materialsEffectiveAgainst.Add(NasBlock.Material.Leaves);
+            ItemProp emeraldSword = new ItemProp("Emerald Sword|a|α", NasBlock.Material.Leaves, 1.25f, 4);
+            emeraldSword.damage = 15f;
+            emeraldPick.baseHP = emeraldBaseHP;
+            emeraldShovel.baseHP = emeraldBaseHP;
+            emeraldAxe.baseHP = emeraldBaseHP;
+            emeraldSword.baseHP = emeraldBaseHP;
+
         }
     }
 

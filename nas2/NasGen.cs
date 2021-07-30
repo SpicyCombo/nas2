@@ -18,14 +18,17 @@ namespace NotAwesomeSurvival {
         public const ushort ironDepth = 16;
         public const ushort goldDepth = 50;
         public const ushort diamondDepth = 56;
+        public const ushort emeraldDepth = 56;
         public const float coalChance = 1f;
         public const float ironChance = 1f/4f;
         public const float goldChance = 1f/8f;
         public const float diamondChance = goldChance * 0.25f;
+        public const float emeraldChance = diamondChance * 0.50f;
         public static Color coalFogColor;
         public static Color ironFogColor;
         public static Color goldFogColor;
         public static Color diamondFogColor;
+        public static Color emeraldFogColor;
 
         public static Scheduler genScheduler;
 
@@ -37,6 +40,7 @@ namespace NotAwesomeSurvival {
             ironFogColor = System.Drawing.ColorTranslator.FromHtml("#A1A3A8");
             goldFogColor = System.Drawing.ColorTranslator.FromHtml("#7A706A");
             diamondFogColor = System.Drawing.ColorTranslator.FromHtml("#605854");
+            emeraldFogColor = System.Drawing.ColorTranslator.FromHtml("#403834");
         }
         public static void TakeDown() {
 
@@ -428,7 +432,7 @@ namespace NotAwesomeSurvival {
                             TryGenOre(x, y, z, ironDepth, ironChance, 628);
                             TryGenOre(x, y, z, goldDepth, goldChance, 629);
                             TryGenOre(x, y, z, diamondDepth, diamondChance, 630);
-                            // TryGenOre(x, y, z, netheriteDepth, netheriteChance, 123);
+                            TryGenOre(x, y, z, emeraldDepth, emeraldChance, 650);
                         }
             }
             bool TryGenOre(int x, int y, int z, int oreDepth, float oreChance, BlockID oreID) {

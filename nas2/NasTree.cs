@@ -27,8 +27,7 @@ namespace NotAwesomeSurvival {
             spruce = new SpruceTree();
 
             spruce.SetData(r, r.Next(0, 8));
-            PlaceBlocks(lvl, spruce, x, y, z, broadcastChange);
-            */
+            PlaceBlocks(lvl, spruce, x, y, z, broadcastChange); */
         }
 
         private static void PlaceBlocks(Level lvl, Tree tree, int x, int y, int z, bool broadcastChange) {

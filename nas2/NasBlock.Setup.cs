@@ -363,6 +363,8 @@ namespace NotAwesomeSurvival {
             blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Metal], 1);
             i = 631; //Diamond
             blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Metal], 3);
+            i = 649; //Emerald
+            blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Metal], 4);
             
             i = 148; //Old iron
             blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Metal], 1);
@@ -565,6 +567,8 @@ namespace NotAwesomeSurvival {
             blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Stone] + 6, 2);
             i = 630; //Diamond ore
             blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Stone] + 6, 3);
+            i = 650; //Emerald ore
+            blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Stone] + 6, 4);
             
             
             //from 20 to 40 minutes (avg 30)

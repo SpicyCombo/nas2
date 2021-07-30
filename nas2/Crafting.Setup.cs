@@ -123,6 +123,33 @@ namespace NotAwesomeSurvival {
                 { 78 }
             };
 
+            //emerald tools
+            Recipe emeraldPickaxe = new Recipe(new Item("Emerald Pickaxe"));
+            emeraldPickaxe.pattern = new BlockID[,] {
+                { 649, 649, 649 },
+                {  0, 78, 0 },
+                {  0, 78, 0 }
+            };
+            Recipe emeraldShovel = new Recipe(new Item("Emerald Shovel"));
+            emeraldShovel.pattern = new BlockID[,] {
+                {  649 },
+                {  78 },
+                {  78 }
+            };
+            Recipe emeraldAxe = new Recipe(new Item("Emerald Axe"));
+            emeraldAxe.pattern = new BlockID[,] {
+                { 649, 649 },
+                { 649, 78 },
+                {  0, 78 }
+            };
+
+            Recipe emeraldSword = new Recipe(new Item("Emerald Sword"));
+            emeraldSword.pattern = new BlockID[,] {
+                { 649 },
+                { 649 },
+                { 78 }
+            };
+
 
             //wood stuff ------------------------------------------------------
             Recipe wood = new Recipe(5, 4);
@@ -456,6 +483,14 @@ namespace NotAwesomeSurvival {
             diamond.shapeless = true;
             diamond.pattern = new BlockID[,] {
                 {  630, 239, 239 },
+                {  239, 239, 239 },
+                {  239, 239, 239 },
+            };
+            Recipe emerald = new Recipe(649, 1);
+            emerald.stationType = Crafting.Station.Type.Furnace;
+            emerald.shapeless = true;
+            emerald.pattern = new BlockID[,] {
+                {  239, 239, 649 },
                 {  239, 239, 239 },
                 {  239, 239, 239 },
             };

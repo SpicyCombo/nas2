@@ -13,6 +13,9 @@ namespace NotAwesomeSurvival
 
         public override int DefaultSize(Random rnd) { return rnd.Next(5, 8); }
 
+        const BlockID leavesID = 146 | Block.Extended;
+        const BlockID logID = Block.Extended|146;
+
         public override void SetData(Random rnd, int value)
         {
             height = value;
@@ -23,10 +26,7 @@ namespace NotAwesomeSurvival
         public override void Generate(ushort x, ushort y, ushort z, TreeOutput output)
         {
             for (ushort dy = 0; dy < height + size - 1; dy++)
-                output(x, (ushort)(y + dy), z,  (byte)Block.FromRaw(250));
-
-            const BlockID leavesID = 146 | Block.Extended;
-            const BlockID logID = 250 | Block.Extended;
+                output(x, (ushort)(y + dy), z, logID);
 
             for (int dy = -size; dy <= size; ++dy)
                 for (int dz = -size; dz <= size; ++dz)
@@ -38,7 +38,7 @@ namespace NotAwesomeSurvival
                             ushort xx = (ushort)(x + dx), yy = (ushort)(y + dy + height), zz = (ushort)(z + dz);
 
                             if (xx != x || zz != z || dy >= size - 1)
-                                output(xx, yy, zz,  (BlockID)146);
+                                output(xx, yy, zz, leavesID);
                         }
                     }
         }

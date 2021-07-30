@@ -1,0 +1,20 @@
+
+-- LICENSE2 --
+
+This separate license file defines the rights you have as 
+ the person who has obtained the texture pack, or the
+ "Obtainer". 
+
+The texture pack is originally created by Goodly, and his
+contact information can be found in LICENSE.txt that is
+ included along with the texture pack. The texture pack
+ is modified with permission of Goodly, and SpicyCombo
+ hereby owns the added textures in the texture pack.
+
+This texture pack is specifically used for SpicyCombo's
+ test server and the plugin NAS2. However, you may use
+ this on any other servers that does not run the NAS2
+ plugin. Other rights are included in LICENSE.txt.
+
+If you have any questions of this license file, please
+ contact SpicyCombo#1665 on Discord.
