@@ -490,7 +490,7 @@ namespace NotAwesomeSurvival {
             emerald.stationType = Crafting.Station.Type.Furnace;
             emerald.shapeless = true;
             emerald.pattern = new BlockID[,] {
-                {  239, 239, 649 },
+                {  239, 239, 650 },
                 {  239, 239, 239 },
                 {  239, 239, 239 },
             };

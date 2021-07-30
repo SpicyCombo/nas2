@@ -194,7 +194,9 @@ namespace NotAwesomeSurvival {
                 NasBlock.Entity blockEntity = new NasBlock.Entity();
                 blockEntity.drop = deathDrop;
                 nl.blockEntities.Add(x+" "+y+" "+z, blockEntity);
+                nl.blockEntities[x + " " + y + " " + z].lockedBy = p.name;
                 p.Message("You dropped a gravestone at {0} {1} {2} in {3}", x, y, z, p.level.name);
+                p.Message("Don't you worry, only you can access it!", x, y, z, p.level.name);
             }
         }
         bool CanPlaceGraveStone(int x, int y, int z) {
