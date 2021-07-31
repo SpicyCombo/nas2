@@ -38,7 +38,7 @@ namespace NotAwesomeSurvival {
                 public const int ToolLimit = 9;
                 public const int BlockStackLimit = 9;
                 public static readonly object locker = new object();
-                public enum Type { Chest, Barrel, Crate, Gravestone }
+                public enum Type { Chest, Barrel, Crate, Gravestone, Sign }
                 public Type type;
                 public string name { get { return Type.GetName(typeof(Type), type); } }
                 public string description { get {
@@ -51,6 +51,9 @@ namespace NotAwesomeSurvival {
                             case NasBlock.Container.Type.Crate:
                                 desc += name+"s%S can store %bblock%S stacks, with a limit of "+BlockStackLimit+".";
                                 break;
+                            case NasBlock.Container.Type.Sign:
+                                desc += name+"%S can display %bwords%S on your screen, with no limit of how much you can write.";
+                            break;
                             default:
                                 throw new Exception("Invalid value for Type");
                         }
@@ -61,8 +64,8 @@ namespace NotAwesomeSurvival {
                     type = parent.type;
                 }
             }
-            
-            static NasBlockExistAction WaterExistAction() {
+
+        static NasBlockExistAction WaterExistAction() {
                 return (np,nasBlock,exists,x,y,z) => {
                     if (exists) {
                         //give back barrel
@@ -125,77 +128,111 @@ namespace NotAwesomeSurvival {
             }
             
             static NasBlockInteraction ContainerInteraction() {
-                return (np,button,action,nasBlock,x,y,z) => {
-                    if (action == MouseAction.Pressed) { return; }
-                    lock (Container.locker) {
-                        if (np.nl.blockEntities.ContainsKey(x+" "+y+" "+z)) {
-                            Entity bEntity = np.nl.blockEntities[x+" "+y+" "+z];
-                            
-                            if (!bEntity.CanAccess(np.p)) {
-                                np.p.Message("This {0} is locked by {1}%S.", nasBlock.container.name.ToLower(), bEntity.FormattedNameOfLocker);
-                                return;
-                            }
-                            
-                            //np.p.Message("There is a blockEntity here.");
-                            if (button == MouseButton.Middle) {
-                                CheckContents(np, nasBlock, bEntity);
-                                return;
-                            }
-                            
-                            if (button == MouseButton.Left) {
+            return (np, button, action, nasBlock, x, y, z) =>
+            {
+                if (action == MouseAction.Pressed) { return; }
+                lock (Container.locker)
+                {
+                    if (np.nl.blockEntities.ContainsKey(x + " " + y + " " + z))
+                    {
+                        Entity bEntity = np.nl.blockEntities[x + " " + y + " " + z];
 
-                                if (np.inventory.HeldItem.name == "Key") {
-                                    if (nasBlock.container.type == Container.Type.Gravestone) {
-                                        np.p.Message("You cannot lock gravestones.");
-                                    }
-                                    //it's already unlocked, lock it
-                                    else if (bEntity.lockedBy.Length == 0) {
-                                        bEntity.lockedBy = np.p.name;
-                                        np.p.Message("You %flock%S the {0}. Only you can access it now.", nasBlock.container.name.ToLower());
-                                        return;
-                                    }
-                                }
-                                
-                                if (nasBlock.container.type == Container.Type.Gravestone) {
-                                    np.p.Message("You can right click to extract from tombstones.");
-                                    return;
-                                }
-                                
-                                if (nasBlock.container.type == Container.Type.Chest) {
-                                    AddTool(np, bEntity);
-                                } else {
-                                    AddBlocks(np, bEntity);
-                                }
-                                return;
+                        if (!bEntity.CanAccess(np.p))
+                        {
+                            if (nasBlock.container.type == Container.Type.Gravestone)
+                            {
+                                np.p.Message("This {0} was dropped by {1} upon death, so you cannot pick it up!", nasBlock.container.name.ToLower(), bEntity.FormattedNameOfLocker);
                             }
-                            
-                            if (button == MouseButton.Right) {
-                                if (np.inventory.HeldItem.name == "Key") {
-                                    //it's locked, unlock it
-                                    if (bEntity.lockedBy.Length > 0) {
-                                        bEntity.lockedBy = "";
-                                        np.p.Message("You %funlock%S the {0}. Anyone can access it now.", nasBlock.container.name.ToLower());
-                                        return;
-                                    }
-                                }
-                                
-                                if (nasBlock.container.type == Container.Type.Chest) {
-                                    RemoveTool(np, bEntity);
-                                } else if (nasBlock.container.type == Container.Type.Barrel) {
-                                    RemoveBlocks(np, bEntity);
-                                } else if (nasBlock.container.type == Container.Type.Gravestone) {
-                                    RemoveAll(np, bEntity);
-                                }
-                                return;
+                            else
+                            {
+                                np.p.Message("This {0} is locked by {1}%S.", nasBlock.container.name.ToLower(), bEntity.FormattedNameOfLocker);
                             }
                             return;
                         }
-                        if (nasBlock.container.type != Container.Type.Gravestone) {
-                            np.p.Message("(BUG) The data inside this {0} was lost, but you can make it functional again by %cdeleting%S then %breplacing%S it.",
-                                         nasBlock.container.name.ToLower());
+
+                        //np.p.Message("There is a blockEntity here.");
+                        if (button == MouseButton.Middle)
+                        {
+                            CheckContents(np, nasBlock, bEntity);
+                            return;
                         }
+
+                        if (button == MouseButton.Left)
+                        {
+
+                            if (np.inventory.HeldItem.name == "Key")
+                            {
+                                if (nasBlock.container.type == Container.Type.Gravestone)
+                                {
+                                    np.p.Message("You cannot lock {0}.", nasBlock.container.name.ToLower());
+                                }
+                                if (nasBlock.container.type == Container.Type.Sign)
+                                {
+                                    Player.Console.Message(np.p.name + " was not that smart and tried to lock a {0}.", nasBlock.container.name.ToLower());
+                                }
+                                //it's already unlocked, lock it
+                                else if (bEntity.lockedBy.Length == 0)
+                                {
+                                    bEntity.lockedBy = np.p.name;
+                                    np.p.Message("You %flock%S the {0}. Only you can access it now.", nasBlock.container.name.ToLower());
+                                    return;
+                                }
+                            }
+
+                            if (nasBlock.container.type == Container.Type.Gravestone)
+                            {
+                                np.p.Message("You can right click to extract from {0}.", nasBlock.container.name.ToLower());
+                                return;
+                            }
+
+                            if (nasBlock.container.type == Container.Type.Chest)
+                            {
+                                AddTool(np, bEntity);
+                            }
+                            else
+                            {
+                                AddBlocks(np, bEntity);
+                            }
+                            return;
+                        }
+
+                        if (button == MouseButton.Right)
+                        {
+                            if (np.inventory.HeldItem.name == "Key")
+                            {
+                                //it's locked, unlock it
+                                if (bEntity.lockedBy.Length > 0)
+                                {
+                                    bEntity.lockedBy = "";
+                                    np.p.Message("You %funlock%S the {0}. Anyone can access it now.", nasBlock.container.name.ToLower());
+                                    return;
+                                }
+                            }
+
+                            if (nasBlock.container.type == Container.Type.Chest)
+                            {
+                                RemoveTool(np, bEntity);
+                            }
+                            else if (nasBlock.container.type == Container.Type.Barrel)
+                            {
+                                RemoveBlocks(np, bEntity);
+                            }
+                            else if (nasBlock.container.type == Container.Type.Gravestone)
+                            {
+                                RemoveAll(np, bEntity);
+                                bEntity.lockedBy = "";
+                            }
+                            return;
+                        }
+                        return;
                     }
-                };
+                    if (nasBlock.container.type != Container.Type.Gravestone)
+                    {
+                        np.p.Message("(BUG) The data inside this {0} was lost, but you can make it functional again by %cdeleting%S then %breplacing%S it.",
+                                     nasBlock.container.name.ToLower());
+                    }
+                }
+            };
             }
             static void AddTool(NasPlayer np, Entity bEntity) {
                 if (bEntity.drop != null && bEntity.drop.items.Count >= Container.ToolLimit) {

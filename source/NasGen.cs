@@ -401,7 +401,7 @@ namespace NotAwesomeSurvival {
                                         GenTree((ushort)x, (ushort)(y+1), (ushort)z);
                                     }
                                 } else if (r.Next(0, 2) == 0) {
-                                    //tallgrass 40 wettallgrass Block.Extended|130
+                                    // tallgrass 40 wettallgrass Block.Extended|130
                                     lvl.SetBlock((ushort)x, (ushort)(y+1), (ushort)z, Block.Extended|130);
                                 }
 
@@ -411,7 +411,14 @@ namespace NotAwesomeSurvival {
             }
             void GenTree(ushort x, ushort y, ushort z) {
                 topSoil = Block.Dirt;
-                NasTree.GenOakTree(nl, r, x, y, z);
+                if (r.Next(2) == 0)
+                {
+                    NasTree.GenOakTree(nl, r, x, y, z);
+                }
+                else
+                {
+                    NasTree.GenSpruceTree(nl, r, x, y, z);
+                }
             }
 
             
@@ -486,13 +493,13 @@ namespace NotAwesomeSurvival {
             }
         }
         
-        //public class Biome {
-        //    BlockID topSoil;
-        //    BlockID soil;
-        //    Tree treeType;
-        //    BlockID treeLeaves;
-        //    BlockID treeTrunk;
-        //}
+        public class Biome {
+            BlockID topSoil;
+            BlockID soil;
+            Tree treeType;
+            BlockID treeLeaves;
+            BlockID treeTrunk;
+        }
 
 
 
