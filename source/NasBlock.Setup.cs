@@ -341,17 +341,17 @@ namespace NotAwesomeSurvival {
             blocks[i].disturbDelayMax = treeDelayMax;
             blocks[i].disturbedAction = OakSaplingAction();
 
-            i = 6; //Peach Sapling
+            i = 652; //Peach Sapling
             blocks[i] = new NasBlock(i, Material.Plant);
             blocks[i].disturbDelayMin = treeDelayMin;
             blocks[i].disturbDelayMax = treeDelayMax;
-            blocks[i].disturbedAction = OakSaplingAction();
+            blocks[i].disturbedAction = PeachSaplingAction();
 
-            i = 6; //Spruce Sapling
+            i = 653; //Spruce Sapling
             blocks[i] = new NasBlock(i, Material.Plant);
             blocks[i].disturbDelayMin = treeDelayMin;
             blocks[i].disturbDelayMax = treeDelayMax;
-            blocks[i].disturbedAction = OakSaplingAction();
+            blocks[i].disturbedAction = SpruceSaplingAction();
 
             i = 7; //Bedrock
             blocks[i] = new NasBlock(i, Material.Stone, int.MaxValue);
@@ -379,13 +379,68 @@ namespace NotAwesomeSurvival {
                 Drop drop = new Drop(18, 1);
                 
                 int rand = r.Next(0, 8);
-                if (rand == 0) { //16 in 128 chance (1 in 8 chance) of sapling
+                if (rand == 0)
+                { //16 in 128 chance (1 in 8 chance) of sapling
                     drop.blockStacks.Add(new BlockStack(6, 1));
-                } else {
+                }
+                else if (rand == 4) {
+                    drop.blockStacks.Add(new BlockStack(651, 1));
+                } 
+                else
+                {
                     drop = new Drop(18, 1);
                 }
                 return drop;
             };
+
+            i = 103; //Pink Leaves
+            blocks[i] = new NasBlock(i, Material.Leaves);
+            blocks[i].disturbedAction = LeafBlockAction(logSet, Block.FromRaw(242));
+            blocks[i].disturbDelayMin = leafShrivelDelayMin;
+            blocks[i].disturbDelayMax = leafShrivelDelayMax;
+            blocks[i].dropHandler = (dropID) => {
+                Drop drop = new Drop(103, 1);
+
+                int rand = r.Next(0, 8);
+                if (rand == 0)
+                { //16 in 128 chance (1 in 8 chance) of sapling
+                    drop.blockStacks.Add(new BlockStack(652, 1));
+                }
+                else if (rand == 4)
+                {
+                    drop.blockStacks.Add(new BlockStack(651, 1));
+                }
+                else
+                {
+                    drop = new Drop(103, 1);
+                }
+                return drop;
+            };
+
+            i = 146; //Evergreen Leaves
+            blocks[i] = new NasBlock(i, Material.Leaves);
+            blocks[i].disturbedAction = LeafBlockAction(logSet, Block.FromRaw(242));
+            blocks[i].disturbDelayMin = leafShrivelDelayMin;
+            blocks[i].disturbDelayMax = leafShrivelDelayMax;
+            blocks[i].dropHandler = (dropID) => {
+                Drop drop = new Drop(146, 1);
+
+                int rand = r.Next(0, 8);
+                if (rand == 0)
+                { //16 in 128 chance (1 in 8 chance) of sapling
+                    drop.blockStacks.Add(new BlockStack(653, 1));
+                }
+                else if (rand == 4)
+                {
+                    drop.blockStacks.Add(new BlockStack(651, 1));
+                }
+                else
+                {
+                    drop = new Drop(146, 1);
+                }
+                return drop;
+            };
+
             i = 105; //Leaves slab
             blocks[i] = new NasBlock(i, Material.Leaves);
             
@@ -692,8 +747,11 @@ namespace NotAwesomeSurvival {
             i = 622;
             blocks[i] = new NasBlock(i++, blocks[145]);
             blocks[i] = new NasBlock(i++, blocks[145]);
-            
-            
+
+            //Spider Web
+            i = 651;
+            blocks[i] = new NasBlock(i, Material.Organic, 10);
+
             const float breadRestore = 1f;
             i = 640; //Loaf of bread
             blocks[i] = new NasBlock(i, Material.Organic, 3);
