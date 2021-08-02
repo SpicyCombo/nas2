@@ -14,6 +14,16 @@ namespace NotAwesomeSurvival {
                 {  0, 78, 0 },
                 {  0, 78, 0 }
             };
+            woodPickaxe.pattern = new BlockID[,] {
+                {  97,  97, 97 },
+                {  0, 252, 0 },
+                {  0, 252, 0 }
+            };
+            woodPickaxe.pattern = new BlockID[,] {
+                {  98,  98, 98 },
+                {  0, 255, 0 },
+                {  0, 255, 0 }
+            };
 
             // stone tools
             Recipe stonePickaxe = new Recipe(new Item("Stone Pickaxe"));
@@ -152,6 +162,8 @@ namespace NotAwesomeSurvival {
 
 
             //wood stuff ------------------------------------------------------
+            
+            // OAK
             Recipe wood = new Recipe(5, 4);
             wood.usesParentID = true;
             wood.pattern = new BlockID[,] {
@@ -174,19 +186,6 @@ namespace NotAwesomeSurvival {
                 {  5, 5, 5 }
             };
 
-            Recipe Ladder = new Recipe(220, 4);
-            Ladder.usesParentID = true;
-            Ladder.pattern = new BlockID[,] {
-                {  78, 0, 78 },
-                {  78, 78, 78 },
-                {  78, 0, 78 }
-            };
-
-            Recipe Rope = new Recipe(51, 2);
-            Rope.pattern = new BlockID[,] {
-                {  145 }
-            };
-
             Recipe woodPole = new Recipe(78, 4);
             woodPole.pattern = new BlockID[,] {
                 {  5 },
@@ -204,13 +203,103 @@ namespace NotAwesomeSurvival {
                 {  78, 80, 78 }
             };
 
+            // LIGHT
+            Recipe lightwood = new Recipe(98, 4);
+            lightwood.usesParentID = true;
+            lightwood.pattern = new BlockID[,] {
+                {  242 }
+            };
+            Recipe lightwoodSlab = new Recipe(101, 6);
+            lightwoodSlab.pattern = new BlockID[,] {
+                {  98, 98, 98 }
+            };
+            Recipe lightwoodWall = new Recipe(186, 6);
+            lightwoodWall.pattern = new BlockID[,] {
+                {  98 },
+                {  98 },
+                {  98 }
+            };
+            Recipe lightwoodStair = new Recipe(262, 6);
+            lightwoodStair.pattern = new BlockID[,] {
+                {  98, 0, 0 },
+                {  98, 98, 0 },
+                {  98, 98, 98 }
+            };
+
+            Recipe lightwoodPole = new Recipe(255, 4);
+            lightwoodPole.pattern = new BlockID[,] {
+                { 98 },
+                { 98 }
+            };
+
+            Recipe lightfenceWE = new Recipe(260, 4);
+            lightfenceWE.pattern = new BlockID[,] {
+                {  255, 256, 255 },
+                {  255, 256, 255 }
+            };
+            Recipe lightfenceNS = new Recipe(261, 4);
+            lightfenceNS.pattern = new BlockID[,] {
+                {  255, 257, 255 },
+                {  255, 257, 255 }
+            };
+
+            //DARK
+            Recipe darkwood = new Recipe(97, 4);
+            darkwood.usesParentID = true;
+            darkwood.pattern = new BlockID[,] {
+                {  250 }
+            };
+            Recipe darkwoodSlab = new Recipe(100, 6);
+            darkwoodSlab.pattern = new BlockID[,] {
+                {  97, 97, 97 }
+            };
+            Recipe darkwoodWall = new Recipe(97, 6);
+            darkwoodWall.pattern = new BlockID[,] {
+                {  97 },
+                {  97 },
+                {  97 }
+            };
+            Recipe darkwoodStair = new Recipe(190, 6);
+            darkwoodStair.pattern = new BlockID[,] {
+                {  97, 0, 0 },
+                {  97, 97, 0 },
+                {  97, 97, 97 }
+            };
+
+            Recipe darkwoodPole = new Recipe(252, 4);
+            darkwoodPole.pattern = new BlockID[,] {
+                {  97 },
+                {  97 }
+            };
+
+            Recipe darkfenceWE = new Recipe(258, 4);
+            darkfenceWE.pattern = new BlockID[,] {
+                {  252, 253, 252 },
+                {  252, 253, 252 }
+            };
+            Recipe darkfenceNS = new Recipe(259, 4);
+            darkfenceNS.pattern = new BlockID[,] {
+                {  252, 254, 252 },
+                {  252, 254, 252 }
+            };
+
             Recipe darkDoor = new Recipe(55, 2);
             darkDoor.pattern = new BlockID[,] {
                 { 17, 17 },
                 { 17, 17 },
                 { 17, 17 }
             };
-            
+            darkDoor.pattern = new BlockID[,] {
+                { 250, 250 },
+                { 250, 250 },
+                { 250, 250 }
+            };
+            darkDoor.pattern = new BlockID[,] {
+                { 242, 242 },
+                { 242, 242 },
+                { 242, 242 }
+            };
+
             Recipe board = new Recipe(168, 6);
             board.usesParentID = true;
             board.pattern = new BlockID[,] {
@@ -223,8 +312,30 @@ namespace NotAwesomeSurvival {
                 {  182 },
                 {  182 }
             };
-            
-            
+
+            Recipe Ladder = new Recipe(220, 4);
+            Ladder.usesParentID = true;
+            Ladder.pattern = new BlockID[,] {
+                {  78, 0, 78 },
+                {  78, 78, 78 },
+                {  78, 0, 78 }
+            };
+            Ladder.pattern = new BlockID[,] {
+                {  252, 0, 252 },
+                {  252, 252, 252 },
+                {  252, 0, 252 }
+            };
+            Ladder.pattern = new BlockID[,] {
+                {  255, 0, 255 },
+                {  255, 255, 255 },
+                {  255, 0, 255 }
+            };
+
+            Recipe Rope = new Recipe(51, 2);
+            Rope.pattern = new BlockID[,] {
+                {  145 }
+            };
+
             //chest
             Recipe chest = new Recipe(216, 1);
             chest.pattern = new BlockID[,] {

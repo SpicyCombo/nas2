@@ -408,7 +408,7 @@ namespace NotAwesomeSurvival {
 		}
         
         
-        static BlockID[] logSet = new BlockID[] { 15, 16, 17, Block.Extended|144 };
+        static BlockID[] logSet = new BlockID[] { 15, 16, 17, Block.FromRaw(248), Block.FromRaw(249), Block.FromRaw(250), Block.Extended|144 };
         static NasBlockAction LeafBlockAction(BlockID[] logSet, BlockID leaf) {
             return (nl,x,y,z) => {
                 bool canLive = false;
@@ -461,7 +461,7 @@ namespace NotAwesomeSurvival {
             };
         }
 
-        public static BlockID[] leafSet = new BlockID[] { Block.Leaves }; /* should come back to this */
+        public static BlockID[] leafSet = new BlockID[] { Block.Leaves, Block.FromRaw(146), Block.FromRaw(103) };
         static NasBlockAction OakSaplingAction() {
             return (nl,x,y,z) => {
                 if (!GenericPlantSurvived(nl, x, y, z)) { return; }
@@ -469,7 +469,23 @@ namespace NotAwesomeSurvival {
                 NasTree.GenOakTree(nl, r, x, y, z, true);
             };
         }
-        
+        static NasBlockAction PeachSaplingAction()
+        {
+            return (nl, x, y, z) => {
+                if (!GenericPlantSurvived(nl, x, y, z)) { return; }
+                nl.SetBlock(x, y, z, Block.Air);
+                NasTree.GenPeachTree(nl, r, x, y, z, true);
+            };
+        }
+        static NasBlockAction SpruceSaplingAction()
+        {
+            return (nl, x, y, z) => {
+                if (!GenericPlantSurvived(nl, x, y, z)) { return; }
+                nl.SetBlock(x, y, z, Block.Air);
+                NasTree.GenSpruceTree(nl, r, x, y, z, true);
+            };
+        }
+
         static BlockID[] wheatSet = new BlockID[] { Block.FromRaw(644), Block.FromRaw(645), Block.FromRaw(646), Block.FromRaw(461) };
         static NasBlockAction CropAction(BlockID[] cropSet, int index) {
             return (nl,x,y,z) => {

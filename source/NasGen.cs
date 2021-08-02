@@ -414,6 +414,9 @@ namespace NotAwesomeSurvival {
                 if (r.Next(2) == 0)
                 {
                     NasTree.GenOakTree(nl, r, x, y, z);
+                } else if (r.Next(4) == 0)
+                {
+                    NasTree.GenPeachTree(nl, r, x, y, z);
                 }
                 else
                 {

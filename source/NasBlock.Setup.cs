@@ -256,8 +256,64 @@ namespace NotAwesomeSurvival {
             blocks[i] = new NasBlock(i++, blocks[524]);
             blocks[i] = new NasBlock(i++, blocks[524]);
             blocks[i] = new NasBlock(i++, blocks[524]);
-            
-            
+
+            i = 98; //Light Wood
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 101; //Light Wood slab-U
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 102; //Light Wood slab-D
+            blocks[i] = new NasBlock(i, blocks[101]);
+            i = 186; //Light Wood wall
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i++, blocks[186]);
+            blocks[i] = new NasBlock(i++, blocks[186]);
+            blocks[i] = new NasBlock(i++, blocks[186]);
+            i = 262; //Light Wood stair (lower)
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            i = 575; //Light Wood stair (upper)
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            blocks[i] = new NasBlock(i++, blocks[262]);
+            i = 255; //Light Wood pole
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i++, blocks[255]);
+            blocks[i] = new NasBlock(i++, blocks[255]);
+            i = 94; //Light Fence (wood)
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i, blocks[94]);
+
+            i = 97; //Dark Wood
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 99; //Dark Wood slab-U
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 100; //Dark Wood slab-D
+            blocks[i] = new NasBlock(i, blocks[99]);
+            i = 190; //Dark Wood wall
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i++, blocks[190]);
+            blocks[i] = new NasBlock(i++, blocks[190]);
+            blocks[i] = new NasBlock(i++, blocks[190]);
+            i = 266; //Dark Wood stair (lower)
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            i = 571; //Dark Wood stair (upper)
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            blocks[i] = new NasBlock(i++, blocks[266]);
+            i = 255; //Dark Wood pole
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i++, blocks[255]);
+            blocks[i] = new NasBlock(i++, blocks[255]);
+            i = 94; //Dark Fence (wood)
+            blocks[i] = new NasBlock(i++, Material.Wood);
+            blocks[i] = new NasBlock(i, blocks[94]);
 
             i = 14; //Gnarly (Log)
             blocks[i] = new NasBlock(i, Material.Wood);
@@ -268,9 +324,30 @@ namespace NotAwesomeSurvival {
             i = 16; //Log-NS
             blocks[i] = new NasBlock(i, blocks[17]);
 
+            i = 14; //Light Gnarly (Light Log)
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 242; //Log-UD
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 240; //Log-WE
+            blocks[i] = new NasBlock(i, blocks[17]);
+            i = 241; //Log-NS
+            blocks[i] = new NasBlock(i, blocks[17]);
+
             const float treeDelayMin = 30f;
             const float treeDelayMax = 60f;
             i = 6; //Sapling
+            blocks[i] = new NasBlock(i, Material.Plant);
+            blocks[i].disturbDelayMin = treeDelayMin;
+            blocks[i].disturbDelayMax = treeDelayMax;
+            blocks[i].disturbedAction = OakSaplingAction();
+
+            i = 6; //Peach Sapling
+            blocks[i] = new NasBlock(i, Material.Plant);
+            blocks[i].disturbDelayMin = treeDelayMin;
+            blocks[i].disturbDelayMax = treeDelayMax;
+            blocks[i].disturbedAction = OakSaplingAction();
+
+            i = 6; //Spruce Sapling
             blocks[i] = new NasBlock(i, Material.Plant);
             blocks[i].disturbDelayMin = treeDelayMin;
             blocks[i].disturbDelayMax = treeDelayMax;
