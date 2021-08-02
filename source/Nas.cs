@@ -35,7 +35,7 @@ namespace NotAwesomeSurvival {
         public static bool firstEverPluginLoad = true;
         public override void Load(bool startup) {
             if (Block.Props.Length != 1024) { //check for TEN_BIT_BLOCKS. Value is 512 on a default instance of MCGalaxy.
-                Player.Console.Message(name + " > FAILED to load plugin. In order to run NAS, you must be using a version of MCGalaxy which allows 767 blocks.");
+                Player.Console.Message(name + " > FAILED to load plugin. In order to run "+name+", you must be using a version of MCGalaxy which allows 767 blocks.");
                 Player.Console.Message(name + " > You can find instructions for 767 blocks here: https://github.com/UnknownShadow200/MCGalaxy/tree/master/Uploads (infid)");
                 return;
             }
@@ -59,7 +59,7 @@ namespace NotAwesomeSurvival {
             if (!Directory.Exists(NassEffect.Path)) { Directory.CreateDirectory(NassEffect.Path); }
             if (!Directory.Exists("blockprops")) { Directory.CreateDirectory("blockprops"); }
             
-            //I HATE IT
+            //I LOVE IT
             MoveFile("global.json", "blockdefs/global.json"); //blockdefs
             MoveFile("default.txt", "blockprops/default.txt"); //blockprops
             MoveFile("customcolors.txt", "text/customcolors.txt"); //custom chat colors
@@ -107,11 +107,12 @@ namespace NotAwesomeSurvival {
             
             
             if (Nas2.firstEverPluginLoad) {
-                //Player.Console.Message("GENERATING NEW MAP FIRST TIME EVER also main is {0}", lvl.name);
+                // Player.Console.Message("GENERATING NEW MAP FIRST TIME EVER also main is {0}", lvl.name);
+
                 int chunkOffsetX = 0, chunkOffsetZ = 0;
                 string seed = "DEFAULT";
                 if (!NasGen.GetSeedAndChunkOffset(Server.mainLevel.name, ref seed, ref chunkOffsetX, ref chunkOffsetZ)) {
-                    Player.Console.Message("NAS: main level is not a NAS level, generating a NAS level to replace it!");
+                    Player.Console.Message(name + " > main level is not a " + name +" level, generating a " +name+ " level to replace it!");
                     seed = new Sharkbite.Irc.NameGenerator().MakeName().ToLower();
                     string mapName = seed+"_0,0";
                     Command.Find("newlvl").Use(Player.Console,
@@ -124,7 +125,7 @@ namespace NotAwesomeSurvival {
                     SrvProperties.Save();
                     //Server.SetMainLevel(mapName);
                     Thread.Sleep(1000);
-                    Server.Stop(true, "A server restart is required to initialize NAS plugin.");
+                    Server.Stop(true, "A server restart is required to initialize " + name + " plugin.");
                 }
             }
         }
@@ -139,7 +140,7 @@ namespace NotAwesomeSurvival {
             }
         }
         static void FailedLoad() {
-            Player.Console.Message("NAS: FAILED to load plugin. Please follow the instructions found on github.");
+            Player.Console.Message("NAS2 > FAILED to load plugin. Please follow the instructions found on github.");
         }
 
         public override void Unload(bool shutdown) {
