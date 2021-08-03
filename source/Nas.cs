@@ -24,7 +24,7 @@ namespace NotAwesomeSurvival {
         public override string name { get { return "NAS2"; } }
         public override string MCGalaxy_Version { get { return "1.9.2.5"; } }
         public override string creator { get { return "goodly & Spicy"; } }
-        const string textureURL = "https://dl.dropbox.com/s/xum0t6ld9g489ax/nas.zip";
+        const string textureURL = "https://dl.dropbox.com/s/u41djcrxqv22ycc/nas2.zip";
         const string KeyPrefix = "nas_";
         public const string PlayerKey = KeyPrefix + "NasPlayer";
         public const string Path = "plugins/nas/";
