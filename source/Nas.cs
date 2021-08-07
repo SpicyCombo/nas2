@@ -96,7 +96,7 @@ namespace NotAwesomeSurvival {
             if (!DynamicColor.Setup()) { FailedLoad(); return; }
             Collision.Setup();
 
-            OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
+            // OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
             OnPlayerConnectEvent.Register(OnPlayerConnect, Priority.High);
             OnPlayerClickEvent.Register(OnPlayerClick, Priority.High);
             OnBlockChangingEvent.Register(OnBlockChanging, Priority.High);
@@ -156,7 +156,7 @@ namespace NotAwesomeSurvival {
             OnPlayerMoveEvent.Unregister(OnPlayerMove);
             OnPlayerDisconnectEvent.Unregister(OnPlayerDisconnect);
             OnPlayerCommandEvent.Unregister(OnPlayerCommand);
-            OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
+            // OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
             NasLevel.TakeDown();
             // NasTimeCycle.TakeDown();
         }
@@ -205,12 +205,12 @@ namespace NotAwesomeSurvival {
             p.Send(Packet.TextHotKey("NasHotkey", "/nas hotbar confirmdelete◙", 25, 0, true));
         }
 
-        static void OnLevelJoined(Player p, Level prevLevel, Level level, ref bool announce)
+        /* static void OnLevelJoined(Player p, Level prevLevel, Level level, ref bool announce)
         {
             //Player.Console.Message("Level Switched");
 
             level.Config.SkyColor = "";
-        }
+        } */
 
         static void OnPlayerCommand(Player p, string cmd, string message, CommandData data) {
             if (cmd.CaselessEq("setall")) {
