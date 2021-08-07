@@ -94,6 +94,8 @@
     <Compile Include="NasPlayerInventory.cs" />
     <Compile Include="Nas.cs" />
     <Compile Include="NasPlayer.cs" />
+    <Compile Include="NasTimeCycle.cs" />
+    <Compile Include="NasTimeCycle.IO.cs" />
     <Compile Include="NasTree.cs" />
     <Compile Include="NasTreeGens.cs" />
     <Compile Include="Priority Queue\FastPriorityQueue.cs" />

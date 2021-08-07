@@ -326,12 +326,21 @@ namespace NotAwesomeSurvival {
 
             i = 14; //Light Gnarly (Light Log)
             blocks[i] = new NasBlock(i, Material.Wood);
-            i = 242; //Log-UD
+            i = 242; //Light Log-UD
             blocks[i] = new NasBlock(i, Material.Wood);
-            i = 240; //Log-WE
-            blocks[i] = new NasBlock(i, blocks[17]);
-            i = 241; //Log-NS
-            blocks[i] = new NasBlock(i, blocks[17]);
+            i = 240; //Light Log-WE
+            blocks[i] = new NasBlock(i, blocks[242]);
+            i = 241; //Light Log-NS
+            blocks[i] = new NasBlock(i, blocks[242]);
+
+            i = 251; //Dark Gnarly (Light Log)
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 250; //Dark Log-UD
+            blocks[i] = new NasBlock(i, Material.Wood);
+            i = 249; //Dark Log-WE
+            blocks[i] = new NasBlock(i, blocks[250]);
+            i = 248; //Dark Log-NS
+            blocks[i] = new NasBlock(i, blocks[250]);
 
             const float treeDelayMin = 30f;
             const float treeDelayMax = 60f;
@@ -378,16 +387,16 @@ namespace NotAwesomeSurvival {
             blocks[i].dropHandler = (dropID) => {
                 Drop drop = new Drop(18, 1);
                 
-                int rand = r.Next(0, 8);
+                int rand = r.Next(0, 7);
                 if (rand == 0)
                 { //16 in 128 chance (1 in 8 chance) of sapling
                     drop.blockStacks.Add(new BlockStack(6, 1));
                 }
-                else if (rand == 4) {
+                else if (rand == 1) {
                     drop.blockStacks.Add(new BlockStack(651, 1));
-                } 
+                } // 2 in 8 of spiderweb
                 else
-                {
+                { // drop leaf if we were not selected.
                     drop = new Drop(18, 1);
                 }
                 return drop;
@@ -401,17 +410,17 @@ namespace NotAwesomeSurvival {
             blocks[i].dropHandler = (dropID) => {
                 Drop drop = new Drop(103, 1);
 
-                int rand = r.Next(0, 8);
+                int rand = r.Next(0, 7);
                 if (rand == 0)
                 { //16 in 128 chance (1 in 8 chance) of sapling
                     drop.blockStacks.Add(new BlockStack(652, 1));
                 }
-                else if (rand == 4)
-                {
+                else if (rand == 1)
+                { // 2 in 8 of spiderweb
                     drop.blockStacks.Add(new BlockStack(651, 1));
                 }
                 else
-                {
+                { // drop leaf if we were not selected.
                     drop = new Drop(103, 1);
                 }
                 return drop;
@@ -419,23 +428,23 @@ namespace NotAwesomeSurvival {
 
             i = 146; //Evergreen Leaves
             blocks[i] = new NasBlock(i, Material.Leaves);
-            blocks[i].disturbedAction = LeafBlockAction(logSet, Block.FromRaw(242));
+            blocks[i].disturbedAction = LeafBlockAction(logSet, Block.FromRaw(250));
             blocks[i].disturbDelayMin = leafShrivelDelayMin;
             blocks[i].disturbDelayMax = leafShrivelDelayMax;
             blocks[i].dropHandler = (dropID) => {
                 Drop drop = new Drop(146, 1);
 
-                int rand = r.Next(0, 8);
+                int rand = r.Next(0, 7);
                 if (rand == 0)
                 { //16 in 128 chance (1 in 8 chance) of sapling
                     drop.blockStacks.Add(new BlockStack(653, 1));
-                }
-                else if (rand == 4)
-                {
+                } 
+                else if (rand == 2)
+                { // 2 in 8 of spiderweb
                     drop.blockStacks.Add(new BlockStack(651, 1));
                 }
                 else
-                {
+                { // drop leaf if we were not selected.
                     drop = new Drop(146, 1);
                 }
                 return drop;
@@ -619,6 +628,32 @@ namespace NotAwesomeSurvival {
             blocks[i] = new NasBlock(i, blocks[198]);
             blocks[i].station.ori = Crafting.Station.Orientation.WE;
 
+            // Dark Drawers
+            i = 656;
+            blocks[i] = new NasBlock(i, blocks[250]);
+            blocks[i].station = new Crafting.Station();
+            blocks[i].station.name = "Dark Crafting Station";
+            blocks[i].station.type = Crafting.Station.Type.Normal;
+            blocks[i].station.ori = Crafting.Station.Orientation.NS;
+            blocks[i].existAction = CraftingExistAction();
+            blocks[i].interaction = CraftingInteraction();
+            i = 655;
+            blocks[i] = new NasBlock(i, blocks[198]);
+            blocks[i].station.ori = Crafting.Station.Orientation.WE;
+
+            // Light Drawers
+            i = 658;
+            blocks[i] = new NasBlock(i, blocks[242]);
+            blocks[i].station = new Crafting.Station();
+            blocks[i].station.name = "Light Crafting Station";
+            blocks[i].station.type = Crafting.Station.Type.Normal;
+            blocks[i].station.ori = Crafting.Station.Orientation.NS;
+            blocks[i].existAction = CraftingExistAction();
+            blocks[i].interaction = CraftingInteraction();
+            i = 657;
+            blocks[i] = new NasBlock(i, blocks[242]);
+            blocks[i].station.ori = Crafting.Station.Orientation.WE;
+
             //Furnace
             i = 625;
             blocks[i] = new NasBlock(i, Material.Stone, DefaultDurabilities[(int)Material.Stone], 1);
@@ -770,6 +805,12 @@ namespace NotAwesomeSurvival {
             blocks[i].disturbedAction = FallingBlockAction(Block.FromRaw(i));
             blocks[i].interaction = EatInteraction(new BlockID[] { Block.FromRaw(648) } , 0, 1f);
 
+            i = 648; //Pinecones
+            blocks[i] = new NasBlock(i, Material.Organic, 3);
+            blocks[i].disturbDelayMin = fallSpeed;
+            blocks[i].disturbDelayMax = fallSpeed;
+            blocks[i].disturbedAction = FallingBlockAction(Block.FromRaw(i));
+            blocks[i].interaction = EatInteraction(new BlockID[] { Block.FromRaw(648) }, 0, 1f);
         }
         static Func<BlockID, Drop> CustomDrop(BlockID clientBlockID, int amount) {
             return (dropID) => { return new Drop(clientBlockID, amount); };

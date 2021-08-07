@@ -14,12 +14,16 @@ namespace NotAwesomeSurvival {
                 {  0, 78, 0 },
                 {  0, 78, 0 }
             };
-            woodPickaxe.pattern = new BlockID[,] {
+
+            Recipe darkwoodPickaxe = new Recipe(new Item("Dark Wood Pickaxe"));
+            darkwoodPickaxe.pattern = new BlockID[,] {
                 {  97,  97, 97 },
                 {  0, 252, 0 },
                 {  0, 252, 0 }
             };
-            woodPickaxe.pattern = new BlockID[,] {
+
+            Recipe lightwoodPickaxe = new Recipe(new Item("Light Wood Pickaxe"));
+            lightwoodPickaxe.pattern = new BlockID[,] {
                 {  98,  98, 98 },
                 {  0, 255, 0 },
                 {  0, 255, 0 }

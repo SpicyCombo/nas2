@@ -29,6 +29,7 @@ namespace NotAwesomeSurvival {
         public const string PlayerKey = KeyPrefix + "NasPlayer";
         public const string Path = "plugins/nas/";
         public const string SavePath = Path + "playerdata/";
+        public const string CoreSavePath = Path + "coredata/";
         public static string GetSavePath(Player p) {
             return SavePath + p.name + ".json";
         }
@@ -84,7 +85,7 @@ namespace NotAwesomeSurvival {
                 Server.Config.ShadowColor = "#888899";
                 SrvProperties.Save();
             }
-            //I HATE IT
+            //I STILL LOVE IT
 
             NasPlayer.Setup();
             NasBlock.Setup();
@@ -95,6 +96,7 @@ namespace NotAwesomeSurvival {
             if (!DynamicColor.Setup()) { FailedLoad(); return; }
             Collision.Setup();
 
+            OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
             OnPlayerConnectEvent.Register(OnPlayerConnect, Priority.High);
             OnPlayerClickEvent.Register(OnPlayerClick, Priority.High);
             OnBlockChangingEvent.Register(OnBlockChanging, Priority.High);
@@ -104,6 +106,7 @@ namespace NotAwesomeSurvival {
             OnPlayerCommandEvent.Register(OnPlayerCommand, Priority.High);
             NasGen.Setup();
             NasLevel.Setup();
+            // NasTimeCycle.Setup();
             
             
             if (Nas2.firstEverPluginLoad) {
@@ -153,7 +156,9 @@ namespace NotAwesomeSurvival {
             OnPlayerMoveEvent.Unregister(OnPlayerMove);
             OnPlayerDisconnectEvent.Unregister(OnPlayerDisconnect);
             OnPlayerCommandEvent.Unregister(OnPlayerCommand);
+            OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
             NasLevel.TakeDown();
+            // NasTimeCycle.TakeDown();
         }
 
         static void OnPlayerConnect(Player p) {
@@ -198,10 +203,15 @@ namespace NotAwesomeSurvival {
 
             p.Send(Packet.TextHotKey("NasHotkey", "/nas hotbar delete◙", 45, 0, true));
             p.Send(Packet.TextHotKey("NasHotkey", "/nas hotbar confirmdelete◙", 25, 0, true));
-
-
-
         }
+
+        static void OnLevelJoined(Player p, Level prevLevel, Level level, ref bool announce)
+        {
+            //Player.Console.Message("Level Switched");
+
+            level.Config.SkyColor = "";
+        }
+
         static void OnPlayerCommand(Player p, string cmd, string message, CommandData data) {
             if (cmd.CaselessEq("setall")) {
                 if (p.Rank < LevelPermission.Operator) { return; }

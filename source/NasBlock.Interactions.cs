@@ -38,7 +38,7 @@ namespace NotAwesomeSurvival {
                 public const int ToolLimit = 9;
                 public const int BlockStackLimit = 9;
                 public static readonly object locker = new object();
-                public enum Type { Chest, Barrel, Crate, Gravestone, Sign }
+                public enum Type { Chest, Barrel, Crate, Gravestone }
                 public Type type;
                 public string name { get { return Type.GetName(typeof(Type), type); } }
                 public string description { get {
@@ -51,9 +51,10 @@ namespace NotAwesomeSurvival {
                             case NasBlock.Container.Type.Crate:
                                 desc += name+"s%S can store %bblock%S stacks, with a limit of "+BlockStackLimit+".";
                                 break;
+                            /*
                             case NasBlock.Container.Type.Sign:
                                 desc += name+"%S can display %bwords%S on your screen, with no limit of how much you can write.";
-                            break;
+                            break; */
                             default:
                                 throw new Exception("Invalid value for Type");
                         }
@@ -64,6 +65,33 @@ namespace NotAwesomeSurvival {
                     type = parent.type;
                 }
             }
+        static NasBlockExistAction SignMessageExistAction()
+        {
+
+            return (np, nasBlock, exists, x, y, z) => {
+                //you can never have enough voodoo
+
+                lock (Container.locker)
+                {
+                    if (exists)
+                    {
+
+
+                        if (np.nl.blockEntities.ContainsKey(x + " " + y + " " + z))
+                        {
+                            np.nl.blockEntities.Remove(x + " " + y + " " + z);
+                        }
+                        np.nl.blockEntities.Add(x + " " + y + " " + z, new Entity());
+                        np.p.Message("To read the sign, right click.");
+                        np.p.Message("To rewrite the sign, use the /sign command then middle click.");
+                        return;
+                    }
+
+                    np.nl.blockEntities.Remove(x + " " + y + " " + z);
+                    //np.p.Message("You destroyed a {0}!", nasBlock.container.name);
+                }
+            };
+        }
 
         static NasBlockExistAction WaterExistAction() {
                 return (np,nasBlock,exists,x,y,z) => {
@@ -165,10 +193,6 @@ namespace NotAwesomeSurvival {
                                 if (nasBlock.container.type == Container.Type.Gravestone)
                                 {
                                     np.p.Message("You cannot lock {0}.", nasBlock.container.name.ToLower());
-                                }
-                                if (nasBlock.container.type == Container.Type.Sign)
-                                {
-                                    Player.Console.Message(np.p.name + " was not that smart and tried to lock a {0}.", nasBlock.container.name.ToLower());
                                 }
                                 //it's already unlocked, lock it
                                 else if (bEntity.lockedBy.Length == 0)

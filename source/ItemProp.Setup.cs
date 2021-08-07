@@ -14,6 +14,10 @@ namespace NotAwesomeSurvival {
 
             ItemProp woodPick = new ItemProp("Wood Pickaxe|s|ß", NasBlock.Material.Stone, 0.0f, 1);
             woodPick.baseHP = 4;
+            ItemProp darkwoodPick = new ItemProp("Dark Wood Pickaxe|~|ß", NasBlock.Material.Stone, 0.0f, 1);
+            darkwoodPick.baseHP = 4;
+            ItemProp lightwoodPick = new ItemProp("Light Wood Pickaxe|7|ß", NasBlock.Material.Stone, 0.0f, 1);
+            lightwoodPick.baseHP = 4;
 
             ItemProp stonePick = new ItemProp("Stone Pickaxe|7|ß", NasBlock.Material.Stone, 0.75f, 1);
             ItemProp stoneShovel = new ItemProp("Stone Shovel|7|Γ", NasBlock.Material.Earth, 0.50f, 1);
