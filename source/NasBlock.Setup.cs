@@ -638,7 +638,7 @@ namespace NotAwesomeSurvival {
             blocks[i].existAction = CraftingExistAction();
             blocks[i].interaction = CraftingInteraction();
             i = 655;
-            blocks[i] = new NasBlock(i, blocks[198]);
+            blocks[i] = new NasBlock(i, blocks[656]);
             blocks[i].station.ori = Crafting.Station.Orientation.WE;
 
             // Light Drawers
@@ -651,7 +651,7 @@ namespace NotAwesomeSurvival {
             blocks[i].existAction = CraftingExistAction();
             blocks[i].interaction = CraftingInteraction();
             i = 657;
-            blocks[i] = new NasBlock(i, blocks[242]);
+            blocks[i] = new NasBlock(i, blocks[658]);
             blocks[i].station.ori = Crafting.Station.Orientation.WE;
 
             //Furnace
