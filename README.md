@@ -1,4 +1,8 @@
 # NAS2 | Not Awesome Survival 2
+[![Discord](https://img.shields.io/discord/767133376305692713?color=%235865F2&label=Discord&style=for-the-badge)](https://discord.gg/UgEHnq8)
+[![Forked From](https://img.shields.io/badge/Forked%20From-Goodlyay%2FNAS-green?style=for-the-badge)](https://github.com/Goodlyay/NAS)
+[![Downloads](https://img.shields.io/github/downloads/SpicyCombo/NAS2/total?style=for-the-badge)](https://github.com/SpicyCombo/nas2/releases)
+![License](https://img.shields.io/github/license/SpicyCombo/Nas2?style=for-the-badge)
 ## Introduction
 Welcome to NAS2! I am SpicyCombo, and this is the repo / plugin behind powering
  SpicyCombo's test survival server. The plugin is a continued, forked plugin of
