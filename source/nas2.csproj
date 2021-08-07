@@ -51,7 +51,8 @@
     <OutputPath>bin\Release\plugins\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>SpicyCombo &amp; Team.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MCGalaxy_infid">
@@ -114,9 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NasLevel.IO.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SpicyCombo &amp; Team.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
