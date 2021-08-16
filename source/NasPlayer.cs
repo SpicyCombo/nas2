@@ -100,7 +100,7 @@ namespace NotAwesomeSurvival {
         public override bool CanTakeDamage(DamageSource source) {
             //return false;
             if (p.invincible) { return false; }
-            if (!hasBeenSpawned) { p.Message("this is a bug, please quit and rejoin to fix(?)"); return false; }
+            if (!hasBeenSpawned) { p.Message("%S(%bi%S) Bug detected, please rejoin after this kick."); p.Leave("Bug detected, please reconnect."); return false; }
             
             if (source == DamageSource.Suffocating) {
                 TimeSpan timeSinceSuffocation = DateTime.UtcNow.Subtract(lastSuffocationDate);

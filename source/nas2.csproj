@@ -55,12 +55,13 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MCGalaxy_infid">
-      <HintPath>.\MCGalaxy_infid.dll</HintPath>
+    <Reference Include="MCGalaxy_">
+      <HintPath>.\MCGalaxy_.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>.\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

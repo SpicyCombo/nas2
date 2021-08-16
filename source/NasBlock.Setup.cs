@@ -805,12 +805,12 @@ namespace NotAwesomeSurvival {
             blocks[i].disturbedAction = FallingBlockAction(Block.FromRaw(i));
             blocks[i].interaction = EatInteraction(new BlockID[] { Block.FromRaw(648) } , 0, 1f);
 
-            i = 648; //Pinecones
+            i = 654; //Pinecones
             blocks[i] = new NasBlock(i, Material.Organic, 3);
             blocks[i].disturbDelayMin = fallSpeed;
             blocks[i].disturbDelayMax = fallSpeed;
             blocks[i].disturbedAction = FallingBlockAction(Block.FromRaw(i));
-            blocks[i].interaction = EatInteraction(new BlockID[] { Block.FromRaw(648) }, 0, 1f);
+            blocks[i].interaction = EatInteraction(new BlockID[] { Block.FromRaw(654) }, 0, 1f);
         }
         static Func<BlockID, Drop> CustomDrop(BlockID clientBlockID, int amount) {
             return (dropID) => { return new Drop(clientBlockID, amount); };

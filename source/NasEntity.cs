@@ -13,7 +13,7 @@ using MCGalaxy.Tasks;
 namespace NotAwesomeSurvival {
 
     public partial class NasEntity {
-        public enum DamageSource { Falling, Suffocating, Drowning, Entity, None }
+        public enum DamageSource { Falling, Suffocating, Drowning, Entity, None, Murdered }
         public static string DeathReason(DamageSource source) {
             switch (source) {
                 case NasEntity.DamageSource.Falling:
@@ -24,6 +24,8 @@ namespace NotAwesomeSurvival {
                     return "@p %rdrowned.";
                 case NasEntity.DamageSource.None:
                     return "@p %adied from unknown causes.";
+                case NasEntity.DamageSource.Murdered:
+                    return "@p %8was murdered by %S@s";
             }
             return DamageSource.GetName(typeof(DamageSource), source).ToLower();
         }

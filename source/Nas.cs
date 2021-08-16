@@ -5,6 +5,7 @@ using MCGalaxy;
 using MCGalaxy.Events.PlayerEvents;
 using BlockID = System.UInt16;
 using MCGalaxy.Network;
+using System.Collections.Generic;
 
 //unknownshadow200: well player ids go from 0 up to 255. normal bots go from 127 down to 64, then 254 down to 127, then finally 63 down to 0.
 
@@ -33,6 +34,8 @@ namespace NotAwesomeSurvival {
         public static string GetSavePath(Player p) {
             return SavePath + p.name + ".json";
         }
+        public static int filesExisted;
+        // dont think that you will break the plugin any time soon
         public static bool firstEverPluginLoad = true;
         public override void Load(bool startup) {
             if (Block.Props.Length != 1024) { //check for TEN_BIT_BLOCKS. Value is 512 on a default instance of MCGalaxy.
@@ -57,20 +60,42 @@ namespace NotAwesomeSurvival {
             if (!Directory.Exists(Nas2.Path)) { Directory.CreateDirectory(Nas2.Path); }
             if (!Directory.Exists(NasLevel.Path)) { Directory.CreateDirectory(NasLevel.Path); }
             if (!Directory.Exists(Nas2.SavePath)) { Directory.CreateDirectory(Nas2.SavePath); }
+            if (!Directory.Exists(Nas2.CoreSavePath)) { Directory.CreateDirectory(Nas2.CoreSavePath); }
             if (!Directory.Exists(NassEffect.Path)) { Directory.CreateDirectory(NassEffect.Path); }
             if (!Directory.Exists("blockprops")) { Directory.CreateDirectory("blockprops"); }
-            
+
+            Dictionary<string, string> startupFiles = new Dictionary<string, string>();
+            Dictionary<string, string> existedFiles = new Dictionary<string, string>();
+
             //I LOVE IT
-            MoveFile("global.json", "blockdefs/global.json"); //blockdefs
-            MoveFile("default.txt", "blockprops/default.txt"); //blockprops
-            MoveFile("customcolors.txt", "text/customcolors.txt"); //custom chat colors
-            MoveFile("command.properties", "properties/command.properties"); //command permissions
-            MoveFile("ExtraCommandPermissions.properties", "properties/ExtraCommandPermissions.properties"); //extra command permissions
-            MoveFile("ranks.properties", "properties/ranks.properties"); //ranks
-            MoveFile("faq.txt", "text/faq.txt"); //faq
-            MoveFile("messages.txt", "text/messages.txt"); //messages
-            MoveFile("welcome.txt", "text/welcome.txt"); //welcome
+            startupFiles.Add("global.json", "blockdefs/global.json"); //blockdefs
+            startupFiles.Add("default.txt", "blockprops/default.txt"); //blockprops
+            startupFiles.Add("customcolors.txt", "text/customcolors.txt"); //custom chat colors
+            startupFiles.Add("command.properties", "properties/command.properties"); //command permissions
+            startupFiles.Add("ExtraCommandPermissions.properties", "properties/ExtraCommandPermissions.properties"); //extra command permissions
+            startupFiles.Add("ranks.properties", "properties/ranks.properties"); //ranks
+            startupFiles.Add("faq.txt", "text/faq.txt"); //faq
+            startupFiles.Add("messages.txt", "text/messages.txt"); //messages
+            startupFiles.Add("welcome.txt", "text/welcome.txt"); //welcome
+
+            foreach (KeyValuePair<string, string> file in startupFiles) { 
+                if (!File.Exists(file.Value)) {
+                    // So if our file exists, we just ignore it. no errors, no bs
+                    // note that it is <string key, string value> for dictionaries
+                    MoveFile(file.Key, file.Value);
+                } else if (File.Exists(file.Value)) // if it does exist
+                {
+                    filesExisted += 1;
+                    existedFiles.Add(file.Key, file.Value); // I HATE THIS
+                    // and why did it add it lol
+                } else { /* do nothin */ }
+            }
             
+            if (filesExisted <= 1)
+            {
+                Player.Console.Message("It looks like you have " + filesExisted + " files in the \"plugins\" folder that was not moved." +
+                    " If you plan on replacing a file, then please do it manually by deleting and moving it.");
+            }
             
             if (firstEverPluginLoad) {
                 Server.Config.DefaultTexture = textureURL;
@@ -85,7 +110,7 @@ namespace NotAwesomeSurvival {
                 Server.Config.ShadowColor = "#888899";
                 SrvProperties.Save();
             }
-            //I STILL LOVE IT
+            //I STILL LOVE IT with some hate
 
             NasPlayer.Setup();
             NasBlock.Setup();
@@ -96,7 +121,7 @@ namespace NotAwesomeSurvival {
             if (!DynamicColor.Setup()) { FailedLoad(); return; }
             Collision.Setup();
 
-            // OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
+            OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
             OnPlayerConnectEvent.Register(OnPlayerConnect, Priority.High);
             OnPlayerClickEvent.Register(OnPlayerClick, Priority.High);
             OnBlockChangingEvent.Register(OnBlockChanging, Priority.High);
@@ -106,7 +131,7 @@ namespace NotAwesomeSurvival {
             OnPlayerCommandEvent.Register(OnPlayerCommand, Priority.High);
             NasGen.Setup();
             NasLevel.Setup();
-            // NasTimeCycle.Setup();
+            NasTimeCycle.Setup();
             
             
             if (Nas2.firstEverPluginLoad) {
@@ -156,9 +181,9 @@ namespace NotAwesomeSurvival {
             OnPlayerMoveEvent.Unregister(OnPlayerMove);
             OnPlayerDisconnectEvent.Unregister(OnPlayerDisconnect);
             OnPlayerCommandEvent.Unregister(OnPlayerCommand);
-            // OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
+            OnJoinedLevelEvent.Register(OnLevelJoined, Priority.High);
             NasLevel.TakeDown();
-            // NasTimeCycle.TakeDown();
+            NasTimeCycle.TakeDown();
         }
 
         static void OnPlayerConnect(Player p) {
@@ -205,12 +230,14 @@ namespace NotAwesomeSurvival {
             p.Send(Packet.TextHotKey("NasHotkey", "/nas hotbar confirmdelete◙", 25, 0, true));
         }
 
-        /* static void OnLevelJoined(Player p, Level prevLevel, Level level, ref bool announce)
+        static void OnLevelJoined(Player p, Level prevLevel, Level level, ref bool announce)
         {
             //Player.Console.Message("Level Switched");
 
-            level.Config.SkyColor = "";
-        } */
+            level.Config.SkyColor = NasTimeCycle.globalSkyColor;
+            level.Config.CloudColor = NasTimeCycle.globalCloudColor;
+            level.Config.LightColor = NasTimeCycle.globalSunColor;
+        }
 
         static void OnPlayerCommand(Player p, string cmd, string message, CommandData data) {
             if (cmd.CaselessEq("setall")) {

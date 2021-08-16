@@ -3,7 +3,6 @@ C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas2.csproj.CoreCompileI
 C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.dll
 C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas.pdb
 C:\Users\jiami\OneDrive\Documents\nas2\nas2\obj\Release\nas2.csproj.CopyComplete
-C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\MCGalaxy_infid.dll
 C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.csprojAssemblyReference.cache
 C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.csproj.CoreCompileInputs.cache
 C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.csproj.CopyComplete
@@ -11,3 +10,5 @@ C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\nas2.dll
 C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\nas2.pdb
 C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.dll
 C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.pdb
+C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\MCGalaxy_.dll
+C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\Newtonsoft.Json.dll

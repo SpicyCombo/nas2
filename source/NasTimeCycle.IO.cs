@@ -1,4 +1,4 @@
-﻿/* using MCGalaxy;
+﻿using MCGalaxy;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,27 +12,36 @@ namespace NotAwesomeSurvival
     public partial class NasTimeCycle {
         static NasTimeCycle cyc = new NasTimeCycle();
 
-        public static string sday;
-        public static string smin;
-        public static DayCycles scycle;
+        public int day = 0;
+        public int minutes = 7*hourMinutes;
+        public DayCycles cycle = DayCycles.Sunrise;
 
-        public static void StoreTimeData(int day, float min, DayCycles cycle)
+        public static void StoreTimeData(int day, int minutes, DayCycles cycle)
         {
-            if (File.Exists(Nas2.Path))
+            cyc.day = day;
+            cyc.minutes = minutes;
+            cyc.cycle = cycle;
+
+            if (!File.Exists(TimeFilePath))
             {
-                cyc.sday = day;
+                File.Create(TimeFilePath).Dispose();
+                Logger.Log(LogType.Debug, "Created new json time file " + TimeFilePath + " !");
                 using (StreamWriter sw = new StreamWriter(TimeFilePath)) // To help you better understand, this is the stream writer
                 using (JsonWriter writer = new JsonTextWriter(sw)) // this is the json writer that will help me to serialize and deserialize items in the file
                 {
-                    serializer.Serialize(writer, "a");
+                    serializer.Serialize(writer, cyc);
                 }
 
             }
             else
             {
-                File.Create(TimeFilePath);
-                Logger.Log(LogType.Debug, "Created new json time file " + TimeFilePath + " !");
+                //string jsonString = File.ReadAllText(TimeFilePath);
+                using (StreamWriter sw = new StreamWriter(TimeFilePath)) // To help you better understand, this is the stream writer
+                using (JsonWriter writer = new JsonTextWriter(sw)) // this is the json writer that will help me to serialize and deserialize items in the file
+                {
+                    serializer.Serialize(writer, cyc);
+                }
             }
         }
     }
-}*/
+}
