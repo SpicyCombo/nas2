@@ -1,0 +1,2223 @@
+﻿v 1.9.5.3
+Fixed: some commands being usable in cases they shouldn't have been
+v 1.9.5.2
+Added: NotifyAction CPE.
+Added: Badwords exceptions
+Added: /DeleteLvl *backup [level] [backup] - Allows you to delete a backup of a level. This is restricted to the Owner rank by default.
+Added: /os delete *backup [backup] - Allows the owner of an os realm to delete a backup.
+Improved: Deleted portals and message blocks now appear as black wool in `/mb show` and `/portal show`
+Improved: Old syntax for /os sub-commands works again with an added notice about the new syntax
+Fixed: unfollowing a player not respawning their entity
+Fixed: rarely throwing error due to trying to set IsBackground on a dead thread
+Fixed: many cases where config files could be corrupted if the system is out of disk space
+
+v 1.9.5.1
+Fixed: Not working properly when run with empty standard input
+
+v 1.9.5.0
+Improved: Most brushes now support block ID ranges for arguments
+Added: Support for new lighting CPE extension
+Added: Support for CinematicGui CPE extension (Thanks Venk)
+Fixed: Discord relay bot not displaying user chosen display names
+Improved: Separate block place and delete permissions
+Improved: In GUI, darken very bright colours and slightly lighten very dark colours in main log window
+Improved: For Discord messages in reply to another message, display '(at)original user' prefix
+Improved: /os map redesigned to use sub commands
+Improved: /measure now supports block ID ranges for arguments
+Improved: Striped brush default to 'skip' instead of 'air' when only 0 or 1 argument provided
+Improved: Add creation date timestamp to bots
+Improved: Create game config files if they don't exist
+Improved: Allow adding notes to players without warning them
+Improved: Non-public mod action logs is now relayed to non-public channels on Discord/IRC
+Added: /update latest to allow updating to latest commit
+Added: Allow changing default map generator theme and biome
+Added: Support for 128 character texture pack URLs
+Added: Move bot AI instruction (same as walk, but doesn't adjust yaw/pitch)
+Improved: In dotnet build, try to autodetect compiler location
+Improved: In dotnet build, added auto references for common DLLs when compiling
+Improved: In dotnet build, adding dotnet specific assembly references when compiling
+Improved: In dotnet build, support resolving assembly references from server folder for plugins
+Improved: Allow /where bot to see bot positions
+Improved: Display full country names in /location
+Improved: For stare bot AI instruction, reduce default search distance to 1000 blocks
+Improved: Display your current out/in message in /help log[out/in]message
+Improved: /replaceall uses held block if no replace block provided
+Improved: /inbox del all now says how many messages were deleted
+Improved: /search players now supports searching offline players
+Improved: Disallow chatting when ignoring all
+Improved: Walking bots now face in direction of their target position
+Improved: Allow /rules to be used when frozen
+Improved: Allow disabling auto name verification for LAN IPs
+Improved: /brush and /transform support partial name matching
+Improved: Allow texture URLs that contain .zip/.png (not just ending with)
+Improved: Make /countdown stop error much less frequently
+Improved: Obsidian appears as Black wool instead of Cobblestone to 0.0.23 classic clients
+Improved: Document /ignore list and give feedback if ignoring nothing
+Improved: Provide feedback when trying to use old /os zones
+Improved: Update Readme images (Thanks RandomStrangers)
+Improved: Remove slash from line wrappable characters
+Improved: Make name verify disabled warning louder in CLI mode
+Improved: Allow dynamically adding map gen biomes
+Fixed: CTF/Countdown/TNT wars being in command list twice
+Fixed: /where always displaying your own orientation
+Fixed: Being unable to use new dropbox url format
+Fixed: Executing commands from Discord/IRC didn't strip leading whitespace
+Fixed: LS physics level not being updated when a new level is loaded
+Fixed: LS physics level stuck at 5 when continuing on the same level
+Fixed: /back not working with /tpa
+Fixed: Prevent creating MBs with non-existent commands
+Fixed: /restart not working in standalone build on Windows
+Fixed: Negative integer parsing issues with some non-english languages
+Fixed: Date saving to Database issues with some non-english languages
+Fixed: Discord bot not handling errors properly on modern dotnet versions
+Fixed: Constant error spam reading from stdin if being run in nohup mode
+Removed: Being able to set LoadOnGoto and Unload options via /os map
+Removed: Kicking clients that try sending a message with a '&' in it
+Removed: /rq as an alias for /ragequit
+
+v 1.9.4.9
+Improved: Allow using block names in /lb and /gb commands (e.g. /lb edit, /gb copy, etc)
+Improved: Try to preserve process's raw command line arguments when restarting on Linux
+Improved: Change /compload to also unload the command/plugin first
+Improved: Port forwarding GUI now also has logs panel
+Improved: /pload and /punload output message now also includes name of plugin
+Improved: Plugins can now use CPE message priority to temporarily override and then restore lower priority CPE messages
+Improved: Log which levels have their saving deliberately skipped at shutdown/restart (e.g. due to games)
+Improved: Support 'all processes CPU usage' in /ServerInfo on FreeBSD too
+Improved: /help transform rotate
+Fixed: Doing /info [name] when there were over 100 partial matches before an exact match, would still show 'multiple names matched' instead of displaying the information of the exactly matching player
+Fixed: Prevent being able to load the same plugin multiple times
+Fixed: Changed PlayerDB data lookup on login to be case insensitive when name verification is disabled and the player's name is unverified
+Fixed: Some issues occurring when server runs in unsupported mode of having both classicube-account-plus enabled and player name suffixes for login authentication services
+Fixed: GUI getting stuck in restart loop when System.Windows.Forms DLL loaded successfully, but System.Drawing DLL failed to load
+Minigame related changes:
+Added: Item for buying doors in Lava Survival
+Improved: Can now configure collision check interval for Zombie Survival, and slightly reduce default interval
+Improved: Can now configure collision check interval for Capture the Flag, and slightly reduce default interval
+Fixed: Opening settings GUI or doing /server reload would cause server main level to get loaded, even when a game that changed main level was running
+
+v 1.9.4.8
+Added: Mojang server login authentication support (for Betacraft)
+Improved: /highight now displays how many changes were found (Thanks Goodly)
+Improved: Doing /spawn should always respawn you at level spawn
+Improved: Move /server update to separate /update command
+Improved: Increase summary errors when compiling fails from 2 to 5
+Improved: Allow changing death invulnerability cooldown from default of 1 second
+Improved: /store list output is now paginated
+Improved: /SInfo now includes number of CPU cores in output
+Improved: Kick message for unsupported protocol version also includes version number
+Fixed: Some markdown characters not being escaped for messages sent to Discord
+Fixed: Some physics entries wrongly never getting removed from physics list
+Fixed: Multiple people changing a block definition at the same time sometimes erroring
+Fixed: disabled-command option in server.properties not working
+Fixed: Messages with over 2000 characters failing to send to Discord
+Fixed: Main level should always ignore visit permission restrictions
+Removed: Unused destroys chance from LS map settings in GUI
+Map generator related changes:
+Improved: Allow providing spaces in map gen args to provide multiple arguments 
+Improved: Heightmap map gen theme now uses biome
+Improved: Flat and space themes now use biome blocks and env
+Improved: Pixel/empty/rainbow themes now use biome env
+Fixed: Doing '/os map add' with two arguments doing nothing
+
+v 1.9.4.7
+Game related changes:
+Added: LS: /lives command for showing you current number of lives
+Added: LS: Can now set default round/flood times
+Added: LS: Items for buying sponges and water blocks
+Improved: Discord bot shows running games in .who output
+Improved: Countdown: Can now specify default game speed in config
+Improved: Countdown: Money is now rewarded for surviving
+Improved: ZS: Can now configure reward money
+Improved: LS: Money is now rewarded for surviving
+Improved: LS: All blocks now burn after a delay when not in Calm mode
+Improved: LS: Prevent placing blocks near lava spawn by default
+Improved: LS: Water/lava killable blocks (e.g. log) don't insta-burn in Disturbed mode
+Improved: LS: Show money and lives left in top right (for CPE clients)
+Improved: LS: Show message in chat when you lose a life
+Improved: LS: death cooldown increased to 30 seconds
+Improved: LS: has sponges automatically disappear after configurable delay
+Improved: LS: Limit number of water blocks that can be placed
+Improved: LS: Move layer options to separate section of /ls set
+Improved: LS: Allow negative layer heights (i.e. allows lava layers from top to bottom of level)
+Fixed: ZS: Rare issue where when players joined server at very end of round countdown would get added to alive/human list but then subsequently get auto infected 
+Fixed: LS: Sponge/water block not being reverted client-side when insufficient permission to place the block
+Fixed: LS: Message not showing in chat when layer flooding starts
+Fixed: LS: Layer flooding not resetting properly when continuing next round on same level
+Map generator related changes:
+Added: Sandy and Plains map gen biomes
+Improved: Realistic map gen now support biomes
+Improved: Classic map gen now support biomes
+Improved: 3D noise map gens now support biomes
+Improved: Desert biome no longer has water
+Improved: Biomes can now specify custom tree type
+Improved: fCraft Hills and Mountains themes default to Plains biome
+Fixed: Hell map gen theme sometimes having gaps between levels of lava for very vertically small maps
+Removed: Checkerboard map gen theme 
+Other:
+Improved: Discord: Strip ** from messages (so that cross-server discord relay channels look nicer)
+Improved: Save all physics checks to .lvl file (not just those with non-zero args)
+Improved: Always show client name in 'player X connected' message (even for non-CPE clients)
+Improved: /tree notch now uses exact same tree generator as original classic
+Improved: Log warning when a command/plugin dll fails to find a DLL it depends on
+Improved: Log how long garbage collection takes
+Fixed: Could set CopySlots of a rank to 0 in ranks.properties
+Fixed: Can't connect to server on Windows 98 in .NET 2.0 build
+Fixed: Economy transaction descriptions showing currency at time of transaction instead of current currency
+
+v 1.9.4.6
+Added: LS: Configuration option for flood upwards chance
+Added: LS: Players can place sponges to stop lava flow (can place up to 10 per round by default)
+Added: LS: Added item to store for buying another life
+Added: /copyslot random to allow randomly selecting between used slots
+Added: GUI: Countdown now appears in Games settings
+Improved: 2D noise map generator themes now support biomes
+Improved: Desert map generator biome now has a Sandstone border
+Improved: Allow providing explicit seed for fCraft map generator
+Improved: Make fCraft map generator ~45% faster 
+Improved: Be more consistent in map generation messages
+Improved: LS: Always uses uniform water/lava flow now
+Improved: LS: Show CPE announcement message when 10 seconds or less left until flood starts
+Improved: LS: Flooding lava/water always kills players now
+Improved: LS: Default to 50% chance for flood to destroy blocks
+Improved: LS: /time now shows flood and round time (when LS is running)
+Improved: LS: All items are now enabled by default
+Improved: ZS: All items are now enabled by default
+Improved: Allow like/dislike to be used when any game is running (not just LS or ZS)
+Improved: All games now show an informational message to players upon joining server
+Improved: Allow disabling built-in plugins/modules
+Improved: Don't reload custom commands and plugins anymore when doing /server reload
+Improved: Don't show 'Plugin X was unloaded' at server shutdown
+Improved: Message when can't /cmdset a command due to lacking required permissions
+Improved: GUI: Initial status message is now 'Starting server' (instead of 'finding classicube.net URL')
+Fixed: fCraft dunes/ice map generator themes not using right default biome
+Fixed: LS: Fix flood messages being '4m 59s' instead of '5m'
+Fixed: LS: Fix block/flood type messages not showing when auto going to next level
+Fixed: ZS: Items only appear in store when ZS is running now
+Fixed: Don't show built-in modules in /plugins anymore
+Fixed: Non-200 heartbeat responses not being logged
+Fixed: Water flooding from map edges option not behaving correctly
+Removed: Obsolete /top stat by index number
+Removed: Visual Basic compiling support is now an external plugin
+
+v 1.9.4.5
+Improved: Allow providing reasons for IP bans
+Improved: Allow over 32767 deaths when using SQLite as database backend
+Improved: /whonick output when multiple matching player/bot nicks
+Improved: Discord relay bot logs less messages when disconnected
+Improved: 'multiple matching players/ranks/loaded levels' messages now also include colours
+Improved: Allow using more chat/info/quit commands when frozen
+Fixed: Don't send heartbeats when server fails to start listening
+Fixed: Realistic map gen erroring when map height was 4 blocks or less
+Fixed: Leaves should still propagate physics checks even when leaf decay is disabled
+
+v 1.9.4.4
+Added: ExtEntityTeleport CPE (Thanks Goodly)
+Added: Allow using ReplaceBrush as a /brush 
+Added: Grid brush (gridlines)
+Added: disabled-commands option to server.properties to allow completely removing built-in commands
+Improved: Support for forwarding user's IP when connecting through a websocket reverse proxy
+Improved: `/setspawn` now tries to avoid changing your current position
+Improved: Make /Notes use paginated output 
+Improved: Checkered brush also supports providing frequencies/weights for blocks
+Improved: Majorly increase default realms limit for admin/owner ranks
+Improved: CTF: Set default Y of spawn and flags to middle of level
+Improved: ZS: Allow turning off a player dying always resulting them in being infected
+Improved: GUI: Change Undo input feld in Players tab to timespan input
+Improved: Simplify /BlockSpeed command 
+Improved: Discord relay bot now refuses to start instead of just logging a warning when lacking required permissions
+Fixed: Prevent using /Spawn while a game is running
+Fixed: Games couldn't autostart when less than 3 levels were configured/setup
+
+v 1.9.4.3
+Added: Gradient brush for /Brush
+Added: Dithered mode for /ImagePrint (thanks Goodlyay)
+Improved: CLI: Reset color instead of explicitly setting foreground color to white
+Improved: Grayscale Rainbow brush now supports random mode
+Improved: Allow changing perbuild/pervisit of multiple levels at once
+Improved: ZS: Change infect messages to use <zombie>/<human> instead of {0}/{1}
+Improved: GUI: Avoid duplicate entries in input log, to simplify navigation through input history
+Improved: Allow changing default login/logout message
+Improved: Prevent using /ignore,/afk,/whisper in MBs
+Improved: Prevent using /mi env on levels you can't visit
+Improved: Zones should default to perbuild of level (and perbuildmax)
+Improved: GUI: Split up Messages panel in Settings into Messages and Moderation messages
+Improved: Message non-controller users when they try to run in-game commands from IRC/Discord that they don't have the permission to run them
+Improved: Now can run on bare minimum of mono-runtime (no longer depends on System.Data)
+Improved: Plugins that depend on other plugin DLLs are now better supported
+Improved: Warn when can-mention-everyone is enabled in discordbot.properties
+Improved: Try to preserve original file modification date in /server backup ZIPs
+Improved: Keep log file open instead of constantly closing and reopening
+Improved: Don't show useless 'on line 0' in compiler error messages
+Improved: Make /Server backup table work with double/blob columns
+Improved: Don't try to download sqlite DLLs on non-windows
+Improved: /pcreate C# example
+Improved: /Commands help
+Fixed: /Cut being affected by the current transform
+Fixed: /Transform rotate output having holes
+Fixed: /Info of offline players not showing nick
+Fixed: Some https:// heartbeat URLs not working with ProtocolError
+Fixed: GUI: Unmute and freeze actions in Players tab not working
+Fixed: Discord messages with newlines not appearing in-game at all
+Fixed: /Server backup .zips can't be added to/edited using Windows Explorer zip support
+Fixed: Some obscure MOTDs crashing original classic client
+Fixed: On NetBSD, doing /sinfo throws IndexOutOfRangeException
+Fixed: In the rare case when running on mono with System.Drawing package but not libgdiplus package, /ImagePrint crashes the server
+Fixed: Attempt to workaround very rare issue where GUI would crash on Linux
+Fixed: Old BlockDB upgrader produced /b entries with modification time being a couple of hours off
+Fixed: Old zone migrator sometimes produced 0 block wide zones
+Removed: Dropped support for old password format (obsolete 20 months)
+Fixed: In dotnet build, /Restart not working sometimes
+Improved: Dotnet build now use ImageSharp library instead for image decoding/resizing
+Improved: Dotnet build no longer depends on CodeDom library
+Fixed: In standalone build, /Restart didn't work
+Fixed: In standalone build, not loading SSL/TLS certificates on Linux
+Improved: For standalone build, WIP on updating support
+
+v 1.9.4.2
+Added: When verify-names is off, mppass can be used for /pass at login
+Added: Allow setting custom round/infection start countdown time in ZS
+Improved: Stop using cmdautoload.txt and just autoload all commands in extra/commands/dll folder
+Improved: Allow /punload ing plugins with spaces in their names
+Improved: Make /compload work with plugins too
+Improved: When verify-names is off, you can still reconnect through the server list now
+Improved: Truncate long errors returned by Discord
+Improved: Custom Commands GUI no longer hardcodes compilers list for creating commands
+Improved: Enable /baninfo and /rankinfo to be used in MBs
+Fixed: Make /restart work with .NET core on Linux
+Fixed: Make /sinfo 'all processes CPU usage' work on macOS
+Fixed: Make /sinfo 'all processes CPU usage' work with .NET core on Linux 
+Fixed: Fix /whitelist disable enabling whitelist instead
+Fixed: Very rare case where server would drop out of server list
+Fixed: Trrain gradual movement bias towards 0,0
+
+v 1.9.4.1
+Added: Custom network protocol support
+Added: /Whitelist enable/disable to turn on/off whitelisted only mode
+Added: Shortcut /br for /Brush
+Improved: /Maze now allows specifying an optional seed argument
+Improved: Inbox now includes message number and slightly offsets message
+Improved: Simplify /sinfo slightly and make its appearance more like /Info
+Improved: /sinfo now shows total number of levels
+Improved: Log when non-existent portals/message blocks are autodeleted from a level
+Improved: Make /FlipHead usable without ZS running
+Improved: Increase default maximum player count from 12 to 16
+Fixed: Frozen players not getting /summoned (and /TP, /Portal etc)
+Fixed: /sinfo not showing accurate CPU usage
+Fixed: /Outline should be usable even if you can't modify the target block
+Fixed: Very rare case where Zones would disappear when level was saved
+Fixed: Flatgrass map generator generating the grass layer one layer too high
+Fixed: /mi env sometimes wrongly showing exponential fog as enabled
+Fixed: Discord bot rarely triggering rate limiting and subsequently failing to reconnect
+Fixed: Can't compile commands/plugins in .NET core build
+Fixed: GUI logging options wrongly being controlled by 'file logging' instead of 'console logging' server option
+Fixed: Prevent console from trying to generate levels over 2 GB in size
+Fixed: Alts message rarely showing to lower ranked players while hidden
+Fixed: Some messages in /Restore and /Museum etc showing plain instead of colored level name
+Fixed: IPv4 mapped IPv6 addresses not triggering connection spam blocking (note IPv6 support isn't enabled by default)
+Fixed: Few minor issues in GUI tooltips
+Fixed: GUI not working with mkbundle
+Fixed: Make /Time and /Server backup db use yyyy-mm-dd format
+Fixed: Auto unloading of levels at game round end still showing a message to staff
+Fixed: Bots with ridiculously large model scales (e.g. 3.3 x 10^38) failing to load
+Fixed: Discord bot status player count not including hidden players visible to guests
+Removed: Visual Basic documentation in /Compile and /CmdCreate (still supported though)
+
+v 1.9.4.0
+Added: Separate Console rank with highest permission level
+Added: Option to allow banning staff IPs
+Fixed: Changing rank not immediately updating players table in main GUI
+Fixed: /cmds shortcuts [modifier] ignoring modifier
+Fixed: Allow /limit of 0
+Fixed: Prevent trying to save files with invalid windows filename characters
+Fixed: Kick messages with system color codes in them not being escaped
+Fixed: /abort rarely resulting in ghost block changes
+Fixed: /map without arguments now always prints information of current level
+Improved: /mark: Allow using relative to last marked coordinate too (e.g. /m x~3 y~4 z~-2)
+Improved: /draw cone look
+Improved: Add cone mode for /spheroid 
+Improved: Add cylinder to /draw
+Improved: Try to use better fallback block ids when importing custom blocks from .cw files
+Improved: Default rank names (Superop->Admin, Nobody->Owner)
+Improved: More appropriate default rank properties (e.g. operator has more /realm maps)
+Improved: rank.properties informational text
+Improved: IRC bot default to using port 6697 instead of 6667 
+Improved: IRC bot always uses SSL/TLS when connecting on port 6697
+Improved: Change classicgen to use still lava/water instead of active lava/water
+Improved: More accurate 'blocks affected' calculation for /eh and /cylinder
+Improved: Default to flatgrass theme in /gen instead of always requiring a theme
+Improved: /zonemark without a zone name assumes current zone (Thanks Goodly)
+Improved: Make /ops and /admins work with renamed ranks
+Improved: Allow more characters in bot ai/palette names
+Improved: Allow /take ing money from yourself
+Improved: Allow resetting passwords of offline players
+Improved: Fallback IRC nick generation upon nick conflict (now mutates a character instead of complete random name)
+Improved: If two ranks in ranks.properties have same name, try to rename second conflicting rank
+Fixed: Allow # as ~ alternative for relative coords (since ~ can't be entered in original Classic client)
+Fixed: Leading whitespace not appearing in chat messages (in original Classic client)
+Fixed: crashing when receiving a chat message packet that ended with a color code (in original Classic client)
+Fixed: 'Two color codes in a row' appearing incorrectly (in original Classic client)
+
+v 1.9.3.9
+Improved: Hiding GUI from taskbar when minimised is disabled by default now
+Improved: Update Discord Gateway api from v6 to v8
+Improved: Cmdbind can be used with any shortcut, not just /0 to /9
+Improved: Clarify how to provide input when creating blocks in /gb and /lb (Thanks Goodly)
+Improved: Increase max player limit to 256
+Improved: Some fallback blocks for < 0.30 classic versions
+Improved: Change 'admin verification required' messages to more generic 'account/password verification required'
+Improved: Clarity of /vote message
+Improved: In Players tab in GUI, change 'Send message' to behave the same as @player
+Improved: In Players tab in GUI, 'Do command' now supports either '/cmd' or 'cmd' in input
+Improved: Compiling now includes source filenames at end in success message
+Improved: Cmdunload now includes name of command in output
+Improved: Change classic map gen to standard/simple theme instead of advanced theme
+Fixed: /tw set difficulty sometimes erroring
+Fixed: Teleporting self in classic 0.0.16a - 0.0.17a doing nothing
+Fixed: Wrong yaw/pitch when spawning self in classic 0.0.16a
+
+v 1.9.3.8
+Fixed: Username clone detection being case sensitive
+Fixed: Database.TableExists very rarely returning false positive with MySQL (SQLite is used by default)
+Improved: Allow using -1 for /env variables
+Improved: Show "Classic 0.28-0.30" instead of "(unknown") in /clients
+Improved: /whitelist automatically adds + to end of usernames when classicube-account-plus mode is on
+Removed: $ip
+
+v 1.9.3.7
+Fixed: /scale 1/2 not working (partially)
+Fixed: Session modified overflowing after 2 billion
+Fixed: SECURE_WEBSOCKETS build not compiling
+Fixed: Icon not showing in GUI dialogs on Linux 
+Fixed: Update GUI dialog causing crash sometimes on Linux
+Fixed: GUI dialogs having poor titlebar appearance on Linux
+Fixed: Some GUI element (e.g. listbox) text being nearly invisible in dark theme on Linux
+Improved: UPnP now logs more details
+Improved: Make custom commands GUI popup font consistent with rest
+Improved: Trying to perform GUI player action when no player selected shows warning dialog now
+Removed: (s) emote shortcut (can still use (sect) and (section))
+Removed: Support for .lvl files without 2 byte signature (even MCZall/MCSharp have the 2 byte signature)
+
+v 1.9.3.6
+Added: preclassic and classic 0.13 dat importing support
+Added: Allow disabling CPE extensions
+Improved: Disable ClassiCubeAccountPlus by default
+Improved: Museum now uses significantly less memory where multiple players go to same museum
+Improved: Allow disabling Discord user mentions from in-game chat
+Improved: Allow configuring authentication services
+Improved: Retry sending Discord messages for transient Discord errors
+Improved: Do not log transient Discord errors to error logs
+Improved: Change /restore to also list backups when invalid backup number is given
+Improved: Change /clients to show classic < 0.30 versions
+Improved: Allow /copy save to use any filename
+Improved: Better error message when importing non .dat file as a .dat
+Improved: /import shows better error messages when unsupported file 
+Improved: 'config contains non-allowed character' message to also include the non-allowed characters
+Fixed: Discord relay bot .who showing level names with _ in them as '\_' instead of expected '_'
+Fixed: Museum not restricting perbuild to nobody
+Fixed: /place still being usable on museums
+Fixed: 'Reload level' in GUI context menu not working
+Fixed: '/import all' rarely not importing the right file
+
+v 1.9.3.5
+Added: Support for all multiplayer versions of Classic (i.e. classic pre 0.30)
+Improved: Can now send heartbeat to multiple addresses
+Improved: /FixGrass is now a drawop (logs to BlockDB, can specify area bounds, etc)
+Improved: /CmdLoad and autoload now log the actual names of loaded commands
+Improved: If error(s) occur compiling commands/plugins with multiple source code files, error logs also include filename
+Improved: Some map themes now have custom default environment settings
+Improved: Rework /museum arguments to make more sense (Thanks Goodly)
+Fixed: Spring/yoyo effect when teleporting via portals/warps (players appear to warp to new position, then previous, then new again)
+Fixed: Markdown escaping issues with Discord relay bot
+Fixed: Getting stuck on map loading screen if you tried to join a level that had been unloaded
+Fixed: Physics should never be enabled in museums
+Fixed: Restrict /blockprops to not allow setting blocks that you are not allowed to use
+Fixed: Generating space themed map one block high throwing IndexOutOfRangeException
+Fixed: Never showing line numbers on mono for commands/plugins with .mdb files
+Fixed: messages with \n in them only showing first line on IRC
+Fixed: /me from discord/console erroring
+Fixed: Do not set auto unload to true on old main when switching mains (Thanks Goodly)
+Fixed: Countdown doesn't work properly when started by autostart on server startup (Thanks forkiesassds)
+Fixed: /plugin compile not accepting multiple soure code filenames
+Fixed: When compiling plugins, output .dll filename was all source code filenames combined instead of just first 
+Fixed: Very rare case where a in-game message just after a .who would not appear in Discord
+Fixed: /Players erroring if "Show empty ranks in /players" is true and there are no players online with a given rank (Thanks Goodly)
+Removed: Drop extra/bots.json auto upgrading support (obsolete 4 years)
+
+v 1.9.3.4
+Added: Allow custom Discord .who embed color
+Added: Events for messages received from a relay bot
+Fixed: /infoswapping two players of same rank causing destination player to lose their rank
+Fixed: On some versions of WINE, if you close the server while players are still connected, you get EADDRINUSE for next few minutes if you try to start server again
+Fixed: Settings GUI icon showing default form icon on mono/wine
+Fixed: mkbundle wrapped CLI always crashing at startup
+Fixed: If you buy a login/logout/title etc while muted, you are still charged even though the message does not change
+Fixed: VecF32.Normalise on a zero vector turning into NaN (Thanks Venk)
+Fixed: Some characters in nicks not being properly escaped for Discord
+Fixed: Escaped characters from Discord like \* still appearing escaped in-game
+Fixed: Workaround custom Loggers rarely throwing exceptions in their LogHandler
+Fixed: Being able to add award with same name twice
+Fixed: Can't do /reload [level] when can't do /reload
+Fixed: Custom defined default glass not having correct break sound
+Improved: Log error details if fail to download required file
+Improved: Support compiling multiple files into one DLL
+Improved: Generate .pdb so errors have stacktraces when thrown from commands/plugins
+Improved: Now you can remove login/logout message while muted
+Improved: Split up /spin into /spin and /mirror
+Improved: Actually log Discord error response text
+Improved: Make /plugins output paginated
+Improved: Show messages if relay bot connect fails asides from just not being enabled
+Improved: Support resuming Discord relay bot session (should fix rarely losing 1-2 seconds of discord -> ingame chat)
+Improved: Simplified /reload all [level] to just /reload [level]
+Improved: /report message to also show reason to online ops
+Improved: Don't log so much when connection is being spammed
+Improved: Tidy up /awards output
+
+v 1.9.3.3
+Added: Allow overriding default authentication mechanisms
+Fixed: /ccols edit not working with non-ascii colour codes
+Fixed: Can still vote in all games when muted now
+Fixed: Prevent players using /reload inside of games (thanks forkiesassds)
+Fixed: Discord bot shouldn't reply to .who if the given channel is not specified as a channel to listen on
+Fixed: IPv6 link local addresses not getting treated as LAN addresses
+Fixed: /map deletable also not letting you place blocks
+Fixed: can't /banip IPv6 addresses
+Fixed: /baninfo erroring with MySQL
+Fixed: /me not incrementing messages written in /info
+Fixed: Profanity filtering not consistently apply to all methods of player chat
+Fixed: When map has deletable off, and you right click while holding air, a 'deleting blocks has been disabled in this level' message would show
+Improved: When logging invalid config keys, it helps to also log the invalid value
+Improved: Allow adding custom compilers for scripting
+Improved: Colour error/warning messages in CLI/GUI log
+Improved: Include exception message when logging errors to console/GUI
+Improved: Unflood should pause instead of stopping physics
+Improved: enable dual stack IPv4/IPv6 listener on Window when possible
+Improved: Convert IPv4 mapped addresses to IPv4 addresses
+Improved: Plugins should always load after main level has been loaded
+Improved: If GUI .exe version differs from .dll version, show a warning message box
+Improved: Allow changing Discord bot presence status and activity type
+Improved: IRC logs unhandled errors properly now
+Improved: Discord bot doesn't log I/O errors to server error logs
+Improved: /Color, /Nick, /Title now say who changed them and also works better with localchat 
+Improved: Discord/IRC bot shows name of unknown command now
+Improved: Try to add _ to end of IRC bot nick when nick collision occurs
+Improved: Allow disabling Discord bot presence
+Improved: /seen should default to showing your first/last login
+
+v 1.9.3.2
+Fixed: Discord bot not reconnecting after 3 websocket dropouts
+Fixed: Discord bot not sending messages to Discord during websocket reconnect
+Improved: Discord bot now tries to periodically reconnect during internet dropout
+Improved: IRC bot now tries to periodically reconnect during internet dropout
+
+v 1.9.3.1
+Added: Discord relay bot
+Added: Preliminary support for .NET core
+Added: Classic/Vanilla map generator
+Added: OnConfigUpdated event for when server config is reloaded
+Improved: Allow changing map change message in round games
+Improved: Countdown supports multiple maps 
+Improved: Allow using /ccols add with standard colour codes
+Fixed: lb/gb help saying 'Type a number for the texture' instead of 'Type a number for the top texture'
+Fixed: Doing /unmute without a name erroring
+Fixed: Hold model hitbox being too large 
+Fixed: /ascend not teleporting you to next gap up
+Fixed: Not being able to use restricted commands in /bot text even when you should be able to
+Fixed: /hide shouldn't update /last
+Fixed: /ref shouldn't reveal hidden players
+Fixed: Wonky pyramids/cones (Thanks rdebath)
+Fixed: Don't crash if unable to open logfile in GUI General Logs tab
+Fixed: Packet.TextHotkey should auto convert \n
+Fixed: Invalid IRC channel name should not take down whole server
+Fixed: Ampersands not showing in GUI 'insert token' popup dialog
+Improved: Allow IRC relay bot to ignore certain users
+Improved: Better parsing for /map authors/realmowner (Thanks fam0r)
+Improved: Cleaned up custom commands GUI
+Improved: IRC port in GUI should be numericupdown, not a textbox
+Improved: /seen outputs yyyy-mm-dd for consistency with /i instead now
+Improved: Use absolute path for restart file
+Improved: Don't run commands in MBs after disconnected,
+Removed: Viewmode.cfg support (Doesn't even work on Windows, obsolete since over 3.25 years ago)
+
+v 1.9.3.0
+Fixed: Errors when BlockDB file is > 32 GB
+Improved: For /img (and heightmap gen, import, etc) don't log to error logs for simple known errors like 404, website address can't be resolved, etc
+Fixed: Spamming /send not triggering auto mute
+Improved: /server public/private should persist across restart
+Fixed: /UndoPlayer should still be usable on levels with drawing disabled
+Improved: Optimise leaf decay calculation
+Fixed: /me not showing on IRC when used from non-localchat level
+Improved: Don't log to error logs for image decode failure for imgprint/heightmap
+Improved: Support connecting to IRC over SSL (Thanks Kamino)
+Fixed: Skip block for brushes not working when ranked below SuperOP
+Improved: Superops should be able to use restricted commands in MBs by default
+Improved: IRC controllers should default to superop not nobody permission level
+Improved: Add separarate /unmute, remove /mute toggling mute on/off (Thanks Goodly)
+Fixed: Message of exactlty 64 characters wrongly being line wrapped
+Fixed: /clear not completing clearing chat for people who use 30 chatlines
+Improved: Whitelist: Use formatted nick in warning messages for /Whitelist
+Improved: For classic mode, convert ampersands to percent instead of completely removing
+Improved: When changing many custom blocks at once, only save once instead of after each block
+Fixed: Very rare case where multiple players copying/editing custom blocks at same time errored
+Fixed: Make sure /levels is always in sorted order
+Improved: Allow using /nick on offline players
+Improved: Allow using /skin on offline players
+Improved: Allow checking specific player's ping in /ping (Thanks iD)
+Fixed: /Ascend not allowing you to move to the very top of a level
+Added: Visual Basic plugin compiling and creation support
+Fixed: Bump record limit from 21 to 101 for database queries that are matching multiple names
+Fixed: /color without a colour specified should remove the colour completely
+Fix imageprint very rarely resizing to 0x0 and erroring (Thanks Goodly)
+Fixed: constantly erroring after restarting with Mono on linux with CLI
+Removed: MCGalaxy mods altogether (only gave you an in-game title anyways)
+Removed: Automatically moving .prev files from levels into levels/prev (obsolete for 4.75 years now)
+
+v 1.9.2.9
+Improved: Explanatory comments for /cmdcreate generated command skeletons
+Improved: Add cancel argument for levelsave/unload/rankchange events
+Fixed: + being trimmed from end of bot nametags
+Fixed: /tp erroring with normally impossible invalid input
+Fixed: /shutdown [reason] only showing first word of reason
+Fixed: Doing /me from console not showing on IRC and erroring instead
+Fixed: Can use /unflood to turn off physics on maps don't have access to
+Fixed: Custom color list in being formatted improperly
+Added: Event for infoswapping
+Added: Compiling instructions to readme
+Improved: Use darkgrey instead of black color for CLI (avoid black text on black background)
+Improved: Allow configuring tag distance threshold in CTF
+Improved: Layout and behaviour of Players tab in GUI
+Improved: Allow configuring announcement interval
+Fixed: checking for updates not working by force enabling TLS 1.1/1.2
+Improved: For heartbeat errors, only log error message in URL textbox
+Fixed: Remember current speed for bots when saved to disc
+Improved: If you double click server url in GUI, it opens it in web browser
+Improved: Make levels list table fit horizontally in GUI
+Improved:Fix players table not updating on changing map in GUI
+Improved: Fix levels table not updating when player leaves server in GUI
+GUI: Fix having grey instead of white background for input controls on mono
+Improved: Update in-place instead of using Updater.exe
+Fixed: Server failing to start if can't load sqlite3 dll
+Fixed: Problems with minimising GUI on some versions on wine
+Fixed: GUI icon not showing on wine/mono
+Fixed: /model bot not showing new model names (Thanks aleksb385)
+Fixed: /pass bypass issue when verify names off and on case sensitive filesystem
+Improved: /help XBan
+Fixed: Getting pushed in /ref mode even with -push MOTD
+Fixed: If you join ZS, enter /ref mode, then go to another map, other players don't see you
+Fixed: background colour of CTF/TNT wars gui settings
+Fixed: wrong colour in kick message upon /ban
+Improved: Add support for &S etc in LineWrapper
+Removed: Support for automatically combining ancient .env and .properties files
+Removed: /botai add reverse
+Removed: Most of 'Zombie old' from GUI, since it is in 'Zombie survival' tab now
+
+v 1.9.2.8
+Improved: When matching player names, prefer exactly matching a player's name (without +) first
+Improved: Hidden players die to bots/deadly blocks now (death message only shows to yourself though)
+Improved: You can delete door blocks now when physics level is 0
+Improved: Allow changing login/logout messages of offline players
+Improved: Allow using /title, /tcolor, /color on offline players
+Improved: Allow muting and freezing offline players
+Improved: Split up /Model into /Model and /ModelScale
+Improved: Allow using \: in custom chat tokens to specify a : should be part of trigger word
+Fixed: Changing model scale show a proper message now
+Fixed: Gun aimbox not appearing in classic mode
+Fixed: Still trying to load # comment lines in text/cmdautoload.txt as commands
+Fixed: Killer bots would kill all players at same position, regardless if on a different level or not
+Fixed: Explode mode of gun not exploding when it hits a glass block
+Fixed: Make /missile destroy actually destroy blocks
+Fixed: Colors.StripUsed not stripping system colour codes
+Fixed: Doing /i on an invalid name showing the 'invalid player name' message twice
+Fixed: Glass borders surrounding the Countdown board not disappearing on some oddly sized maps
+Fixed: Make it much more difficult to avoid falling down the glass chute in countdownj
+Help in GUI should also use Chat.Format and should still show ampersa… …
+Fixed: If you do /lb edit 65-67 whatever, it ends up editing a lot of unrelated blocks too
+Fixed: /Last doesn't show /Opchat or /AdminChat use now
+Improved: Linewrapper produces nicer lines when a line ends on the form of 'word /command'
+Improved: Use horspeed=0 in Countdown freeze mode to stop players moving horizontally
+Improved: Don't show + in names in connect/disconnect logs
+
+v 1.9.2.7
+Fixed: Awards player has but don't exist anymore still counting towards player's awards count in /i 
+Fixed: Doing /b on map that had portal/MB block ids but the tables not existing in DB causing error to get logged
+Fixed: Being able to /possess yourself
+Improved: More descriptive error messages when downloading image for /imgprint fails
+Improved: (ZS) Make pillaring detection stricter for maps without building
+Improved: For custom commands/plugins, also load .pdb if it exists
+Fixed: Placing air_switch/checkpoint will revert to air, instead of leaving behind the block you were holding
+Fixed: If you're holding a block you're not allowed to place in your hand, you should still be able to delete blocks
+Improved: /send should not prioritise online players
+Improved: Add support for relative coords in /explode
+Fixed: Rare case where doing /undo [timespan] would throw a NullReferenceException
+Fixed: Error appearing in logs when voting for next map in rounds based games and less than 3 maps configured
+Fixed: Changing list of ZS maps in GUI not saving
+Improved: & not followed by colour code behaves more consistently
+Fixed: main-name from server.properties being more restrictive than /main
+Fixed: Custom commands in custom plugins losting custom set extra permissions on server restart
+Improved: fCraft map generator performance by a little bit
+Removed: '![command]' acting as '/[command]'
+Improved: //[command] in MBs acts like regular chat and just messages '/[command]' back to the user
+Improved: Order of properties in server.properties
+Improved: SQL transaction error message logging
+Improved: 'Failed to start due to missing MCGalaxy_.dll' message now includes folder
+Fixed: Some IRC mode changes wrongly showing as an IRC error in logs
+
+v 1.9.2.5
+Improved: Make Y in /write 3 blocks wide instead of 5
+Fixed: Being able to use /team to spam (X was muted) messages
+Removed: Chatrooms due to very little use, and team chat/map only chat mostly replaces this
+Fixed: Being able to see hidden players in /alive and /infected in ZS
+Fixed: Updating not working when running mono through wine
+Fixed: .cw maps with dimensions between 32768-65535 not importing
+Fixed: Command line input not working in CLI when running through wine on mono
+Improved: Reduced memory usage when importing cw/mclevel maps
+Fixed: main level generated when main level doesn't exist i.e. first time you start the server) not saving changes to /b
+Improved: Confirmation warning popup if the user tries to disable name verify names
+Improved: Make output of many more commands account for whether user ignores custom nicks
+Fixed: /follow not showing player name with 'stopped following' message
+Fixed: /gen not showing completion message when used from map with level-only chat
+Fixed: /inv [player] showing message twice
+Improved: /blocks also include custom blocks
+Fixed: /search blocks not including classic/CPE blocks in search list
+Improved: Don't reload files from disc when doing blockset/cmdset
+
+v 1.9.2.4
+Fixed: Custom models plugin not working
+Fixed: Doing portal/mb show on map without any portals/mbs adding entry to error log
+Improved: Also log LoaderExceptions for ReflectionTypeLoadException exceptions
+
+v 1.9.2.3
+Added: /ln alias for /line (fCraft compatibility)
+Added: Packets for custom models
+Removed: /bs shortcut for /blockspeed
+Improved: Parse /shutdown delay as timespan instead of integer seconds only
+Removed: /devs, link to MCGalaxy source in /sinfo instead
+Improved: Make /eat an economy item, so price can be configured
+Improved: Make p.Extensions public
+Fixed: Doing /model while a zombie in ZS still changing it
+Fixed: Can't /os map add on server without + after names when there are existing maps with your account name, but you aren't realmowner of them
+Fixed: Can't see map joining/leaving messages on maps with localchat on
+
+v 1.9.2.2
+Added: /limit realms to set max realms a rank can have from in-game
+Added: /BotInfo that shows information on the given bot
+Added: A few more env presets
+Fixed: Unmuting player only showing first word of reason in unmute message
+Fixed: Issues with extremely long mute times on mono
+Fixed: Quit/RageQuit/Hacks/CrashServer should not be usable from console/IRC
+Fixed: Use accurate block name in help for /portal multi
+Fixed: Don't allow custom /pay messages while muted
+Fixed: If you in referee mode and flying, when moving to another zone, fly mode would get turned off
+Fixed: Crash if you try to select a rank in the gui that has over 255 realms
+Fixed: Colors sometimes being wrong in TNT wars
+Fixed: /tw set zone delete and /tw set zone delete all having swapped behaviour
+Fixed: Fuse block not getting destroyed in nodestroy zones in TNT wars
+Improved: Also track duration of action in /notes
+Improved: Referee mode should still follow jumpheight= in motd
+Improved: 'Reference X.dll;' and '//Reference X.dll' can be used for custom commands/plugins as alternative to 'Reference X.dll'
+Improved: Allow lb/gb copying multiple blocks at once
+Improved: You shouldn't be able to speak while pending /pass verification
+Improved: Include dimensions of heightmap and level in warning message when they don't match
+Improved: Can still use /bots and /zonemark in museums
+Improved: Allow using relative coords for gb/lb min/max (Thanks 1Leiz)
+
+v 1.9.2.0
+Fixed: Placed/deleted overflowing at 33 million
+Fixed: Turning off 'colours' option in GUI console shows raw colour codes
+Improved: More descriptive message when you're muted by chatmod
+Fixed: /hug and /high5 not working from console
+Fixed: Allow using /eat and /me from console
+Fixed: Zones getting lost with /resizelvl
+Improved: Don't lowercase command name in /cmdcreate output
+Fixed: /compile showing wrong error line number when source has 'reference' statements
+Fixed: Unloading custom commands not removing command aliases
+Improved: Simplify information in /ranks
+Fixed: /chatroom del and /chatroom spy throwing NullReferenceException
+Fixed: Not immediately asking for pass when you are ranked to a rank requiring password
+Fixed: Settings -> Eco -> Rank item in GUI crashing server on mono
+Fixed: Support 'reference' statements when compiling custom commands from GUI
+Improved: Simplify showing errors when compiling custom commands from GUI
+Fixed: /buy level erroring if level failed to generate
+
+v 1.9.1.9
+Improved: Make CalcEyeHeight take Y scale int account
+Improved: /tpp 0 0 0 puts you on the ground at level 0
+Fixed: Updating appearing to work with mono when Updater.exe is missing
+Improved: Backup path in server.properties defaults to relative path
+Improved: Log to player short summary of first 2 errors when compiling
+Fixed: Eyeheight of skeleton model
+Fixed: /copylvl,/renamelvl,/deletelvl consistently announce globally
+Fixed: /botai list showing wrong name when a . in a bot AI's name
+Fixed: /undo timespan not undoing some changes in rare cases
+Improved: Make help consistent with level/map
+Improved: /os map delete announces when level is deleted
+Improved: Rename /levels to /loaded and /worlds to /levels
+Fixed: Could manually set fallback for a custom block above 65
+
+v 1.9.1.8
+Fixed: Don't turn off 'auto unload' when setting main world
+Fixed: /copylvl not saving level to disc first. 
+Fixed: /cmdset/blockset not behaving properly when used by multiple players simultaneously
+Improved: /renamelvl work with unloaded maps
+Improved: /renamelvl update all portals tables, so any portals that previously went to the map go to the new map
+Fixed: Rare issue where physics in museums map caused map to never get freed from memory
+Improved: Support compiling unsafe C# code for custom commands/plugins
+Improved: Allow changing tablist group name of zombies/humans in zombie survival
+Fixed: Exploit with /undo that allowed spamming BlockDB
+Improved: Allow info/remove/edit ing multiple blocks using lb/gb
+Improved: Make SPlace a draw op
+Added: Support for custom particles
+Fixed: botai hunt instruction not interacting properly with other instructions
+Fixed: /tw end not working
+Fixed: Players who join mid-round in TNT wars when it is running on main map joining spec team instead
+Fixed: Not getting sent to team spawn first time you join TNT wars or CTF
+Fixed: Don't crash if trying to call SendMessage causes a DllNotFoundExceptipn
+
+v 1.9.1.7
+Fixed: Importing textures over 256 in .cw importer works now
+Fixed: Importing block ids over 255 in .cw importer works now
+Fixed: Rare bug where doors would get stuck as air form on saving
+Fixed: Incredibly rare bug which caused zones to get lost on saving level
+Fixed: Confusing behaviour where a block be both a portal/MB, portal/door etc. Now it can only be one at a time.
+Improved: Make /mirror x more logical in that it flips all X coordinates instead of Z coordinates (same for /mirror z)
+
+v 1.9.1.6
+Fixed: /money without arguments showing '' is not a valid player name
+Added: Ssupport for CPE VelocityControl
+Fixed: Some imported .dat worlds having the blocks shifted over
+Fixed: Bots on a map getting deleted if you changed x/y/z scale of a bot to a decimal number and your system language uses , instead of .
+
+v 1.9.1.5
+Fixed: GUI map gen only allowing map sizes in the dropdown
+Improved: 'server port utilities' dialog is clearer
+Improved: Allow custom whitelist kick message
+Fixed: Sending stopped working after a while with .NET core
+Fixed: doing /z then immediately doing /mb not resetting bottom right messages
+Fixed: /mynotes should have default rank permission of guest 
+Improved: Stare AI accounts for eyeheight and scale now
+Improved: Show bot's skin in /whonick bot.
+Improved: Player count is now based on unique connected IPs
+Improved: Show in tab list when maps have local chat …
+Improved: Don't restrict model bot axis scaling in /model
+Fixed: doing a large /copy, then adding three marks, causes any further marks to cause a blockchange error
+Fixed: warps list not getting cleared before loading on /server reload
+Fixed: replace and /replacenot getting affected by transforms
+Fixed: painting over grass while holding dirt appearing as air, even though the block was actually unchanged in the world
+Added: Support for CPE SetSpawnPoint
+Fixed: Not working with MySQL > 8.0
+
+v 1.9.1.4
+Fixed: Make @ offset work properly with /cut
+Improved: Bots track owner/creator, prevents non-staff modifying bots of other players
+Improved: Auto filter dropboxusercontent.com to dropbox.com for urls
+Fixed: /tw set zone being /tw set zones instead
+Fixed: /map edgewater flooding invalid block instead of water
+Fixed: Not being able to delete invalid blocks
+Fixed: Portals/message blocks not functioning initially after resize
+Fixed: Don't tie whitelist to player IPs when verify names is off
+Fixed: Make /pyramid just use min Y for pyramid base
+Improved: Tidy up compiler.log output
+Fixed: Warnings shouldn't prevent custom command from compiling
+Fixed: Custom commands in GUI aren't forced to lowercase filename
+Improved: Make /review thread safe
+Fixed: TNT wars not auto starting and not auto loading config
+Fixed: Plugin error when loading/unloading when reloading doesn't break server reloading
+Improved: Replace fancy quotes with their simple ASCII forms
+Improved: Simplify /reload message
+Fixed: Map not being reset when next map voted is the same as current map
+Fixed: Disconnected players still showing in TNT wars tab list
+Improved: Make default server visibility private
+
+v 1.9.1.3
+Added: Support for web client
+Added: Save button for EditText popup
+Improved: Allow /lb copy to copy from another map
+Improved: Allow some non-alphanumeric ascii characters for level names
+Improved: Layout of /awards
+Fixed: 0 byte file getting loaded as a 1x1x1 map
+Fixed: /roll showing same result when used multiple times consecutively in an /mb
+Fixed: /infoswap on non-existent accounts always messaging: ''" was not found in the database
+Improved: Heightmap theme now auto resizes, but warns when doing so.
+Improved: Simpler permissions message in /os map add
+Fixed: Level items in eco gui not working at all
+Fixed: /save [map] [restore] showing wrong restore name
+Fixed: /fly not respecting -fly zone motds
+Fixed: .x not working if IRC channel name's capitalisation was incorrect
+Improved: Player nicks show in tab list
+Fixed: Don't allow /skin over 64 characters
+Improved: Don't count colors in nickname for <30 char limit
+Added: Allow custom profanity filter replacement
+Improved: Allow just doing /reach to show reach distance
+Improved: Don't spam console with layer flood messages
+Added: /import all to import every map in /extra/import
+Added: Allow disabling checkpoints client side respawn
+Fixed: Download inf id dll when updating an inf id server
+Added: /pe ip
+Fixed: /gun should always revert blockchanges made by player
+Fixed: Branches of ash tree being too short
+Fixed: /gun not behaving properly after doing /b
+Fixed: /import all including filename
+Fixed: Erroring when trying to import unsupported format
+Improved: /gun relies on just mouse click instead of glass box
+Added: Option for disabling certain types of chat/log messages from being logged to disc/console
+Improved: Allow disabling custom commands from showing in server logs
+Fixed: Importing maps with over 256 custom block definitions producing wacky blockdefs
+Allow activating a checkpoint and other blocks around it …
+Fixed: copy format version 1 not loading
+Improved: Allow negative speed for spin bot AI instruction
+Improved: auto number map when /buy ing level, if no name is given
+Added: env skybox [col] to set skybox colour
+Improved: Allow mark/spin/patrol/botai/gun to be used in museums
+Improved: Better messages in /pass
+Added: /help env presets
+Improved: Allow importing from webpages
+Added: /server update
+
+v 1.9.1.2
+Improved: Can make custom blocks outside 0-16 range.
+Fixed: +skin urls not working
+Fixed: /award take not working
+
+v 1.9.1.0
+Improved: Extra permission for seeing state/province in /location
+Improved: Connect/Disconnect shows to all players, regardless of /map chat.
+Improved: Allow texture ids beyond 255 when creating a custom block.
+Improved: /delay is only usable in /mbs, remove the 'you are already using delay'
+Improved: Allow /mode 0, /static doesn't turn off /mode
+Fixed: Be more resilient to level corruptions when mid-way through saving
+Fixed: /scale not working properly sometimes
+Fixed: /bezier with /static mode stuffing up
+Fixed: Not being able to bind to command aliases in /cmdbind
+
+v 1.9.0.9
+Added: /blockprops list, /blockprops reset, /blockprops copy
+Added: Allow using /env preset and /env normal in /zone set too
+Added: You can set default environment (i.e. global/server env) for maps in /env
+Improved: Can just do /lb copy [id] (auto fills in last free block ID)
+Improved: For inf id, don't send second array when only custom blocks <= 255 are used
+Fixed: /scale with no arguments not showing help
+Fixed: Permission messages being shown twice to console with /os map add
+Fixed: /descend not counting bottom of map as solid
+Fixed: 'already has that colour' message being wrong
+Fixed: /os map create (not /os map add), not working when used from non-realm map
+Fixed: /ref not working as /referee
+Fixed: /zs set pillaring and /zs set build
+Fixed: /server backup table not working
+Fixed: /static paste and /spin 90 messing up
+Fixed: Missing oDoor block property in /blockprops
+Fixed: /env reset shouldn't reset textures
+Fixed: /team invite stuffing up when team has colours in its name
+Fixed: Changing rank prefix not updating in-game players
+Improved: Make blockprops behaviour more consistent with lb add/copy
+Improved: don't bother warning with non divisible by 16 axis lengths
+Improved: Majorly improve /help newlvl
+Improved: /location shows state, can be used on any IP, and alias of /geoip
+Improved: Allow summoning bots to coords
+Improved: Also reload list files when doing /server reload
+Improved: Allow whitelisting yourself in perbuild and zones
+Improved: Don't spam server logs with 'unrecognised config key X'
+Improved: Drop unused fields from block def json files
+Improved: Show proper message when can't measure ping
+Improved: /help import now provides details about supported formats
+Improved: Allow using /give on yourself
+Improved: Now provide details for each /env variable
+
+v 1.9.0.8
+Fixed: ZS round times
+Fixed: Some issues with hiding
+Fixed: /top10 oldest breaking with a few servers
+Fixed: /roll with two numbers, make /roll with 1 number better
+Fixed: compiler error log listing warnings as errors
+Fixed: Being added to countdown players list, even when can't join countdown map
+Fixed: Changing undo limit in ranks in gui not saving
+Fixed: Old level blockprops files not being copied/deleted/renamed
+Fixed: Accuracy issues with MaxUndo for ranks and /calc
+Fixed: Out of memory error when resizing, caused changes in map to not be saved
+Fixed: Physics restart checkbox having wrong tooltip
+Improved: Can get MCGalaxy to compile for .NET 2.0
+
+v 1.9.0.7
+Added: /hold to make you hold a particular block
+Fixed: /clones not working from console
+Fixed: games erroring when game is aborted mid-way through round vote
+Fixed: noclip/speed detection in games should only when the specific hack is disabled
+Fixed:  Mark#2 message in bottom right showing first point
+Fixed: Negative flood time messages in LS
+Fixed: Denied messages shown, when block is placed on bottom layer of zone
+Fixed: Error when trying to undo yourself for extreme amounts of time
+Fixed: LS not flooding map when round continues again on same map
+Fixed: Players not getting disconnected when server has run out of disk space
+Fixed: Player name showing in tab list, when player disconnects when joining map
+Fixed: Changing main name via reloading server.properties, not changing main map
+Fixed: perbuild/pervisit max restrictions behaving improperly
+Fixed: /server backup doesn't use tonnes of memory
+Improved: Better command API, p is no longer null for console
+Improved: Make /static [command] show better permission denied messages
+Improved: Use custom timespan numericupdowns in GUI
+Improved: Simplify /chatroom somewhat
+Improved: Now /os map pervisit/perbuild act is if you have nobody permissions
+Improved: /server backup compresses files by default
+Improved: Log progress when restoring/backing up files
+Removed: Me and HackRank shouldn't be MB useable
+
+v 1.9.0.6
+Improved: Majorly improve games in GUI, game setup commands
+Improved: TNT wars majorly improved
+Improved: Backups also save associated file with map (bots/blockdefs/env)
+Improved: Pressing Ctrl+C in CLI should still try to cleanly shutdown
+Added: option in server.properties to disable world change messages
+Added: /bot copy
+Added: Option for /rainbow for whether air is replaced over too
+Added: /line connected mode
+Added: Corpse model to /help model models list
+Added: Allow setting yaw and pitch in /tp
+Added: Extra command permissions support disallow/allow ranks now
+Added: /ignore worldchanges
+Added: Option to disable CPE
+Added: Allow configuring warning/error colour
+Fixed: blockprops file not being moved/copied/deleted
+Fixed: /static fill 2d not recalculating direction each time
+Fixed: gb/lb copyall should keep inventory order
+Fixed: 'lately known as' showing to players on maps with map-only chat
+Fixed: rashing on some versions of mono
+Fixed: /xmodel with per-axis model scale
+Fixed: Can't set multiple blocks to hidden
+Fixed: Fix very rare case where bots spawned appear at wrong position
+Fixed: Incorrect message for /zedit and /perbuild on another map
+Fixed: Changing map options in UI not saving
+Fixed: Changing map not updating players list in GUI
+Fixed: /ignore with no args ignoring yourself
+Fixed: Teams list not being cleared before reloading list
+Fixed: Main level corruption when multiple errors are thrown at once
+Fixed: Placing air in map with deletable off but buildable on showing message
+Fixed: Avoid errors when shutting down on mono
+Fixed: Crash when you click 'load map' in GUI but haven't selected a map
+Fixed: Cloudy brush noise messages showing even when /ignore drawoutput
+Fixed: /banedit actually works
+Fixed: /ref title not always being set or reset properly
+Fixed: /ccols list always showing all default colours
+Fixed: /unflood all not working with renamed active water/lava
+Fixed: linkscript bot AI instruction not working at all
+Improved: Allow del/delete/remove to all be used interchangably
+Improved: Restrict /pay from MBs
+Improved: Perform inventory sorting server side
+Improved: Make UI popups consistent
+Improved: countdown shouldn't reset build perms every time map is loaded
+Improved: Show order in lb/gb info
+Improved: Few more commands can be used in museums, minor tidy-up in UI
+Improved: Redesign Rank item - now just explicitly set buyable ranks
+Improved: Doing /server reload reloads announcements list
+Improved: Log error when an error occurs importing zone in .lvl map
+Improved: Can just do /whitelist for /whitelist list
+Improved: You can resize /img now
+Improved: Empty theme should have initial edge level of 1
+Improved: /rankinfo matches against all player names
+Improved: Now /write works with brushes
+Improved: Make command aliases more flexible
+Improved: Change default OS map height to 128
+Improved: /lb info works still, on a block even if only a /gb
+Improved: Switch to ID 0 for hidden inventory order
+Improved: Can now use draw commands in zones less restrictive than map
+Improved: Move /mapset drawingallowed to /map drawing
+Improved: Now /rankinfo stores time in UTC timestamp
+Improved: More consistent permission denied messages for modcommands
+Improved: /hide silent shows no message at al
+Improved: Don't save global blocks list on server start
+Improved: Make chatroom have less extra permissions
+Improved: Show message when level isn't actually saved when using /save
+Improved: Don't allow TPing to people or using /where when playing games
+Improved: Total messages written now works
+Improved: Changing zip url should reset png url, and vice versa
+Improved: /model without args resets per-axis scale too
+Improved: Lockdown autocompletes maps
+Removed: Fail /votekick command
+Removed: Original midnight preset, rename midnight2 to midnight
+Removed: Move .binvox into separate plugin
+Removed: Drop support for ancient server/lockdown/map and level/blacklist
+
+v 1.9.0.5
+Added: Allow configuring heartbeat URL
+Added: rope/lader collide type 7
+Added: gb/lb copyall [map], which copies all custom blocks from given map
+Improved: /os env preset alias for /os preset too
+Improved: Allow using 3 and 6 char codes for hex colours.
+Improved: Optimise /resizelvl to be twice-thrice as fast
+Improved: Ignore colours for /team members, disallow creating two teams with same colour-stripped name
+Improved: Bulk block sending for Countdown
+Improved: Can use /pervisit and /perbuild on unloaded maps too
+Improved: Optimised map sending to be quicker, less CPU
+Fixed: /bind with source block being custom causing error
+Fixed: /search blocks not including global blocks from console
+Fixed: Make /os zone list actually worked
+Fixed: Don't let you change /env on maps no perbuild access to (Thanks AndyFC)
+Fixed: outdated sun colour if standing in a zone and someone changes env
+Fixed: Should be able to use /fly when +fly in MOTD
+Fixed: pyramid drawop sometimes having inaccurate count
+Fixed: /ls start/end erroring on fresh servers
+
+v 1.9.0.4
+Added: /team list
+Added: /zonemark
+Added: Redesigned how zones work. Permissions are separarate from zone name, and allow defining per-zone env and MOTD. 
+Added: /os zones to let you create/manage zones in realms
+Added: Support custom blocks for /help [block], /blocks [block], and /[block]
+Added: Rename /scripting to /plugin and add /plugins
+Added: Support non ASCII custom colour codes
+Added: Global chat message when player joins for first time
+Fixed: plugins not loading with /pload when specified to not autoload on startup
+Fixed: Plugin dlls can have multiple plugin classes in them
+Fixed: Disallow loading plugin that target future versions
+Fixed: gb/lb replacing core block with CPE fallback, not converting CPE to classic block
+Fixed: Don't show ZS group or team chat when you've ignored someone
+Fixed: /summon all not showing any message when insufficient permission
+Fixed: Commands tab in GUI shows properly cased command names
+Fixed: Weatherfade truncation in /mi
+Fixed: /tree type [brush name] [brush args] not actually keeping args
+Fixed: (should) very rare crashing when returning from GUI minimised
+Fixed: Reset blockprops not properly resetting death message / killer block state
+Fixed: main map sometimes being corrupted when server is restarted due to unhandled error
+Fixed: /entrot resetting on joining map (have to /reload)
+Fixed: /buy commands erroring when your username is Bot
+Fixed: Various env properties getting clamped to a too small min/max range
+Fixed: Block physics to work properly with extended blocks
+Fixed: /resizelvl erroring stuffing up server (bots/portals/goto/draw commands stop working)
+Fixed: Fireworks not working on min borders of map
+Fixed: Disallow using /joker while muted
+Fixed: /location not showing your own location when no arguments are given
+Fixed: Log which file fails to save in /server backup
+Fixed: /opstats not actually recording mod commands
+Fixed: Economy GUI crashing if max rank was set so low that no ranks appeared in listbox
+Improved: Maps made using /eco level now set realm owner and build perms)
+Improved: Completely separate blockprops from blocks list. (can change any block props on per-level basis)
+Improved: Require extra permission to toggle /inv of others
+Improved: /help ranks layout
+Improved: Most GUI actions no longer on UI thread (pressing buttons doesn't freeze UI for a bit)
+Improved: Command aliases can be used in /static
+Improved: Compiling commands/plugins shouldn't reference GUI exe (unless explicitly added)
+Improved: Better messages in /report
+Improved: Import zones from .fcm maps
+Improved: /blockset works with custom blocks now
+Improved: Integrate pervisitmax/perbuildmax commands into pervisit/perbuild
+Improved: CommandParser.GetBlock preferences (raw ID is first now)
+Improved: Allow maps with axis lengths not divisible by 16
+Improved: X/Y/Z scale is multiplied by generic model scale
+Improved: Default layering for imageprint is single layer
+Improved: Make /draw more intuitive
+Improved: Make /draw draw over all blocks, not only non-air
+Improved: Support map sizes from 1-15 blocks too
+Improved: Store level theme and seed in level.properties when generating map
+Removed: /view to another player
+Removed: /jail,/xjail,/lockdown player - no longer needed now that /freeze prevents you using most commands
+Removed: autorestart/restarttime from ServerConfig, since they never worked
+
+v 1.9.0.3
+Added: /team list
+Added: /zonemark
+Added: Redesigned how zones work. Permissions are separarate from zone name, and allow defining per-zone env and MOTD. 
+Added: /os zones to let you create/manage zones in realms
+Added: Support custom blocks for /help [block], /blocks [block], and /[block]
+Added: Rename /scripting to /plugin and add /plugins
+Added: Support non ASCII custom colour codes
+Added: Global chat message when player joins for first time
+Fixed: plugins not loading with /pload when specified to not autoload on startup
+Fixed: Plugin dlls can have multiple plugin classes in them
+Fixed: Disallow loading plugin that target future versions
+Fixed: gb/lb replacing core block with CPE fallback, not converting CPE to classic block
+Fixed: Don't show ZS group or team chat when you've ignored someone
+Fixed: /summon all not showing any message when insufficient permission
+Fixed: Commands tab in GUI shows properly cased command names
+Fixed: Weatherfade truncation in /mi
+Fixed: /tree type [brush name] [brush args] not actually keeping args
+Fixed: (should) very rare crashing when returning from GUI minimised
+Fixed: Reset blockprops not properly resetting death message / killer block state
+Fixed: main map sometimes being corrupted when server is restarted due to unhandled error
+Fixed: /entrot resetting on joining map (have to /reload)
+Fixed: /buy commands erroring when your username is Bot
+Fixed: Various env properties getting clamped to a too small min/max range
+Fixed: Block physics to work properly with extended blocks
+Fixed: /resizelvl erroring stuffing up server (bots/portals/goto/draw commands stop working)
+Fixed: Fireworks not working on min borders of map
+Fixed: Disallow using /joker while muted
+Fixed: /location not showing your own location when no arguments are given
+Fixed: Log which file fails to save in /server backup
+Fixed: /opstats not actually recording mod commands
+Fixed: Economy GUI crashing if max rank was set so low that no ranks appeared in listbox
+Improved: Maps made using /eco level now set realm owner and build perms)
+Improved: Completely separate blockprops from blocks list. (can change any block props on per-level basis)
+Improved: Require extra permission to toggle /inv of others
+Improved: /help ranks layout
+Improved: Most GUI actions no longer on UI thread (pressing buttons doesn't freeze UI for a bit)
+Improved: Command aliases can be used in /static
+Improved: Compiling commands/plugins shouldn't reference GUI exe (unless explicitly added)
+Improved: Better messages in /report
+Improved: Import zones from .fcm maps
+Improved: /blockset works with custom blocks now
+Improved: Integrate pervisitmax/perbuildmax commands into pervisit/perbuild
+Improved: CommandParser.GetBlock preferences (raw ID is first now)
+Improved: Allow maps with axis lengths not divisible by 16
+Improved: X/Y/Z scale is multiplied by generic model scale
+Improved: Default layering for imageprint is single layer
+Improved: Make /draw more intuitive
+Improved: Make /draw draw over all blocks, not only non-air
+Improved: Support map sizes from 1-15 blocks too
+Improved: Store level theme and seed in level.properties when generating map
+Removed: /view to another player
+Removed: /jail,/xjail,/lockdown player - no longer needed now that /freeze prevents you using most commands
+Removed: autorestart/restarttime from ServerConfig, since they never worked
+
+v 1.9.0.2
+Fixed: Rare case where you could rejoin team after leaving without an invite
+Fixed: /spin erroring when having not copied anything first
+Fixed: /copy sometimes saying origin on Z axis is at min or max when it was actually opposite
+Fixed: Not compiling on linux
+Fixed: Don't error out when global block defs file is empty or has too few elements
+Fixed: CLI mode not logging error to disc if an error occurs on server startup.
+Fixed: Players sometimes not appearing at correct spawn position to others when joining a map.
+Improved: Make various output messages in /award better.
+
+v 1.9.0.1
+Fixed: /xban erroring
+Fixed: .dll commands added via GUI keeping open handle to file
+Fixed: Standing on top of map triggering noclip detection in ZS.
+Fixed: Maps saving block changes saved after ZS round end
+Fixed: /info with _ in names not always working properly (Thanks goodlyay)
+Fixed: /paste without having /copy ed anything erroring
+Fixed: colours not showing in MOTD. (Thanks xnotx123)
+Fixed: WE/NS blocks being incorrectly flipped with /rotate 180
+Improved: /color bot now only shows message to you
+Improved: /os map texturepack alias for /os map texturezip
+Improved: Can use /m coord as shortcut for /m coord coord coord
+Improved: Support for * and ? wildcards in /search
+Improved: /search blocks now searches through custom blocks list too
+
+v 1.9.0.0
+Added: custom 8ball responses
+Added: @ [rule] shortcuts in /report
+Added: /copyslot for easy manipulation of multiple copies
+Added: /calc command
+Added: Outlining only up/down/layer modes
+Added: Separate pure CLI executable
+Added: /copy cut air
+Fixed: issues with NULL char not being treated properly
+Fixed: being able to ban same player multiple times
+Fixed: Not being able to review more than 1 report of a player
+Fixed: Custom water blocks not making grass->dirt
+Fixed: /copy save not saving whether to paste air
+Fixed: not being able to add more than 192 bots
+Fixed: IRC bold/italic/underline formatting chars not being stripped.
+Improved: Better output for warp/waypoint list
+Improved: Make usage of /last not show in /last
+Improved: Banned rank does not deserve any commands or blocks by default
+Improved: Support block ID 255 for custom block usage
+Improved: Physics trees trunks should only replace air
+Improved: gb/lb copy shouldn't copy inventory order
+Improved: When /copy ing, it also states origin of copy.
+Improved: For consistency with almost all other server software, /ban kicks player
+Improved: Mention F10 for textures step in lb/gb add 
+Improved: Make games commands have 1 extra permission to maange them
+Removed: /warp create <player> at a specific player, can only create at self pos
+Removed: /server reset
+Removed: useless cylinder/spheres map gen themes
+
+v 1.8.9.9
+Added: Support for custom dirt/grass blocks.
+Fixed: /ref issue with ZS
+Improved: Create useful sub-directories in extra directory
+Improved: Placing block while AFK makes you un-AFK.
+Added: precise /tp (/tpp shortcut)
+Added: /f2d, /f3d aliases, implement 2d fill like fCraft
+Fixed: ctf flag take message always saying blue team
+Fixed: 2 layer palette in imgprint, resize imgprint to fit in map
+Added: a bunch more chat tokens (removed useless $serverip)
+Fixed: long messages being incorrectly trimmed on IRC sometimes
+Added: Allow using custom nickserv for IRC bot
+Fixed: /baninfo still saying player was banned, if they were temp-banned
+Fixed: /hide not updating tab list
+Fixed: TNT wars crashing entire server, when round ended and blue score same
+Improved: Using ~ in tp/tpp/mark should behave same as ~0
+Improved: Allow up/ua yourself, fix /ua with no args behaving incorrectly
+Improved: Show a message when you can't delete zones due to insufficient permisission
+Improved: OS maps no longer make zones, only use perbuild whitelist
+Removed: #/+[message], use ##/++ instead
+Improved: Show whitelisted names list for visit/build permission denied
+Fixed: If no +, only look at /map realmowner for owner of OS maps.
+Removed: obsolete /afk list, since /who and tab list do same thing
+Fixed: Tree works properly with /scale, fixes #344
+Fixed: Bot models not having chat tokens.
+Fixed: Models not using fallback block IDs to clients that don't support
+Improved: Blacklist /quit etc from MBs
+Fixed: Don't allow silently importing over an existing map.
+Added: Support for per axis entity models, see /help model scale
+
+v 1.8.9.8
+Added: /pcompile to compile plugins
+Fixed: /mi showing wrong latest backup time, if a map has a custom named backup
+Fixed: missing DEFAULT values for mysql DB table dumps
+Fixed: /mark message being after drawop completed message
+Fixed: ZS not working properly when the level it is unloaded.
+Fixed: /kill not working
+Fixed: /rp not working
+Fixed: /gun not working properly after trying to use it with a block you can't use
+Improved: Make entries in logs/errors/compiler.log more intuitive
+Improved: /measure output
+Improved: You can set any rank in /os map perbuild/pervisit
+
+v 1.8.9.7
+Added: Bots can have text when clicked on
+Added: /ignore irc [nick]
+Added: Skybox horizontal/vertical rotation
+Added: Can specify max number of bots allowed on a map
+Added: Custom kill/death messages for bots
+Added: /help emotes
+Added: /bot rename, for name of bot used in commands
+Added: /setspawn player
+Added: /donotmark, toggles whether clicking blocks counts as a /mark
+Fixed: Being able to spam /pony
+Fixed: Being unable to do /transform scale 63/64
+Fixed: Fly animal AI with custom blocks.
+Fixed: Bots with have jump AI, having wrong position on map reload
+Fixed: /summon shouldn't reset AFK
+Fixed: opchat/adminchat/PM not triggering auto mute
+Fixed: /botset kill not working properly when bot has an AI
+Fixed: Falling into 2 block water, rope, not resetting fall height
+Fixed: /tp x y z with /back, /back preserves rotation
+Fixed: 'painted' flag not added to BlockDB when /paint on
+Fixed: Doing portal/mb show on a map without portals/mbs causing error
+Fixed: Rare case when you land on edge of block and don't die from falling
+Fixed: Not properly dying from falling when non-full block
+Fixed: Block permissions being lost if core block was renamed
+Fixed: Chat tokens not working properly in welcome message
+Fixed: Train rails with custom blocks
+Fixed: ClassicalSharp 0.4 crashing
+Fixed: Colour codes bypass swear filters
+Fixed: placing red wool to detonate /c4, not working
+Fixed: /static tree rainforest 16 not working properly
+Improved: Document more flags in /help map motd
+Improved: /infoswap now just swaps names in database
+Improved: Don't convert percents to ampersands when part of url
+Improved:  Better message when portal destination map can't be loaded
+Improved: /mark shows nothing when /ignore drawoutput on
+Improved: Optimise bot movement
+Improved: Relative coords in /place and /mark
+Improved: /mute mutes for auto spam time, if no interval given
+Improved: Any command can be restricted from MB usage now
+Improved: /os spawn aliases to /os setspawn now
+Improved: Skin also filters dropbox urls like /texture
+Improved: Validate build/access permissions for world changing commands
+Improved: /baninfo shows tempban details too
+Improved: Reach distance check is performed for all ranks now.
+Improved: /patrol won't repatrol players patrolled in last 15 seconds
+Improved: /deletelvl also deletes [map].lvl.backup in levels folder
+Improved: Can use hug/high5 on yourself
+Improved: Don't allow replacing air with gb/lb
+Improved: /lb edit auto copies a /gb to a /lb
+Removed: /chain
+
+v 1.8.9.6
+Added: Support for reordering inventory
+Added: Can edit the core color codes
+Added: Support for custom odoors
+Fixed: Bug where drawops showed wrong blocks to some players
+Improved: Reduced allocations in packet receiving/sending
+Improved: ' >'/' <' (and support ' /'/' \') for partial messages, instead of just '>'/'<'
+Fixed: bottom controls in main tab of properties being 23 pixels too far down
+Added: Can repeat commands from console
+Added: /ctf goto
+Fixed: Bezier curve having minor artifacts
+Fixed: /worldresize alias
+Fixed: /splace says actual block name
+Fixed: /os map delete not outputting anything when used on non-os map
+Fixed: Changing block bounds, still 'killing' you assuming the block had its old block bounds
+Fixed: /ignore titles/nicks being wrong way around
+Fixed: /whonick returning 'player not online', when multiple people match
+Fixed: /copy @
+Fixed: /waypoint on unloaded maps
+Fixed: Fall death and drowning
+Fixed: /afk list
+Fixed: /paint shouldn't reset /mode
+Fixed: /ref
+Fixed: /lb edit 60 blockdraw asd erroring
+Fixed: /team leave XYZ, shouldn't make you leave name
+Fixed: random/cloudy brush with more than two blocks
+Improved: /unloaded is now /worlds, and outputs all maps regardless if loaded
+Improved: Increase max values in security tab in GUI to 1 million
+Improved: Commands and block names aren't all lowercase now
+Improved: Require extra perm to see mb/portal contents in /b
+Improved: Checkered brush supports more than two blocks.
+Improved: Don't bother creating absolute position updates when bot hasn't moved
+Improved: Reduced allocations in various places
+Removed: /update, incompatible with most environments
+Removed: [owner] prefix if player is server owner
+Removed: /reload [name]
+Removed: Spammy message on every lava flood in LS
+Improved: /whois now displays custom skin and model names
+Improved: Output of /place and /splace not shown when ignore drawop output on.
+
+v 1.8.9.5
+Added: /bezier command to draw a bezier curve
+Added: /ignore output, to ignore output of draw commands
+Added: /delay for use in MBs
+Added: spin/mirror/rotate account for direectional blocks
+Added: Extended collide types to lb/gb
+Added: Document lb/gb properties
+Added: indev map importer
+Added: /zone list
+Added: Can open chat tokens popup list in EditText gui
+Added: CPE message in bottom right displaying status of drawops
+Fixed: Physics blocks should use blockdef of their core block representation
+Fixed: Changing profanity filter or custom$s list not updating in-game immediately
+Fixed: /z holes without any args, should leave every other block untouched.
+Fixed: lb shouldn't inherit gb blockprops
+Fixed: Air_switch should be activatable by users, but not Air_door
+Fixed: gb/lb remove not showing message
+Fixed: blockprops changed from gui not updating loaded levels
+Fixed: Very rare case where players would have stats reset
+Fixed: /fly to actually work
+Fixed: /gun handler still being called, after turning off /map guns
+Fixed: /static mode being reset if draw op exceeds rank limit
+Fixed: Don't allow opchat/adminchat when muted
+Fixed: Own position still being moved with /tp, even if couldn't join map target was on
+Fixed: Being able to whitelist higher ranked players
+Fixed: /gen with heightmap theme erroring from console
+Fixed: Ranks losing their block perms after modifying ranks in gui
+Fixed: Checkpoint blocks setting client-side spawn point incorrectly
+Fixed: Changing rank colors/prefix in gui updates online players
+Fixed: Changing ranks in gui doesn't affect actual server state when discarded
+Fixed: hackrank/fakerank changes entity nametag and tablist color
+Fixed: /fixgrass is only usable in-game
+Fixed: CommandParser.GetEnum only allows actual values of the enum
+Fixed: Drowning not being accurate time, custom gas blocks not counting as 'air'
+Fixed: Don't allow spaces in rank names.
+Fixed: Sending BlockPermissions packet when changing rank, without checking client support.
+Fixed: Selecting block in gui marking it as having props changed, even if they werent' actually
+Improved: Default physics undo limit increased to 50,000
+Improved: Make /map work with unloaded maps
+Improved: Visit permission checked before map itself is loaded, avoiding unncessary level load
+Improved: help of mute/freeze
+Improved: GUI uses numerical updowns in more places
+Improved: Message loged to console when heartbeat send fails
+Improved: Deadly hug rank is configurable
+Improved: AFK kick time, AFK kicked, map volume generation configurable per rank
+Improved: Don't see 100 continue for heartbeats, reduces network overhead
+Improved: If map has realm owner, only specifically check that for /os
+Improved: Show message when setting offset of where to paste from for /copy @
+Improved: Reload threshold now based on volume of map
+Improved: Document /blockprops stackblock, add way to remove stackblock
+Improved: /replaceall only counts blocks that will actually be replaced against draw limit
+Improved: Grass doesn't die by upper slabs
+Removed: /endround, is now /zs endround
+Removed: auto updating (check for updates automatically still supported)
+Removed: Pointless /lottery command
+
+v 1.8.9.4
+Fixed: Having 30-35 bots causing 10-20% CPU usage on mono
+Fixed: Opchat/Adminchat showing to IRC
+Fixed: uPnP not working at all
+Fixed: Console not showing timestap for commands
+Fixed: Players not being sent to spawn base in CTF
+Fixed: /bots not working from console
+Fixed: /me showing up on IRC when level has level-only chat
+Fixed: Various commands still sending globally when level-only chat
+Fixed: CTF writing broken config
+Fixed: random/cloudy brush showing 'only admin+ can draw with unknown'
+Fixed: No message being shown when specifiying an invalid block in commands
+Fixed: Upgrading old lockdown erroring
+Fixed: Being able to send opchat messages with no contents
+Improved: lb/gb info shows block tint colour
+Improved: /help map motd details the special rules (-hax, +respawn, etc)
+Added: Stack block (slabs/stairs) is a block property now
+Added: Ability to measure ping with /ping
+Added: Can configure IRC settings (command prefix, controller rank) from Gui
+Added: Can disable afk/unafk showing on IRC
+
+v 1.8.9.3
+Added: Listening on a specific IP
+Added: Color selector to GUI
+Fixed: /undoplayer not working from console or IRC
+Fixed: Don't spam GC performed, only show message when mem freed is >= 100 KB
+Fixed: /os map add keeping level in memory. 
+Improved: IRC bot can now join multiple channels and opchannels.
+Improved: Reduce memory usage of CopyState by around ~43%
+Improved: Blocks, Commands, Rank GUI rewritten to be more user friendly
+Improved: Color codes are no longer in server log files
+Improved: EditText GUI design, files supported
+Added: Implement /highlight area
+Added: /circleh (/sphere hollowcircle) for drawing hollow circles
+Added: Grass dying physics on physics level >= 1
+Fixed: Make sure custom plugins are properly unloaded then reloaded when doing /server reload
+Fixed: /server reset setting server salt to blank instead of new random value
+Fixed: /copy @
+Fixed: mistakes in fc_island implementation
+Fixed: /slap, /ascend, /descend with custom blocks
+Fixed: snakes groefing through solid blocks
+Fixed: sponge/lava_sponge with still water/lava
+Fixed: Don't allow core commands to be unloaded by using their shortcut
+Fixed: After rank change, resend block permissions, and reset mode types and block bindings
+Fixed: Various block behaviour not working for /lb that replaced core blocks
+Improved: Allow binding custom blocks, and binding to custom blocks
+Improved: Now /mode supports custom blocks
+Improved: Allow reasons in mute/jail
+Improved: ZS uses separate config file now
+Improved: Support custom blocks in /measure and /rp
+Improved: loatwood floats up through still water now
+Improved: Secret commands now log who used them to server logs and can't be used when muted
+Improved: Now /setrank shows who did the rank
+Improved: /tempranks can have reasons, duration is accurate to seconds
+Improved: Now /map edge floods in actual edge block
+Improved: /freeze and /mute require timespans
+Improved: Optimise getting block AABB for bot and player movement
+Improved: Various things (Guns, missiles, /ride) no longer run on separate threads
+
+v 1.8.9.1
+Fixed: colour bleeding in /who when on a museum map (Thanks fam0r)
+Improved: /top supports timespent now
+Improved: Allow any ASCII character in server name/motd
+Fixed: emotes in message breaking WoM
+Fixed: joining museums after joining a world not causing world to auto-unload
+Fixed: /mark
+Fixed: changing fallback not auto-reloading clients that don't support custom blocks
+
+v 1.8.9.0
+Added: MCGalaxy can natively run in 64 bit
+Added: Can set map sides (bedrock) offset
+Added: Positions are now supported past -1024 or 1024 (currently 32768)
+Added: Ability to rotate players and bots on X and Z axis
+Added: Can whitelist/blacklist specific ranks in /blockset
+Added: /botai list
+Added: /uban as /xban alias, except doesn't ban IP
+Added: Can change animal AI of core blocks
+Fixed: /rules [name] sending rules to self
+Fixed: Can ban/rank offline players with or without last +
+Fixed: Prevent /save from revealing hide
+Fixed: Maps should generate with still water
+Fixed: Being able to fill over active_water, even if can't use active_water
+Fixed: Two entities being able to assigned same entity ID
+Fixed: fall death
+Fixed: /place not working when coords above 1024 or below -1024
+Fixed: Bots falling outside map on bottom and map borders
+Fixed: Not all players not being sent to spawn in countdown
+Fixed: Night mode doesn't clear gui log anymore
+Fixed: User selection preserved when chat is appended to gui log
+Fixed: % being removed when last character in message
+Fixed: Visual bug with custom and non-custom blocks in a drawop
+Fixed: /ccols add not checking hex colour properly
+Fixed: can use non-existent LB from another map to 'build' on non-buildable map
+Fixed: Heartbeat URL not showing up changed in gui when IP changes
+Fixed: Stats corruption when over 32767 deaths
+Fixed: /top10 with offset
+Fixed: /map edge always using half map height, instead of edge level
+Fixed: train ride thread not being removed after player disconnected
+Fixed: /place with sand/gravel and physics on leaving ghost blocks
+Improved: Show actual name of command that can't be used in an /mb
+Improved: /restoreselection is a drawop, works with different sized ma[ backups
+Improved: /top uses coloured names, accepts name identifiers instead of names, better formatting
+Improved: Less pointless spam on login
+Improved: Can activate portals and message blocks in non-deletable map
+Improved: /pe can change total placed/deleted/drawn now
+Improved: auto filter dropbox urls to point to download page in /texture
+Improved: Simplified /cmdset usage
+Improved: using /main while in /main sends to spawn
+Improved: Less usage of timers, less CPU usage on mono
+Improved: /awards, /seen uses player's coloured name
+Improved: Heightmap gen has stone cliffs now
+Improved: /newlvl and /resizelvl automatically round to multiple of 16
+Improved: Don't bother doing MovePreviousLevelFiles() is pointless
+Improved: Gui log now has limited long length, preventing excessive memory usdager after long usage
+Improved: Rank filenames now automatically calculated
+Improved: Brush support added to /outline
+Removed: /os map delete [num], now just /os map delete
+Removed: /garbage as pointless, every level join does GC anyways
+Removed: City from /location, now only goes to country level
+
+v 1.8.8.9
+Added: Show client's app name in server logs when connecting
+Added: /mi now also shows number of BlockDB entries
+Fixed: /paste on map borders
+Fixed: /zmodel without args changing your own model to '-own'
+Fixed: /mode dirt/grass
+Fixed: ZS lottery
+Fixed: /ride not working
+Fixed: lava sponge / sponge not being properly removed
+Fixed: air_door not working
+Fixed: don't let pay/give/take 0 money
+Fixed: Importing maps with upper case letters on linux
+Fixed: Show reason for kick from IRC
+Fixed: do not allow killing same rank, when muted/chat moderation
+Fixed: Empty teams not being removed
+Fixed: Don't patrol yourself
+Fixed: Prevent using /summon to reset AFK
+Fixed: Make /tempban save and show time left in kick message
+Fixed: Some block changes not adding to BlockDB
+Fixed: Not showing /goto messages at all when hidden
+Fixed: being able to use /rankmsg to bypass ignore
+Fixed: Don't pointlessly send models
+Fixed: /clones not including online players
+Improved: /viewranks, /whitelist, etc now show proper case of name
+Improved: Fixed lb/gb edit fallback not showing name
+Improved: Generate server salt only at startup, so /server reload deoesn't reload salt
+Improved: /ccols list uses pagination too
+Improved: /img accounts for whether a custom block is fullbright
+Improved: /copylvl now also copies bots
+Improved: Logs are now per day instead of being combined
+Improved: Show block id/name message at end of /b
+Improved: /goto and /mapinfo match against all maps, not just loaded
+Removed: /voteresults, as it is pointless
+
+v 1.8.8.8
+Improved: Allow using code page 437 in custom block names, entity name tags
+Fixed: /b for air displaying 'airfallback'
+Fixed: /say causing massive spam in console
+
+v 1.8.8.7
+Added: Console can now see invalid command attempts.
+Added: /ignore 8ball
+Added: /goto random
+Added: Can reference external assemblies in custom commands
+Added: /map treetype to specify what tree types saplings grow into
+Added: forester.py (fCraft like) trees, and some other trees
+Added: /zs go
+Added: .binvox importer
+Fixed: negative blocks affected in vertical /torus
+Fixed: Being able to maintain /fly from current into a non-hax map
+Fixed: all unicode to code page 437 issues
+Fixed: /copylvl and /renamelvl with blockprops
+Fixed: Null reference for zones with non-existent groups
+Fixed: GUI works on mono now
+Fixed: Some ways to bypass /mute
+Fixed: /museum not loading custom blocks/env, bypassing pervisit
+Fixed: /resizelvl resetting spawn
+Improved: when you lb/gb edit/copy a core block, auto creates custom block
+Improved: More fCraft command aliases
+Improved: gb/lb info displays texture ids
+Improved: combine clones/whoip, tnt/mode, move/tp
+Improved: bot nick limit increased to 62
+Improved: Show server version in heartbeat
+Improved: /baninfo, /rankinfo, /notes, /temprankinfo partially match
+Improved: /setspawn now updates own spawn point
+Improved: noclip, bots, walkthrough, killer blocks use real AABB colllisions
+Improved: /imgprint adjusts to env colors, allows custom palettes with /palette
+Improved: paste brush now allows you to specify blocks to include/exclude
+
+v 1.8.8.6
+Fixed: /os lb add/edit always creating blocks with uppercase names
+Fixed: double {{ in IRC messages
+Fixed: new servers not auto generating builder/advbuilder/op/superop ranks
+Removed: /changelog as it was mostly useless anyways
+
+v 1.8.8.5
+Added: IP connection throttling
+Added: ported across fCraft map generator
+Added: new BlockDB format
+	- now /undo and /redo show in /b, doesn't use SQL, so faster and much less disk usage
+Added: /undo is separate into /undo and /undoplayer, can undo multiple people at once
+Fixed: /lb add with automatic ID
+Improved: less memory allocations in physics updates and map sending
+Improved: map is only reloaded when actual number of blocks changed > reload threshold
+Fixed: errors when activating portals/message blocks and database table is missing
+Fixed: /endround should be op+ by default, not outputting anything when round isn't in progress
+Fixed: wrong opcode in DeleteSelection
+Fixed: being able to place blocks you normally can't in draw commands
+Fixed: /tp not working when target is outside map
+Fixed: /reload no longer slightly moves you up
+Fixed: autoload commands for unix, where commands are case sensitive
+Fixed: spawn and cloudheight for .dat format
+Fixed: very rare case of .x outputting to wrong channel
+Fixed: prevent modifying bots on worlds you don't have perbuild access
+Fixed: /send checks for mutes
+Fixed: /store maps erroring
+Fixed: all /gb becoming /lb after /server reload
+Fixed: /topten and offset
+Fixed: /os zone del [name] actually works
+Fixed: Changing main from server gui not working
+Fixed: global.json.back never being saved
+Fixed: if you use /gb to replace a core block, it also changes core block name
+Fixed: /ascend and /descend, trains
+Fixed: fire now properly kills custom blocks which are also killed by lava
+Fixed: odoor_air blocks should still be saved to block.properties
+Fixed: trains colliding into each other causing one to disappear
+Fixed: /baninfo only showing first /unban
+Fixed: tnt wars
+Fixed: being able to change rank to same rank
+Added: /mark all
+Added: added all/alltext to list of editable lb/gb properties
+Added: /os map resize, /os blockprops
+Added: add # % ? @ to /write font
+Added: PlayerClick event
+Added: aliases for grey/gray
+Added: /server backup litedb
+Added: client can send ping packet to server
+Improved: IRC is disctinct from /title
+Improved: allow $tokens in motd
+Improved: Server can now operater without builder/advbuilder/op/superop ranks
+Improved: show player who created map in /newlvl
+Improved: /bots output is paged
+Improved: /freeze isn't silly anymore
+Improved: Backing up database tables is now much faster
+Improved: allow = as well as _ in cloudy brush args
+Improved: better layout in /send and /inbox
+Improved: /backup no longer runs on a separate thread, which can potentially crash the server
+Improved: /rankmsg is laid out better, can't be used when muted
+Improved: Better format in /baninfo
+Improved: non-walkthrough /mbs always repeat message when clicked on
+Improved: better help for /os
+Improved: /blocks and /search blocks now use coloured output
+Improved: level/map names now use colours
+Improved: extra perm required in skin/
+Improved: more commands have default rank guest
+Improved: add ipban/unipban as aliases
+Improved: show player who created a /newlvl
+Improved: combine agree/disagree/rules, combine tpaccept/tpdeny/tpa
+Removed: most door_X_air block names in /blocks and /search blocks as they aren't used anymore
+Removed: /impersonate, /killpay, /tpzone
+
+v 1.8.8.4
+Added: /blockprops which allows changing of physics properties for all blocks
+Added: Can overwrite core blocks on per-level basis with /lb
+Added: /server import [name] which imports .sql files (from /server backup table)
+Fixed: Rare case where saving level corrupted it
+Improved: /os map can now change nearly all /map options
+Improved: /opstats is now much cleaner and tracks stats properly
+Improved: Cloudy brush now uses scale for its arguments
+Improved: Free up %h,%s,%t,%i for use by custom colour codes.
+Improved: layout of /mapinfo is now cleaner
+Improved: Kick messages now show who kicked
+Performance: pixel/space/rainbow maps now generate much faster
+Performance: Now do bulk copies in level saving
+Added: bamboo and palm trees from fCraft
+Fixed: Being able to noclip into solid portals/message blocks
+Fixed: slab/cobblestoneslab stacking issues
+Fixed: Trains reverting the block below to the wrong format
+Fixed: Going unafk revealing hidden
+Fixed: Being able to use like twice in a round
+Fixed: ZS vote message not being cleared after doing /zg force
+Fixed: Issue with /about for very old BlockDB table and custom blocks
+Fixed: 'time left' not being reset at end of ZS round
+Fixed: Fixed pillaring check in ZS
+Fixed: /mapset not updating HUD in top right
+Fixed: /map grass not actually disabling map growth
+Fixed: Being instantly un-afked after joining a map or moving mouse after /afk
+Fixed: /topten 3 (money)
+Fixed: /buy queuelevel, /queue zombie not working when isn't full player name
+Fixed: /cmdunload showing empty string when command doesn't exist
+Fixed: /copy delete not working
+Fixed: Not using . for decimal separator everywhere
+Improved: /rankinfo without args shows your own /rankinfo
+Improved: Better messages in /pervisit and /perbuild
+Improved: Lava now burns more blocks it logically should
+Improved: Also save offset in /copy save
+Improved: Bots now save current instruction on level unload
+Improved: Using /ref in ZS sends you back to spawn
+Improved: Simpler layout for /whois in ZS
+Improved: Randomize order players in ZS moved to next level
+Improved: /gb and /lb are more intuitive
+Improved: /store has a cleaner layout
+Improved: /map has a cleaner layout
+Removed: /rankreqs since no one used it
+Removed: /allowguns, it's part of /map now
+Removed: /pload/punload/pcreate, now one /scripting command
+
+v 1.8.8.3
+--- It is highly recommended you update to this ---
+Fixed: Doors not working
+Fixed: Changing maps resetting AFK
+Fixed: Some minor issues with zombie survival
+Fixed: Window title always showing 'starting mcgalaxy' on first run
+
+v 1.8.8.2
+Added: Can provide reasons for /shutdown, mention /shutdown abort in its help
+Added: Command spam blocking (to prevent spam using commands)
+Added: Physics state now saves to level file (trains/doors work properly after unload)
+Fixed: /copylvl should also copy portals,message blocks,zones
+Fixed: 'disconnect' showing 'joined the game' on IRC.
+Fixed: /outline not working
+Fixed: /zone add with rank name not working
+Improved: [yes] no longer shows in /unloaded to make it less spammy
+Improved: Ask to confirm before ranking/temp-banning non existent players
+Improved: Don't show 'level X loaded' for autoloads
+Improved: sleep(10) instead of sleep(3) in player pos check thread to reduce CPU
+Improved: Make many commands (/unloaded,/vip list,/whitelist list,/commands) use paginated output
+Improved: Track custom block ids in /b
+Improved: Allow spaces at end of rank prefix
+Improved: /summon lets you summon players who cannot normally visit
+Improved: Keep track of recent levels in ZS to avoid replaying them
+Added: can toggle whether whitelist is used in gui
+Added: can set blocks/command spam limits in gui
+Added: Allow providing reasons in give/pay/take
+Added: /bots [level] to only show bots on that level
+Added: /search commands is back
+Fixed: Voicing someone giving them wrong colour in /who
+Fixed: -hax not working if motd has colour in it
+Fixed: ' not being escaped properly in /server backup
+Fixed: /server backup lite saving level backups
+Fixed: /xjail still moving higher ranked players to xjail map
+Fixed: /mi colours with multiple realm owners
+Fixed: /shutdown on linux (without display) always raising an error
+Fixed: /pay not working from console
+Fixed: /hide incorrect colours on IRC
+Fixed: If ignoring someone, you shouldn't see /send or /tpa
+Fixed: Turning off /ride instantly killing you
+Fixed: relative time in /balance with hours component > 12
+Fixed: Aliases being duplicated in /help [cmd] after restart
+Fixed: Own tab list name not being updated after unhiding
+Fixed: Going AFK putting you in wrong group in tab list when playing ZS
+Fixed: Bounties not persisting between rounds in ZS
+Fixed: /env preset erroring
+Fixed: Not being auto-unmuted for spamming if left before timer finished
+Fixed: Server crashing if server name was too long
+Fixed: tdoors/odoors on map borders activating tdoors/odoors on other map side (and trains)
+Improved: money data is now stored in players table, instead of Economy table
+Improved: awards saving overhead reduced
+Improved: cleaned up lava survival in gui
+Improved: Bots now rotate to face the targetted player in hunt AI
+Improved: Show all previous alts, not just alts since last server restart
+Improved: Allow using hunt and kill instructions in bot AIs
+Improved: loginmsg/logoutmsg require extra perm to change messages of other players
+Improved: Changing properties shouldn't change server salt
+Improved: You are first fined 10 moneys for pillaring in ZS, second time is a kick
+Improved: Announce best zombies at end of round in ZS
+Improved: players are now limited so can only /newlvl one at a time
+Improved: Warn ops when a player tries to speedhack or noclip in ZS
+Removed: /blocks count
+
+v 1.8.8.1
+Added: Basic /transform rotate for rotating pastes and other draw operations
+Added: /temprank, /undo and /highlight now support timespans
+Fixed: /awardmod add could add spaces to the award name
+Fixed: Not updating portal exit maps on that map when doing /renamelvl
+Improved: Can partially match award names now
+Improved: /b shows the contents of a message block
+Improved: /inbox uses relative time, /inbox will read all messages
+Improved: Optimised /imageprint and also made it a draw op (can use with /undo and /scale)
+Improved: opchat/adminchat is now an extra permission that can be seen in the /help for their command
+
+v 1.8.8.0
+Added: /resizelvl command to resize a level
+Added: Heightmap map generator (URL of heightmap image is the seed)
+Added: .cw map importer, imports env and custom blocks too (Format used by the client)
+Added: skip/none block type for drawing commands
+Added: /transform and /transform scale, which allows you to scale the output of draw operations
+Added: Start tracking total blocks draw, placed, and deleted in /whois and /top
+Fixed: Being unable to run MCGalaxy behind an IPv6 address
+Fixed: /server backup lite still including undo files on windows
+Fixed: Bots using 90% CPU on mono
+Fixed: Spawn world should use that level's motd if it has a custom one
+Fixed: /undo files no longer writes duplicate data to disc
+Fixed: When /undo data is written to disc, it is also removed from memory now
+Fixed: Draw operations logged to BlockDB when changing block to same block (e.g. /z air)
+Improved: Provide more helpful 'Only X+ can place/draw/fill/replace [block]' messages
+Improved: Only create portals/zones/message blocks tables when actually required, not on level creation
+Improved: Added perbuild whitelist/blacklist
+Improved: Allow using up/down in gui chat/command input for faster repeat
+Improved: Allow using @number as shortcut for that rule message in ban/kick/warn/tempban/rank
+Improved: Show (reconnecting) or (reconnecting from a different IP) instead of 'someone logged in as you!'
+Improved: /mark and /place should default to held block, instead of just stone
+Improved: Brushes now validate input when you use the command, instead of after placing second mark
+Added: 'empty' for /bot nick gives the bot an empty name tag.
+Added: Show reason and username in logs when disconnecting someone before they completed login
+Added: Can set a minimum rank required to /buy a particular item
+Added: Give Good [Info] title per request
+Added: HackControl CPE extension, so /map motd will change in real time
+Added: Zombie invisibility item for the economy
+Fixed: /pload reading plugin from root directory, not plugins subfolder
+Fixed: /pass using wrong calculation
+Fixed: Just changing /env preset by itself not updating the .properties file
+Fixed: /fly /ascend /descend cannot be used when you don't have hacks allowed
+Fixed: /rankinfo throwing NullReference on non-existent rank
+Fixed: Make Plugin_Simple actually work and derive it from Plugin
+Fixed: /ride only makes you not killed by train blocks, not entirely invincible
+Fixed: Fixed whitelist not saving when adding/removing from someone from console
+Fixed: Can no longer join when on the whitelist but you are banned
+Fixed: /send storing the second half of message if length > 255 characters and using mysql
+Fixed: Being unable to do /os map buildable/chat/deletable if you cannot change map options
+Fixed: /cmdunload showing 'incorrect command name' afterwards
+Fixed: pervisit/perbuild/ in /mi should show actual rank name, not its permission
+Fixed: If a player is both banned and temp-banned, /unban should remove both
+Fixed: PluginManager.Unload erroring on mono
+Fixed: /server restore reading the entire file at once, make it work
+Fixed: Make bots jumping sort of work, make bot movement consistent regardless of position interval
+Fixed: Very rare issue with players ending up with having 2016 years of 'time spent'
+Fixed: level properties not saving after doing /env fog -1
+Fixed: /copy cut always showing '0 blocks copied'
+Fixed: Actual block ID (e.g. bird_blue) is logged to BlockDB, not just held block
+Fixed: Limit .who from IRC to at most once per second
+Fixed: /resetpass not working from console
+Fixed: AFK kick not saving new value when changed via gui
+Fixed: Make /explode do proper perbuild checking
+Fixed: trees not growing when /map trees and physics is enabled
+Fixed: Being unable to use some commands on hidden players, even though you can see them in /players
+Fixed: /cmdset with extra permissions not checking if you could modify those extra permissions
+Fixed: /env var reset showing var type twice, instead of var then level
+Fixed: Not showing number of messages in /inbox (if you have any)
+Fixed: Being able to use /infoswap on higher ranked
+Fixed: /ohide not working from console
+Fixed: Some minor issues with zombie survival not changing maps
+Fixed: First zombie picked not having 'rounds survived in a row' reset
+Fixed: $tokens and custom chat tokens show in kick packets
+Fixed: /ccols add throwing IndexOutOfRange exception if 
+Fixed: /ls go not working after server restart due to maps having spaces in their name
+Fixed: /fixgrass not doing permission checking
+Improved: /rankinfo now uses relative timespans
+Improved: now if a level has a custom motd, show server name in first line and motd in second
+Improved: /time now also shows server date
+Improved: tp/abort/paint have default permission of guest
+Improved: Now you cannot /banip invalid IP addresses (like a.b.c.d)
+Improved: Use consistent method of finding IP in /banip and /unbanip
+Improved: /whitelist [name] is treated the same as /whitelist add [name]
+Improved: /emote saves the list when command is used, not in Player.Save()
+Improved: For copy rotate/mirrors, also rotate/mirror the copy offset
+Improved: Now defaults to CLI mode when not running on windows
+Improved: /unban partially matches player names
+Improved: /zg start starts on map you are currently on, /zg status shows map name
+Improved: Bot IDs are now per-world instead of global across all worlds
+Improved: /viewranks [rank] does partial rank name matching now
+Improved: If only [block] is given for r/rn/ra, replaces that block with your current held block
+Improved: Use more optimised /fill code
+Improved: /map grass actually saves, and still disables auto grass grow when physics is disabled
+Improved: Now more chat commands will auto-mute if they are being used to spam
+Improved: Show actual name of custom block in /place and /b
+Improved: /afk no longer reveals you are hidden
+Improved: Players tab in gui is tidied up and more concise
+Improved: /resetbot changed to /ircbot, which also allows connecting/disconnecting the IRC bot
+Improved: /banip only shows IP addresses to people who can see IP addresses in /whois
+Improved: Can use hacks in /ref mode
+Improved: /baninfo now uses relative timespan
+Improved: Latest backup in /mi uses relative time now
+Improved: Use more efficient bulk block sending for console draw ops
+Improved: Cleanup /eco help, make it more concise and list all items
+Improved: /fixgrass now uses bulk packet sending
+Improved: /reach now saves across sessions
+
+v 1.8.7.5
+Fix issue with database handles being left open on sqlite backend. This fixes the main memory leak in MCGalaxy.
+Fix issue with some sqlite connections rarely not being closed, which caused all other database calls to fail (preventing people from joining).
+It is highly recommended you update for the above two fixes.
+Added: /os map perbuild
+Added: /map [level] realmowner [player], which allows [player] to use /os on that map.
+Fixed: /deletelvl and /renamelvl not deleting/moving blocks.
+Fixed: Rare case where level blockdb is not auto-saved.
+Fixed: Taskbar icon not disappearing when server is closed.
+Fixed: Getting 'cannot build that far away' when clicking on edge of reach.
+Fixed: Kicker/kickee being incorrectly swapped in IRC kick event handler.
+Improved: LocationChecker sleeps a bit longer when 0 players online, to reduce CPU usage.
+Improved: 2 Scheduler threads (1 for simple tasks, 1 for long running ones), reducing threads created.
+Improved: /binfo now uses relative times, using physics blocks no longer adds an entry to BlockDB.
+Improved: /map [level] output is cleaner.
+Improved: Now rank(s) required is shown when you cannot place a block.
+Improved: Main tab of gui cleaned up to be more visually concise.
+
+v 1.8.7.4
+Added: /server backup table [name], for only backing up a particular table in the database
+Added: /server backup lite, which backs up everything except undo and blockdb files
+Added: Can use + before a skin name in /skin to retrieve skin from minecraft.net's skin server instead
+Added: Can change colour and display name of bots with /color bot [name] and /nick bot [name]
+Added: /ignore titles and /ignore nicks for chat
+Added: Add /sphere circle which draws a circle
+Fixed: /highlight not showing changes after the player has previously been undone
+Fixed: Being unable to use spaces in team name
+Fixed: Failing to backup one file in /server backup crashing the whole server
+Fixed: /color not updating your own name tag colour
+Fixed: rank/rankup item vanishing from economy after server restart
+Fixed: Custom colours > 6 characters being truncated in database on mysql backend
+Fixed: Being unable to do certain /os sub-commands when the perbuild is higher than your rank
+Improved: Level sending optimised to be more responsive after /goto is first done
+Improved: Help for /os cleaned up
+Improved: Can use command aliases from IRC and console now
+Improved: Show relative time in /seen in addition to absolute time
+Improved: /centre places multiple blocks if axis length is even.
+Removed: /setpass and /resetpass, they are now part of /pass with /pass set and /pass reset
+Removed: /ozone, made it part of /zone with /zone map.
+
+v 1.8.7.3
+Added: Review queue shows to appropriate staff on joining
+Added: Multiple commands in a single /mb block
+Added: /seen now shows last time an online player visiited the server
+Added: /irccontrollers rank [rank] to set rank of IRC controllers
+Fixed: Being unable to place blocks when guest rank when outside map at negative coordinates
+Fixed: Dirt/Grass not changing to appropriate block in all circumstances.
+Fixed: Properly check extra permissions in /zone
+Fixed: Logging in as yourself counting as a kick
+Fixed: /skin not working properly with uppercase characters.
+Fixed: Various IRC things not outputting properly to op channel
+Fixed: Passwords list not showing in server gui
+Fixed: Make /vip actually work
+Improved: Commands that are designed to only be used in game (e.g. /z) can no longer be used by IRC controllers.
+Improved: More commands use different colours for syntax in /help
+Improved: More files support writing/reading code page 437 characters
+Improved: More saving data methods are threadsafe, minimising random data loss/corruption
+Improved: /help for /newlvl
+Improved: 'X is not a valid player/level' name messages are consistent
+Removed: /click, old behaviour is now integrated into /mark
+Removed: Separate /topfive and /topten, now just alias for /top
+Removed: /reveal, now part of /reload with extra command permissions
+
+v 1.8.7.2
+Added: Review requests appear on IRC op channel.
+Added: Can toggle whether player titles are shown on IRC.
+Fixed: /undo not working from console.
+Fixed: /cut not working if number of non-air blocks was in draw limit, but volume of copy area was greater than draw limit.
+Fixed: /outline now works with custom blocks.
+Fixed: /jail and /xjail actually work.
+Fixed: IRC bot not joining registered channels due to joining them before server indicates the bot is authenticated.
+Fixed: Double disconnection messages.
+Fixed: /paste not working properly when paste origin was outside map.
+Improved: Player position updates are now bulk grouped and sent as one packet, reducing bandwidth usage.
+Improved: /banx now IP bans again.
+Improved: /spin now accepts 180/270/-90/-180/-270 angles.
+Improved: /whois is now nicer, also shows idle time.
+Improved: Rotation is preserved when going to a portal in another map.
+Improved: /baninfo shows if IP ban, also last ban/unban reason.
+Improved: Can now partially match unloaded map names in commands.
+Improved: /resetbot now also uses new irc server/port if it has changed.
+Improved: /help for some methods, now also prints aliases.
+Improved: Use faster pinvoke method, reduces memory allocation and time to save BlockDB.
+Removed: /serverreport and /pcount, now part of /serverinfo.
+Removed: /deltemprank, /temprankinfo, /tempranklist, now part of /temprank.
+Removed: xcolor/xnick/xtitle/xtcolor/xmodel and make them alias to their actual commands, with the original commands now using an extra permission to affect bots and other players.
+Removed: /promote and /demote, now alias to /setrank +up and /setrank -down.
+Removed: /staff and /mods, just use /devs
+Removed: Global chat.
+
+v 1.8.7.1
+- Added: /cmdset now allows you to allow/disallow specific ranks.
+- Added: /help <cmd> now uses more concise format, also lists specifically allowed/disallowed ranks.
+- Fixed: /newlvl mountains not working, /whois not showing days component.
+- Improved: Now IRC replaces %S with reset signal (instead of separate %r), so looks better on most clients.
+- Improved: Less timer usage, timers properly cleaned up.
+
+v 1.8.7.0
+- Added: /infoswap.
+- Added: Tab list separately handled from in-game entities, allowing for a server-wise tab list.
+- Added: Cloudy (perlin noise) brush like fcraft.
+- Added: /main <level> to set the main level from ingame.
+- Added: Allow generating any size divisible by 16, not just powers of two divisible by 16.
+- Added: Actual /sphere command.
+- Added: /hide persists across sessions.
+- Added: /Triangle draw operation.
+- Added: Configuring weather speed, cloud speed, and weather fade/falloff rate.
+- Added: /where to show a player's position and orientation.
+- Fixed: /explode me not working.
+- Fixed: 'is afk' always showing in /whois.
+- Fixed: If older backups directories were missing, existing backup directories are overwritten.
+- Fixed: /compload for visual basic commands.
+- Fixed: tpaccept/tpdeny not working.
+- Fixed: /botremove not working.
+- Fixed: /mi env not working on loaded levels.
+- Improved: /about now shows the 'real' custom block id, not just ID of custom_block.
+- Improved: Reduced logging information to main console window, shown in logs-->sytstem instead.
+- Improved: /torus now draws like fcraft /torus.
+- Improved: outline/copy cut/rainbow/hollow are now draw ops, allowing them to be undone/redone.
+- Improved: When using only /copy, air blocks (Since not pasted) do not count towards draw limit.
+- Improved: More commands now have the fCraft command names/aliases as aliases too.
+- Improved: Now uses the same block names as classicube/classicalsharp clients.
+- Improved: /help commands split into separate /commands, which can use name and rank sorting.
+- Improved: /host combined into /sinfo, /sinfo simplified.
+- Improved: IRC bot now tries to reclaim its normal nick upon reconnection.
+- Improved: Map tab redesigned to be more visually appealing.
+- Removed: /ban #name and /uban name, just use /xban name.
+
+v 1.8.6.0
+- Fixed: /award not working when neither 'give' nor 'take' is used.
+- Added: Allow customising infect messages for zombie survival.
+- Improved: Hidden players still show to players of same rank (and above) as in-game entities.
+- Added: Revive and invisibility potions for zombie survival.
+- Added: pervisit whitelist and blacklist
+- Improved: /help now shows more useful info for physics blocks. (Thanks Peteys93)
+- Improved: whois/whowas more concise, and is now one shared command.
+- Improved: Better method of scrolling chat in gui, faster and incurs less memory allocations.
+- Improved: /mi split up into /mi, /mi perms, and /mi env.
+- Fixed: Can now /unban partially matched online banned players.
+- Fixed: /tempban twice on same name creating new tempban instead of updating old.
+- Improved: Skins, bots, and models now persist between sessions
+- Fixed: /server reload wiping command permissions.
+- Removed: /xspawn as it was pretty much pointlesss
+- Improved: /freeze now persists across sessions
+- Fixed: 'slap', 'banip' in players tab in server gui crashing the server.
+- Improved: /help botai, also added /botai info [name].
+- Improved: /whois now shows when a player is afk.
+- Fixed: /fill not working when held block same as existing block.
+- Added: /os map achat and /os map restore
+- Fixed: /me and /eat not working properly when 'roleplay' / 'level only' chat is used.
+- Added: /os map add now sets perbuild to the min rank that can use /os, or the rank specified in the 'misc --> extra' tab.
+- Improved: Logs now grouped under one tab.
+
+v 1.8.5.0
+- More work on zombie survival.
+- /mark works properly when you are outside the map.
+- /clones uses proper casing of names, and shows which ones are banned.
+- /os env - can also change maxfog and cloudsheight
+- Modularise block data and block physics internally. (Not yet configurable)
+- /tree should not overwrite existing blocks.
+- Made various messages more consistent.
+- Fixed /restore not copying custom blocks.
+- /texture now warns if url is > 64 characters, and also if you use a non-existent scope.
+- Fixed /os map guns throwing a NullReferenceException.
+- Optimised /rs rainbow to send block updates more efficiently.
+- Optimised block physics to use packed Int32 instead of strings, and \replace
+-    classes with structs. (Less pressure on GC)
+- Fixed /queue not working from console.
+- Allow providing a reason for /tempbans.
+- Fix being unable to use some commands while hidden.
+- /undo and /redo now behave like fCraft when not given arguments. (undo/redo last drawop)
+- Fix /fly not working when your X or Z coordinate is 0.
+- Added /showqueue command for zombie survival.
+- /help for a command now shows its additional permissions (if any)
+- Added /skin to allow changing skins of players and bots.
+- Rewritten gui to be nicer. (Much thanks to UclCommander)
+- Initial implementation of ExtPlayerList, so players are grouped separately from bots.
+- Command aliases are now less hardcoded, add fCraft aliases.
+- Show command aliases in their respective /help command.
+- Fix /unflood reloading the map 8 times.
+- 'seed' for flatgrass map type specifies the grass level.
+- Don't call ScrollToEnd() twice, makes gui slightly more responsive.
+- Can show rank prefixes in chat.
+- Add /eat command.
+- Optimise map generation to be slightly faster.
+- Fix /env preset not showing changes for all players.
+- Show player's title in less places to reduce visual clutter. 
+
+v 1.8.4.0
+- Fixed /resetpass not working at all.
+- Show a warning to outdated ClassicalSharp clients, suggesting they update.
+- More work on zombie survival and other game related code.
+- /hug now has more options (Thanks Goodlyay)
+- Added an /undoarea command to only undo players in a specific area.
+- Optimised undo files to use even less disk space.
+- /tree and /draw are now more optimised and implement a DrawOp, so can be used with brushes.
+- Fixed /report only working with a one word report.
+- /place, /click, and /mark now clamp coordinates outside the map properly.
+
+v 1.8.3.0
+- Added brushes system similar to fCraft.
+- Added support for importing .fcm files from fCraft/ProCraft.
+- Significantly optimised physics and /undo responsiveness.
+- Many changes to reduce memory usage.
+- Made most commands that involve querying the database case insensitive.
+- More commands now show an appropriate message if the input name matches multiple online players.
+- /paste now can take an optional list of blocks to only paste, or alternatively an optional list of blocks to not paste.
+- Added a torus draw operation.
+- Cleaned up the economy code. Now separated into /buy, /store, and /eco setup.
+- /tempban can be used with offline players.
+- More work on zombie survival.
+- Noise map generators now use water and sand. (Thanks megalomaniactom)
+- Added an 8ball command. (Thanks PatchTest)
+
+v1.8.2.0
+- Fix a critical bug with leaving a level as the only player and then rejoining
+  the level would result in you being re-added to the level which was then unloaded
+  due to the BlockDB not having finished saving before you rejoined,
+  thus causing draw commands to not work and block updates to not be saved.
+- Can import .mcf files when placed in /extra/import directory.
+- Removed /scinema and /pcinema.
+- Fix /ignore not properly persisting between sessions.
+- Added noise generator for new levels. (thanks megalomaniactom)
+- /limit can now change more variables (rank undo limit, reload threshold 
+  for drawing commands, physics undo max entries)
+
+v1.8.1.0
+- Fix 'blocks modified' not being updated in certain conditions.
+- Can set max number of overseer maps per rank through server properties.
+- Make ban/ranking commands store reasons and show them when used.
+- Fix some /spin modes not working properly.
+- Implement CPE TextColors extension. (ccols command)
+- Fix /explode exploding on player's level, not the target's level.
+- Fix /levels and /unloaded not working in console.
+- Added per-level block definitions with the /lb command.
+- /aka no longer reloads the map. /reload without parameters will do that instead.
+- Fix /clearblockchanges not working on personal realms.
+- Allow /pe to modify online players.
+- IRC commands can now be used via PM, assuming the user is an IRC controller.
+- Implement BlockDefinitionsExt version 2.
+- Reduction in memory usage for physics checks, undo/redo for players and level, and in the /fill command.
+- Optimise BlockDB saving, now only takes 1/3 of time it would take previously.
+- Cleanup countdown and allow generating maps of any size.
+- Fix /cmdbid [num] printing all bindings, instead of only that specific binding.
+- Readd rainbow and explode block physics for /restartphysics.
+- Fix levels not being saved when only modification to the world was a draw command > 10,000 blocks.
+
+v1.8.0.0
+- Fixed /undo from console and IRC not doing anything after restart.
+- /texture with a scope without a url will output the current url for that scope.
+- Fixed not being able to whisper from console.
+- Fixed /portal show not working.
+- Fixed 'survival' mode not working properly.
+- Implemented EnvMapAppearance version 2, allowing usage of .zip texture packs, changing of cloud height, and limiting to a max fog distance.
+- Fixed cases where some IRC colour codes were not being converted.
+- Fixed code page 437 characters not working with IRC.
+- Add 'buildable' and 'deleteable' properties to maps, allowing building/deleting to be disabled client side.
+- Fixed IRC announcing secondary disconnect of hidden players.
+- Added /pclients command which outputs which clients the players are using.
+- Implemented BlockDefinitions, with a /gb command to go with it.
+- Removed 'GrieferStone' and old 'Anti-tunneling' code.
+- Fix guns not being disabled on maps that didn't allow guns.
+- Implement a new undo binary file format that is much more efficient space and parsing wise.
+- Removed /quick.
+- Removed the old and broken translation stuff.
+- Fixed some .x IRC commands crashing the server.
+- Fixed /players <rankname> not working.
+- Fixed global chat not working.
+- Implemented CPE LongerMessages extension.
+- Added /reach, allowing players to place/delete blocks further away.
+- Removed /megaboid, removed old MCForge protection code.
+- Fixed /spin not working on recent mono versions.
+- Optimised /copy and /paste to be much more memory efficient.
+- Created /tpa and /hug commands.
+- Implemented CPE CPFull437 extension, allowing usage of all code page 437 characters in chat, commands, and messages.
+- Begun work on BlockDefinitions.
+- Updated help for /env to be more visually nice.
+- DisplayName is used in most places instead of name.
+- Fixed some cases of hidden players being revealed.
+- Added /mark command that 'marks' the current position as a coordinate for selections/cuboids etc.
+- Added /os block, unblock, kickall, kick, and blacklist.
+- /ranks show ranks logs for a player.
+- Added /promote and /demote which also show rank reasons.
+- Prevent hidden players interacting with killer blocks.
+- Added an 'empty' map generation type.
+- Prevent slapping of hidden players.
+- Fix /freeze not working with console.
+- Added /xmodel.
+v1.7.3.0
+- Show env properties in /mapinfo.
+- Add more os commands: weather, env, texture, motd, pervisit, allowguns
+- Cannot set pervisit to higher than own rank.
+- Reintroduced emotes.
+- Fixed model not changing your own player model until reload.
+- Removed Global Chat banlist update.
+- Removed ability to change global change nick.
+- No message causes current level to be used for /unload.
+- Show level texture in /mapinfo, fix level.properties not saving.
+- Created a new /help menu layout.
+- Fixed /scinema error.
+- Created /xnick, /xtitle, /xtcolor, /xcolor.
+- Made warnings visible in IRC/GUI.
+- Temp fix for MCGalaxy-protection-levl.
+- Use /tcolor (or normal color if no title color) for both brakcers in player title.
+- Adminchat should be turned on when using /xhide.
+- Hidden players should not be announced as AFK.
+- prevent /hackrank being used to spam.
+v1.7.0.0
+- Add an api for localhost.
+- Made /reloadcontrollers, not exposed though.
+- Fix commands not working on console.
+- Allow saving own map with /os map save.
+- Fixed /env save issue.
+
+v1.6.0.0
+- Added /quit.
+- Added /env.
+v1.5.1.2
+- Fix IRC commands and colors.
+v1.5.0.7
+ - IRC color codes supported.
+ - /whonick added.
+ - Implemented EnvMapAppearance.
+v1.0.3.1
+ - Fixed aliases (hopefully)
+v1.0.0.2
+ - Fixed updating
+v1.0.0.1
+ - Fixed /whois showing your nick instead of the player's
+ - Fixed GUI stuff
+v1.0.0.0
+ - MCLawl Custom commands may now be used
+ - /inv is the new shorthand for /Invincible
+ - Fixed Updater

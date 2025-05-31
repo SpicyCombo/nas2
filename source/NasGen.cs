@@ -42,6 +42,7 @@ namespace NotAwesomeSurvival {
             diamondFogColor = System.Drawing.ColorTranslator.FromHtml("#605854");
             emeraldFogColor = System.Drawing.ColorTranslator.FromHtml("#403834");
         }
+
         public static void TakeDown() {
 
         }
@@ -62,10 +63,11 @@ namespace NotAwesomeSurvival {
         }
         
         public static bool currentlyGenerating = false;
-        static bool Gen(Player p, Level lvl, string seed) {
+        static bool Gen(Player p, Level lvl, MapGenArgs args) {
             currentlyGenerating = true;
             int offsetX = 0, offsetZ = 0;
             int chunkOffsetX = 0, chunkOffsetZ = 0;
+            string seed = args.Seed.ToString();
             GetSeedAndChunkOffset(lvl.name, ref seed, ref chunkOffsetX, ref chunkOffsetZ);
             
             offsetX = chunkOffsetX * mapWideness;
@@ -75,7 +77,7 @@ namespace NotAwesomeSurvival {
             p.Message("offsetX offsetZ {0} {1}", offsetX, offsetZ);
 
             Perlin adjNoise = new Perlin();
-            adjNoise.Seed = MapGen.MakeInt(seed);
+            adjNoise.Seed = MapGen.MakeRng(seed).Next();
             Random r = new Random(adjNoise.Seed);
             DateTime dateStart = DateTime.UtcNow;
 
@@ -262,7 +264,7 @@ namespace NotAwesomeSurvival {
             void GenSoil() {
                 int width = lvl.Width, height = lvl.Height, length = lvl.Length;
                 p.Message("Now creating soil.");
-                adjNoise.Seed = MapGen.MakeInt(seed + "soil");
+                adjNoise.Seed = MapGen.MakeRng(seed + "soil").Next();
                 adjNoise.Frequency = 1;
                 adjNoise.OctaveCount = 6;
 
@@ -321,7 +323,7 @@ namespace NotAwesomeSurvival {
                 int width = lvl.Width, height = lvl.Height, length = lvl.Length;
 
                 p.Message("Now creating caves");
-                adjNoise.Seed = MapGen.MakeInt(seed + "cave");
+                adjNoise.Seed = MapGen.MakeRng(seed + "cave").Next();
                 adjNoise.Frequency = 1; //more frequency = smaller map scale
                 adjNoise.OctaveCount = 2;
 
@@ -375,7 +377,7 @@ namespace NotAwesomeSurvival {
             }
             void GenPlants() {
                 p.Message("Now creating grass and trees.");
-                adjNoise.Seed = MapGen.MakeInt(seed + "tree");
+                adjNoise.Seed = MapGen.MakeRng(seed + "tree").Next();
                 adjNoise.Frequency = 1;
                 adjNoise.OctaveCount = 1;
 

@@ -12,3 +12,14 @@ C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.dll
 C:\Users\jiami\OneDrive\Documents\nas2\source\obj\Release\nas2.pdb
 C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\MCGalaxy_.dll
 C:\Users\jiami\OneDrive\Documents\nas2\source\bin\Release\plugins\Newtonsoft.Json.dll
+C:\Users\kaifazhe\Documents\nas2\source\obj\Release\nas2.csproj.AssemblyReference.cache
+C:\Users\kaifazhe\Documents\nas2\source\obj\Release\nas2.csproj.CoreCompileInputs.cache
+C:\Users\kaifazhe\Documents\nas2\source\obj\Release\nas2.dll
+C:\Users\kaifazhe\Documents\nas2\source\obj\Release\nas2.pdb
+C:\Users\kaifazhe\Documents\nas2\source\bin\Release\plugins\nas2.dll
+C:\Users\kaifazhe\Documents\nas2\source\bin\Release\plugins\nas2.pdb
+C:\Users\kaifazhe\Documents\nas2\source\bin\Release\plugins\MCGalaxy_.dll
+C:\Users\kaifazhe\Documents\nas2\source\bin\Release\plugins\Newtonsoft.Json.dll
+C:\Users\kaifazhe\Documents\nas2\source\bin\Release\plugins\MySql.Data.dll
+C:\Users\kaifazhe\Documents\nas2\source\bin\Release\plugins\MCGalaxy_.pdb
+C:\Users\kaifazhe\Documents\nas2\source\obj\Release\nas2.csproj.CopyComplete

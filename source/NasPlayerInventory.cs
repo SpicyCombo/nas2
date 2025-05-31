@@ -152,7 +152,7 @@ namespace NotAwesomeSurvival {
         }
         void UnhideBlock(BlockID clientBlockID) {
             BlockDefinition def = BlockDefinition.GlobalDefs[Block.FromRaw(clientBlockID)];
-            if (def == null && clientBlockID < Block.CpeCount) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(clientBlockID)); }
+            if (def == null && clientBlockID < Block.CPE_COUNT) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(clientBlockID)); }
             if (def == null) { return; }
 
             p.Send(Packet.BlockPermission(clientBlockID, true, false, true));
@@ -162,7 +162,7 @@ namespace NotAwesomeSurvival {
             if (nasBlock.childIDs != null) {
                 foreach (BlockID childID in nasBlock.childIDs) {
                     def = BlockDefinition.GlobalDefs[Block.FromRaw(childID)];
-                    if (def == null && childID < Block.CpeCount) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(childID)); }
+                    if (def == null && childID < Block.CPE_COUNT) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(childID)); }
                     if (def == null) { continue; }
                     p.Send(Packet.BlockPermission(childID, true, false, true));
                     p.Send(Packet.SetInventoryOrder(childID, (def.InventoryOrder == -1) ? childID : (ushort)def.InventoryOrder, true));

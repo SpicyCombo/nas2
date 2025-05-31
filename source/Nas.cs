@@ -141,7 +141,8 @@ namespace NotAwesomeSurvival {
                 string seed = "DEFAULT";
                 if (!NasGen.GetSeedAndChunkOffset(Server.mainLevel.name, ref seed, ref chunkOffsetX, ref chunkOffsetZ)) {
                     Player.Console.Message(name + " > main level is not a " + name +" level, generating a " +name+ " level to replace it!");
-                    seed = new Sharkbite.Irc.NameGenerator().MakeName().ToLower();
+                    // seed = new Sharkbite.Irc.NameGenerator().MakeName().ToLower();
+                    seed = "survival";
                     string mapName = seed+"_0,0";
                     Command.Find("newlvl").Use(Player.Console,
                                                mapName +
@@ -157,6 +158,7 @@ namespace NotAwesomeSurvival {
                 }
             }
         }
+
         static void MoveFile(string pluginFile, string destFile) {
             pluginFile = "plugins/"+pluginFile;
             if (File.Exists(pluginFile)) {
@@ -373,7 +375,7 @@ namespace NotAwesomeSurvival {
         static void OnBlockChanged(Player p, ushort x, ushort y, ushort z, ChangeResult result) {
             NasBlockChange.OnBlockChanged(p, x, y, z, result);
         }
-        static void OnPlayerMove(Player p, Position next, byte yaw, byte pitch) {
+        static void OnPlayerMove(Player p, Position next, byte yaw, byte pitch, ref bool cancel) {
             NasPlayer np = (NasPlayer)p.Extras[PlayerKey];
             np.DoMovement(next, yaw, pitch);
         }

@@ -35,7 +35,7 @@ namespace NotAwesomeSurvival {
             for (BlockID blockID = 0; blockID <= Block.MaxRaw; blockID++) {
                 BlockDefinition def = BlockDefinition.GlobalDefs[Block.FromRaw(blockID)];
 
-                if (def == null && blockID < Block.CpeCount) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(blockID)); }
+                if (def == null && blockID < Block.CPE_COUNT) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(blockID)); }
                 if (def == null) {
                     blockColors[blockID] = Color.White; continue;
                 }
@@ -139,7 +139,7 @@ namespace NotAwesomeSurvival {
             if (!placing) { p.Message("%cYou shouldn't be allowed to do this."); cancel = true; return; }
 
             NasPlayer np = (NasPlayer)p.Extras[Nas2.PlayerKey];
-            BlockID clientBlockID = p.ConvertBlock(serverBlockID);
+            BlockID clientBlockID = p.Session.ConvertBlock(serverBlockID);
             NasBlock nasBlock = NasBlock.Get(clientBlockID);
 
             if (nasBlock.parentID == 0) {
@@ -251,7 +251,7 @@ namespace NotAwesomeSurvival {
                 }
 
                 BlockID serverBlockID = p.level.GetBlock(x, y, z);
-                BlockID clientBlockID = p.ConvertBlock(serverBlockID);
+                BlockID clientBlockID = p.Session.ConvertBlock(serverBlockID);
                 NasBlock nasBlock = NasBlock.Get(clientBlockID);
                 if (nasBlock.durability == Int32.MaxValue) {
                     //p.Message("This block can't be broken");
@@ -338,7 +338,7 @@ namespace NotAwesomeSurvival {
                     millisecs = (int)breakTime.TotalMilliseconds;
                 } else {
                     TimeSpan timeSinceLastBlockBroken = DateTime.UtcNow.Subtract(np.lastLeftClickReleaseDate);
-                    int ping = p.Ping.AveragePing();
+                    int ping = p.Session.Ping.AveragePing();
                     if (timeSinceLastBlockBroken.TotalMilliseconds >= ping) {
                         //p.Message("subtracting ping");
                         breakTime -= TimeSpan.FromMilliseconds(ping + (ping / 2));
@@ -373,7 +373,7 @@ namespace NotAwesomeSurvival {
                 meterInfo.z = z;
 
                 BlockDefinition def = BlockDefinition.GlobalDefs[Block.FromRaw(clientBlockID)];
-                if (def == null && clientBlockID < Block.CpeCount) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(clientBlockID)); }
+                if (def == null && clientBlockID < Block.CPE_COUNT) { def = DefaultSet.MakeCustomBlock(Block.FromRaw(clientBlockID)); }
                 if (def != null) {
                     if (face == TargetBlockFace.AwayX) { DoOffset(def.MaxX, true, ref meterInfo.x); }
                     if (face == TargetBlockFace.TowardsX) { DoOffset(def.MinX, false, ref meterInfo.x); }

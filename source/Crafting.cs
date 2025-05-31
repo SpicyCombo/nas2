@@ -130,7 +130,7 @@ namespace NotAwesomeSurvival {
                     for (ushort x = startX; x < startX + 3; x++) {
                         BlockID blockID = p.level.GetBlock(x, y, startZ);
                         if (blockID == Block.Invalid) { blockID = 0; }
-                        blockID = p.ConvertBlock(blockID);
+                        blockID = p.Session.ConvertBlock(blockID);
                         NasBlock nb = NasBlock.Get(blockID);
                         //Player.Console.Message("Block at "+indexX+", "+indexY+" is "+block);
                         area[indexX, indexY] = nb;
@@ -145,7 +145,7 @@ namespace NotAwesomeSurvival {
                     for (ushort z = startZ; z < startZ + 3; z++) {
                         BlockID blockID = p.level.GetBlock(startX, y, z);
                         if (blockID == Block.Invalid) { blockID = 0; }
-                        blockID = p.ConvertBlock(blockID);
+                        blockID = p.Session.ConvertBlock(blockID);
                         NasBlock nb = NasBlock.Get(blockID);
                         //Player.Console.Message("Block at "+indexX+", "+indexY+" is "+block);
                         area[indexX, indexY] = nb;

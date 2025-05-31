@@ -55,9 +55,9 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MCGalaxy_">
-      <HintPath>.\MCGalaxy_.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MCGalaxy_, Version=1.9.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MCGalaxy_.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>.\Newtonsoft.Json.dll</HintPath>

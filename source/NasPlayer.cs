@@ -82,7 +82,7 @@ namespace NotAwesomeSurvival {
     			}
             }
             BlockID serverBlockID = p.level.GetBlock(x, y, z);
-            BlockID clientBlockID = p.ConvertBlock(serverBlockID);
+            BlockID clientBlockID = p.Session.ConvertBlock(serverBlockID);
             NasBlock nasBlock = NasBlock.Get(clientBlockID);
             if (nasBlock.interaction != null) {
                 if (!canDoStuffBasedOnPosition) {
@@ -253,7 +253,7 @@ namespace NotAwesomeSurvival {
 
         public void UpdateHeldBlock() {
             //p.ClientHeldBlock is server block ID
-            BlockID clientBlockID = p.ConvertBlock(p.ClientHeldBlock);
+            BlockID clientBlockID = p.Session.ConvertBlock(p.ClientHeldBlock);
             NasBlock nasBlock = NasBlock.Get(clientBlockID);
 
             if (nasBlock.parentID != heldNasBlock.parentID) {

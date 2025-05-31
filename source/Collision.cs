@@ -75,7 +75,7 @@ namespace NotAwesomeSurvival {
                     clientBlockID = Block.ToRaw(serverBlockID);
                 } else {
                     clientBlockID = Block.Convert(serverBlockID);
-                    if (clientBlockID >= Block.CpeCount) clientBlockID = Block.Orange;
+                    if (clientBlockID >= Block.CPE_COUNT) clientBlockID = Block.Orange;
                 }
                 return clientBlockID;
             }

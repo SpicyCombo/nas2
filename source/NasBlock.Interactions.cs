@@ -295,7 +295,7 @@ namespace NotAwesomeSurvival {
             static void AddBlocks(NasPlayer np, Entity bEntity) {
                 Player p = np.p;
                 //p.ClientHeldBlock is server block ID
-                BlockID clientBlockID = p.ConvertBlock(p.ClientHeldBlock);
+                BlockID clientBlockID = p.Session.ConvertBlock(p.ClientHeldBlock);
                 NasBlock nasBlock = NasBlock.Get(clientBlockID);
                 if (nasBlock.parentID == 0) {
                     p.Message("Select a block to store it.");
@@ -344,7 +344,7 @@ namespace NotAwesomeSurvival {
                     
                     BlockStack bs = null;
                     //p.ClientHeldBlock is server block ID
-                    BlockID clientBlockID = p.ConvertBlock(p.ClientHeldBlock);
+                    BlockID clientBlockID = p.Session.ConvertBlock(p.ClientHeldBlock);
                     NasBlock nasBlock = NasBlock.Get(clientBlockID);
                     foreach (BlockStack stack in bEntity.drop.blockStacks) {
                         //if there's a stack in the container that matches what we're holding
